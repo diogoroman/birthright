@@ -127,7 +127,11 @@ class UsersController extends AppController {
 			$this->data = $this->User->read(null, $id);
 			unset($this->data['User']['password']);
 		}
-		$groups = $this->User->Group->find('list');
+		if(!isset($group_id))
+		{
+			$groups = $this->User->Group->find('list');
+			$this->set('groups', $groups);
+		}
 	}
 	
 

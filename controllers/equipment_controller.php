@@ -97,7 +97,7 @@ class EquipmentController extends AppController {
 		$this->Session->setFlash(__('Equipment was not deleted', true));
 		$this->redirect(array('action' => 'index'));
 	}
-	
+	/*
 	function admin_acert_value($id = null)
 	{
 		if(empty($id))
@@ -126,6 +126,6 @@ class EquipmentController extends AppController {
 			//TODO acerta apenas do id
 		}
 	}
-	
+	*/
 }
 ?>

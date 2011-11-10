@@ -4,7 +4,7 @@ class Patrimony extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 	var $actsAs = array('Locale.Locale');
 	//descomentar para acert_preco
-	var $virtualFields = array('total' => 'SUM(Patrimony.priceUnit)');
+	//var $virtualFields = array('total' => 'SUM(Patrimony.priceUnit)');
 	
 	var $belongsTo = array(
 		'Equipment' => array(

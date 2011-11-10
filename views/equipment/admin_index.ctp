@@ -2,7 +2,7 @@
 	<h2><?php __('Materiais');?></h2>
 	<h4><?php echo $this->Html->link(__('Aguardando Inclusão no Registro', true), array('action' => 'index', '?' => array('filter' => 'include'))); ?></h4>
 	<h4><?php echo $this->Html->link(__('Todos os Registros', true), array('action' => 'index')); ?></h4>
-	<h4><?php echo $this->Html->link(__('Acertar Preços', true), array('action' => 'acert_value')); ?></h4>
+	<h4><?php //echo $this->Html->link(__('Acertar Preços', true), array('action' => 'acert_value')); ?></h4>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Numero Carga', true),'fcg');?></th>

@@ -22,6 +22,12 @@ class PatrimoniesController extends AppController {
 			$this->set('patrimonies', $this->paginate('Patrimony',array(
 													  'Patrimony.patrimony_status_id =' => '4')));
 		}
+		else if(!empty($this->passedArgs['filter']) && $this->passedArgs['filter'] == 'waiting')
+		{
+			$this->Patrimony->recursive = 0;
+			$this->set('patrimonies', $this->paginate('Patrimony',array(
+													  'Patrimony.patrimony_status_id =' => '4')));
+		}
 		else
 		{
 			$this->Patrimony->recursive = 0;

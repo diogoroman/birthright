@@ -62,7 +62,6 @@
 	</table>
 	<p>
 	<?php
-	
 	if(isset($this->params['url']))
 	{
 		foreach($this->params['url'] as $key => $value)
@@ -77,9 +76,16 @@
 
 	<div class="paging">
 		<?php 
+			//print_r($this->params);
 			$filter = null;
-			if(isset($this->params['named']['q']) || isset($this->params['url']['q']))
-				$filter = array('filters' => array('q' => isset($this->params['url']['q']) ? $this->params['url']['q'] : $this->params['named']['q']));
+			if(isset($this->params['url']['filter']))
+				$filter = array('filters' => array('filter' => $this->params['url']['filter']));
+			else if(isset($this->params['url']['q']))
+				$filter = array('filters' => array('q' => $this->params['url']['q']));
+			else if(isset($this->params['named']['q']))
+				$filter = array('filters' => array('q' => $this->params['named']['q']));
+			else if(isset($this->params['named']['filter']))
+				$filter = array('filters' => array('filter' => $this->params['named']['filter']));
 			$this->RPaginator->controls($this->Paginator, $filter);
 		?>
 	</div>

@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+
+*{
+	font-size: 0.98em;
+}
+th {
+	border: 2px solid #c1c1c1;
+	padding: 5px;
+	background: #e1e1e1;
+}
+
+td {
+	border: 1px solid #c1c1c1;
+	padding: 5px;
+	margin: 0;
+}

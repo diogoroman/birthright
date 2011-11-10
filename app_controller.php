@@ -28,7 +28,7 @@ class AppController extends Controller
 	 * Cake Controller atributes
 	 ****************************/
 	
-	public $components = array('Auth', 'Session', 'RequestHandler', 'DebugKit.Toolbar');
+	public $components = array('Auth', 'Session', 'RequestHandler'/*, 'DebugKit.Toolbar'*/);
 	
 	public $helpers = array(
 		'Html',

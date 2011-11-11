@@ -5,14 +5,14 @@
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Ordem Numérica', true),'orderNum');?></th>
-		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Material', true),'equipament_id');?></th>
+		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Material', true),'Equipment.description');?></th>
 		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Seção', true),'section_id');?></th>
 		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Sala', true),'room');?></th>
 		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Status', true),'patrimony_status_id');?></th>
 		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Discrepancia', true),'discrepancy');?></th>
 		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Usuário', true),'user_id');?></th>
 		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Conferencia', true),'conference');?></th>
-		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Inclusão no Registro', true),'equipament_id');?></th>
+		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Inclusão no Registro', true),'Equipment.includeRegister');?></th>
 		<th class="ui-widget-header"><?php __('Ações');?></th>
 	</tr>
 	<?php

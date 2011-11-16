@@ -34,7 +34,7 @@
  * ...and connect the rest of 'Pages' controller's urls.
  */
 	Router::connect('/', array('controller' => 'users', 'action' => 'login'));
-	Router::connect('/equipment', array('controller' => 'equipment', 'action' => 'index', 'admin' => true));
+	Router::connect('/equipment', array('controller' => 'patrimonies', 'action' => 'index', 'admin' => true));
 //	Router::connect('/bill_categories',array('controller' => 'bill_categories','action' => 'index','admin' => true));
 //	Router::connect('/bills', array('controller' => 'bills', 'action' => 'index', 'admin' => true));
 //	Router::connect('/processes', array('controller' => 'processes', 'action' => 'index', 'admin' => true));

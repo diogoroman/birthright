@@ -83,7 +83,7 @@ class PatrimoniesController extends AppController {
 		$equipment = $this->Patrimony->Equipment->find('list',array('fields' => array('Equipment.id', 'Equipment.fcg')));
 		$organizations = $this->Patrimony->Organization->find('list');
 		$sections = $this->Patrimony->Section->find('list',array('order' => array('Section.name')));
-		$users = $this->Patrimony->User->find('list');
+		$users = $this->Patrimony->User->find('list',array('order' => array('User.name')));
 		$patrimonyStatuses = $this->Patrimony->PatrimonyStatus->find('list');
 		$this->set(compact('equipment', 'organizations', 'sections', 'users','patrimonyStatuses'));
 		

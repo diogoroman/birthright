@@ -108,5 +108,6 @@
 	<?php endforeach; ?>
 	</table>
 <?php endif; ?>
+<?php echo $this->Html->link(__('Adcionar Patrimonio Relacionado ', true), array('controller' => 'patrimonies','action' => 'add', $equipment['Equipment']['id'])); ?>
 </div>
 

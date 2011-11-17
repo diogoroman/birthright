@@ -43,7 +43,7 @@ class PatrimoniesController extends AppController {
 		$this->set('patrimony', $this->Patrimony->read(null, $id));
 	}
 
-	function admin_add() {
+	function admin_add($equipmentId = null) {
 		if (!empty($this->data)) {
 			$this->Patrimony->create();
 			if ($this->Patrimony->save($this->data)) {
@@ -52,6 +52,10 @@ class PatrimoniesController extends AppController {
 			} else {
 				$this->Session->setFlash(__('The patrimony could not be saved. Please, try again.', true));
 			}
+		}
+		if(!empty($equipmentId))
+		{
+			$this->set(compact('equipmentId'));
 		}
 		$equipment = $this->Patrimony->Equipment->find('list',array('fields' => array('Equipment.id', 'Equipment.fcg')));
 		$organizations = $this->Patrimony->Organization->find('list');

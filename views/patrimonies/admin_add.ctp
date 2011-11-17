@@ -7,7 +7,11 @@
  		<legend><?php __('Adiciona Patrimonio'); ?></legend>
 	<?php
 		echo $this->Form->input('orderNum',array('label' => __('Número de Patrimonio', true)));
-		echo $this->Form->input('equipment_id',array('label' => __('Ficha Carga Geral', true)));
+		if(isset($equipmentId))
+			echo $this->Form->input('equipment_id',array('label' => __('Ficha Carga Geral', true),
+											  	  'value' => $equipmentId));
+		else
+			echo $this->Form->input('equipment_id',array('label' => __('Ficha Carga Geral', true)));
 		echo $this->Form->input('section_id',array('label' => __('Seção dentro da OM', true),
 												   'default' => $defaultValues['DefaultValue']['section_id']));
 		echo $this->Form->input('room',array('label' => __('Sala', true),

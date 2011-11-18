@@ -10,9 +10,11 @@
 		echo $this->Form->input('fcg',array('label' => __('FCG', true)));
 		echo $this->Form->input('description',array('label' => __('Descrição', true)));
 		echo $this->Form->input('kind_id',array('label' => __('Classe', true),
-												'default' => $defaultValues['DefaultValue']['kind_id']));
+												  'default' => $defaultValues['DefaultValue']['kind_id'],
+												  'empty' => 'Selecione uma classe'));
 		echo $this->Form->input('count_id',array('label' => __('Conta', true),
-												 'default' => $defaultValues['DefaultValue']['count_id']));
+												   'default' => $defaultValues['DefaultValue']['count_id'],
+												   'empty' => 'Selecione uma conta'));
 		echo $this->Form->input('equipment_type_id',array('label' => __('Tipo', true),
 												'default' => $defaultValues['DefaultValue']['equipment_type_id']));
 		echo $this->Form->input('alias',array('label' => __('Descrição Resumida', true)));

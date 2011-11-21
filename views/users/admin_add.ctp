@@ -24,7 +24,8 @@ else
 			
 			echo $this->Form->input('username', array('label' => __('Nome de usuário', true), 'autocomplete' => 'off'));
 			echo $this->Form->input('password', array('label' => __('Senha', true), 'autocomplete' => 'off'));
-			
+			echo $this->Form->input('section_id', array('label' => __('Seção', true), 'autocomplete' => 'off',
+														  'empty' => 'Selecione a seção'));
 			if(isset($groups))
 			{
 				echo $this->Form->input('Group', array('label' => __('Grupos', true)));

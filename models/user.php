@@ -37,6 +37,16 @@ class User extends AppModel {
 			'unique' => true
 		)
 	);
+	var $belongsTo = array(
+		'Section' => array(
+			'className' => 'Section',
+			'foreignKey' => 'section_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
+	
 	
 	/**
 	 * Recupera os grupos do usuário com $id

@@ -95,6 +95,9 @@ class UsersController extends AppController {
 			$groups = $this->User->Group->find('list');
 			$this->set('groups', $groups);
 		}
+		
+		$sections = $this->User->Section->find('list',array('order' => array('Section.name')));
+		$this->set(compact('sections'));
 	}
 	
 
@@ -132,6 +135,8 @@ class UsersController extends AppController {
 			$groups = $this->User->Group->find('list');
 			$this->set('groups', $groups);
 		}
+		$sections = $this->User->Section->find('list',array('order' => array('Section.name')));
+		$this->set(compact('sections'));
 	}
 	
 

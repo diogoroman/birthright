@@ -11,6 +11,13 @@
 			<?php echo $user['User']['username']; ?>
 			&nbsp;
 		</dd>
+		
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Seção'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $this->Html->link($user['Section']['name'], array('controller' => 'sections', 'action' => 'view', $user['Section']['id'])); ?>
+			&nbsp;
+		</dd>
+		
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Grupos'); ?></dt>
 		<dd<?php  if ($i++ % 2 == 0) echo $class;?>>
 			<?php 

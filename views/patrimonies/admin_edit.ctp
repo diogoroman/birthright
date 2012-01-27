@@ -9,7 +9,8 @@
  	<?php echo $this->Html->link($patrimony['Equipment']['description'], array('controller' => 'equipment', 'action' => 'view', $patrimony['Equipment']['id'])); ?>
 	<?php
 		echo $this->Form->input('orderNum',array('label' => __('Ordem Numérica', true)));
-		echo $this->Form->input('cod',array('label' => __('Código Interno', true)));
+		echo $this->Form->input('cod',array('label' => __('Código Interno', true),
+										'value' => $patrimony['Patrimony']['id']));
 		echo $this->Form->input('equipment_id',array('label' => __('Ficha Carga Geral', true),));
 		echo $this->Form->input('section_id',array('label' => __('Seção dentro da OM', true),
 												     'default' => $defaultValues['DefaultValue']['section_id'],

@@ -6,7 +6,6 @@
 	<fieldset>
  		<legend><?php __('Inclusão de Material'); ?></legend>
 	<?php
-		//print_r($defaultValues);
 		echo $this->Form->input('fcg',array('label' => __('FCG', true)));
 		echo $this->Form->input('description',array('label' => __('Descrição', true)));
 		echo $this->Form->input('kind_id',array('label' => __('Classe', true),

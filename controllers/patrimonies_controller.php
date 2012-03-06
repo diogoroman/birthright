@@ -11,7 +11,8 @@ class PatrimoniesController extends AppController {
 			'comparision' => 'or',
 			'queryFields' => array ( 'Equipment.description' => 'like',
 									 'Patrimony.orderNum' => '=',
-									 'Equipment.fcg' => '=')
+									 'Equipment.fcg' => '=',
+									 'Patrimony.id' => '=')
 		)
 	);
 	

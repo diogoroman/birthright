@@ -69,6 +69,7 @@
 	<?php if (!empty($equipment['Patrimony'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
+		<th class="ui-widget-header"><?php __('Código Interno'); ?></th>
 		<th class="ui-widget-header"><?php __('Ordem Numérica'); ?></th>
 		<th class="ui-widget-header"><?php __('Seção'); ?></th>
 		<th class="ui-widget-header"><?php __('Sala'); ?></th>
@@ -85,6 +86,7 @@
 			}
 		?>
 		<tr<?php echo $class;?>>
+			<td><?php echo $eq['id'];?></td>
 			<td><?php echo $eq['orderNum'];?></td>
 			<td><?php echo $eq['section_id'];?></td>
 			<td><?php echo $eq['room'];?></td>

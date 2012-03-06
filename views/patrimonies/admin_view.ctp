@@ -1,6 +1,11 @@
 <div class="patrimonies view">
 <h2><?php  __('Patrimonio');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Código Interno'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $patrimony['Patrimony']['id']; ?>
+			&nbsp;
+		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Ordem Numérica'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $patrimony['Patrimony']['orderNum']; ?>

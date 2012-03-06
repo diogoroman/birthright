@@ -4,6 +4,7 @@
 	<h4><?php echo $this->Html->link(__('Aguardando Descarga', true), array('action' => 'index', '?' => array('filter' => 'waiting'))); ?></h4>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
+		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Código Interno', true),'id');?></th>
 		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Ordem Numérica', true),'orderNum');?></th>
 		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Material', true),'Equipment.description');?></th>
 		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Seção', true),'section_id');?></th>
@@ -24,6 +25,7 @@
 		}
 	?>
 	<tr<?php echo $class;?>>
+		<td><?php echo $patrimony['Patrimony']['id']; ?>&nbsp;</td>
 		<td><?php echo $patrimony['Patrimony']['orderNum']; ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($patrimony['Equipment']['description'], array('controller' => 'equipment', 'action' => 'view', $patrimony['Equipment']['id'])); ?>

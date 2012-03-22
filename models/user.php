@@ -2,6 +2,7 @@
 class User extends AppModel {
 	var $name = 'User';
 	var $displayField = 'name';
+	var $order = "User.name";
 	
 	public $actsAs = array(
 		'Locale.Locale',

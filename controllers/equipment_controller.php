@@ -34,7 +34,16 @@ class EquipmentController extends AppController {
 			$this->redirect(array('action' => 'index'));
 		}
 		//nao esta retornando todas as instacia de patrimony
-		$this->set('equipment', $this->Equipment->read(null, $id));
+		//$this->set('equipment', $this->Equipment->read(null, $id));
+		$this->set('equipment', $this->Equipment->find('all', array('conditions' => array('Equipment.id' => $id),
+																	  'recursive' => 2)));
+		
+		/*$this->set('equipment', $this->Equipment->read(null, $id));
+		 * array('conditions' => array('Article.id' => 1))
+		 * $this->set('equipment', $this->Equipment->find('all', array('conditions' => array('Equipment.id' => $id))));
+		 * user_related
+		 * section_related
+		 */
 	}
 
 	function admin_add() {

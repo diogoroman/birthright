@@ -46,6 +46,7 @@
 			<?php echo $this->Locale->dateTime($patrimony['Equipment']['includeRegister']); ?>
 		</td>
 		<td class="actions">
+			<?php echo $this->Html->link(__('Cautela', true), array('action' => 'viewPdf', $patrimony['Patrimony']['id']),array('class' => 'action-view')); ?>
 			<?php echo $this->Html->link(__('Ver', true), array('action' => 'view', $patrimony['Patrimony']['id']), array('class' => 'action-view')); ?>
 			<?php echo $this->Html->link(__('Editar', true), array('action' => 'edit', $patrimony['Patrimony']['id']),array('class' => 'action-edit')); ?>
 			<?php 

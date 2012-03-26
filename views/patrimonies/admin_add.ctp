@@ -20,8 +20,9 @@
 		if(!empty($patrimony))
 		{
 			echo $this->Form->input('cod',array('label' => __('Código Interno', true),
-										'value' => $patrimony['Patrimony']['id']));
+									 'value' => $patrimony['Patrimony']['id']));
 		}
+		echo $this->Form->input('serialNumber', array('label' => __('Número Serial',true)));
 		echo $this->Form->input('patrimony_status_id',array('label' => __('Status', true),
 															'default' => $defaultValues['DefaultValue']['patrimony_status_id']));
 		echo $this->Form->input('discrepancy',array('label' => __('Discrepancia',true)));

@@ -2,6 +2,7 @@
 class Kind extends AppModel {
 	var $name = 'Kind';
 	var $displayField = 'name';
+	var $order = "Kind.name";
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 	var $hasOne = array(

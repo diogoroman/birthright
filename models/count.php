@@ -2,6 +2,7 @@
 class Count extends AppModel {
 	var $name = 'Count';
 	var $displayField = 'name';
+	var $order = "Count.name";
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 	var $hasMany = array(

@@ -2,6 +2,7 @@
 class Section extends AppModel {
 	var $name = 'Section';
 	var $displayField = 'name';
+	var $order = "Section.name";
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 	var $hasOne = array(

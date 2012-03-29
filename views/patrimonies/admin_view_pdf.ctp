@@ -1,7 +1,7 @@
 <?php
 
-	App::import('Vendor','tcpdf/tcpdf');
-	$tcpdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+	App::import('Vendor','xtcpdf');
+	$tcpdf = new XTCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 	$textfont = 'helvetica';
 	 
 	$tcpdf->SetAuthor("Julia Holland");
@@ -22,6 +22,6 @@ EOF;
  
 	// output the HTML content
 	$tcpdf->writeHTML($htmlcontent, true, 0, true, 0);
-	$tcpdf->Output('filename.pdf', 'D');
+	$tcpdf->Output('cautela.pdf', 'D');
 	
 ?> 

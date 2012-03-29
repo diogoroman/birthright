@@ -10,9 +10,9 @@ class PatrimoniesController extends AppController {
 			'autoFilter' => true,
 			'comparision' => 'or',
 			'queryFields' => array ( 'Equipment.description' => 'like',
-									 'Patrimony.orderNum' => '=',
-									 'Equipment.fcg' => '=',
-									 'Patrimony.id' => '=')
+									  'Patrimony.orderNum' => '=',
+									  'Equipment.fcg' => '=',
+									  'Patrimony.id' => '=')
 		)
 	);
 	
@@ -112,6 +112,8 @@ class PatrimoniesController extends AppController {
 
     function admin_viewPdf($id = null)
     {
+ 		App::import('Vendor','xtcpdf');
+    	//$this->set('tcpdf',new XTCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false));
     	if (!$id) 
     	{
 			$this->Session->setFlash('Sorry, there was no PDF selected.');

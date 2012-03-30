@@ -15,7 +15,7 @@
 		}
 	?>
 	<tr<?php echo $class;?>>
-		<td><?php echo $user['User']['name']; ?>&nbsp;</td>
+		<td><?php echo $user['Position']['acronym'].", ".$user['User']['name']; ?>&nbsp;</td>
 		<td><?php 
 		foreach($user['Group'] as $group)
 			echo $group['name'] . ' ';

@@ -10,6 +10,7 @@
 			<th><?php echo $this->Paginator->sort('equipment_type_id');?></th>
 			<th><?php echo $this->Paginator->sort('patrimony_status_id');?></th>
 			<th><?php echo $this->Paginator->sort('section_id');?></th>
+			<th><?php echo $this->Paginator->sort('position_id');?></th>
 			<th class="actions"><?php __('Actions');?></th>
 	</tr>
 	<?php
@@ -43,6 +44,9 @@
 		<td>
 			<?php echo $this->Html->link($defaultValue['Section']['name'], array('controller' => 'sections', 'action' => 'view', $defaultValue['Section']['id'])); ?>
 		</td>
+		<td>
+			<?php echo $this->Html->link($defaultValue['Position']['name'], array('controller' => 'positions', 'action' => 'view', $defaultValue['Position']['id'])); ?>
+		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $defaultValue['DefaultValue']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $defaultValue['DefaultValue']['id'])); ?>
@@ -64,24 +68,4 @@
  |
 		<?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
 	</div>
-</div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Default Value', true), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Kinds', true), array('controller' => 'kinds', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Kind', true), array('controller' => 'kinds', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Counts', true), array('controller' => 'counts', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Count', true), array('controller' => 'counts', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Measures', true), array('controller' => 'measures', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Measure', true), array('controller' => 'measures', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Owners', true), array('controller' => 'owners', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Owner', true), array('controller' => 'owners', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Equipment Types', true), array('controller' => 'equipment_types', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Equipment Type', true), array('controller' => 'equipment_types', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Patrimony Statuses', true), array('controller' => 'patrimony_statuses', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Patrimony Status', true), array('controller' => 'patrimony_statuses', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Sections', true), array('controller' => 'sections', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Section', true), array('controller' => 'sections', 'action' => 'add')); ?> </li>
-	</ul>
 </div>

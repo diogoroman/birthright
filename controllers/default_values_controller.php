@@ -33,7 +33,8 @@ class DefaultValuesController extends AppController {
 		$equipmentTypes = $this->DefaultValue->EquipmentType->find('list');
 		$patrimonyStatuses = $this->DefaultValue->PatrimonyStatus->find('list');
 		$sections = $this->DefaultValue->Section->find('list');
-		$this->set(compact('kinds', 'counts', 'measures', 'owners', 'equipmentTypes', 'patrimonyStatuses', 'sections'));
+		$positions = $this->DefaultValue->Position->find('list');
+		$this->set(compact('kinds', 'counts', 'measures', 'owners', 'equipmentTypes', 'patrimonyStatuses', 'sections','positions'));
 	}
 
 	function admin_edit($id = null) {
@@ -59,7 +60,8 @@ class DefaultValuesController extends AppController {
 		$equipmentTypes = $this->DefaultValue->EquipmentType->find('list');
 		$patrimonyStatuses = $this->DefaultValue->PatrimonyStatus->find('list');
 		$sections = $this->DefaultValue->Section->find('list');
-		$this->set(compact('kinds', 'counts', 'measures', 'owners', 'equipmentTypes', 'patrimonyStatuses', 'sections'));
+		$positions = $this->DefaultValue->Position->find('list');
+		$this->set(compact('kinds', 'counts', 'measures', 'owners', 'equipmentTypes', 'patrimonyStatuses', 'sections','positions'));
 	}
 
 	function admin_delete($id = null) {

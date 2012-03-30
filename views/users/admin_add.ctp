@@ -17,6 +17,9 @@ else
  		<div class="half">
 		<?php
 			echo $this->Form->input('name', array('label' => __('Nome Completo', true), 'autocomplete' => 'off'));
+			echo $this->Form->input('position_id', array('label' => __('Posto/Patente', true),
+														   'default' => $defaultValues['DefaultValue']['position_id'],
+														   'empty' => 'Selecione o posto'));
 		?>
 		</div>
 		<div class="half">

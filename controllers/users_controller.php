@@ -97,7 +97,11 @@ class UsersController extends AppController {
 		}
 		
 		$sections = $this->User->Section->find('list',array('order' => array('Section.name')));
-		$this->set(compact('sections'));
+		$positions = $this->User->Position->find('list');
+		$this->set(compact('sections','positions'));
+		
+		//Busca valores padrão
+		$this->set('defaultValues', $this->User->Position->DefaultValue->read(null, '1'));
 	}
 	
 
@@ -136,7 +140,11 @@ class UsersController extends AppController {
 			$this->set('groups', $groups);
 		}
 		$sections = $this->User->Section->find('list',array('order' => array('Section.name')));
-		$this->set(compact('sections'));
+		$positions = $this->User->Position->find('list');
+		$this->set(compact('sections','positions'));
+		
+		//Busca valores padrão
+		$this->set('defaultValues', $this->User->Position->DefaultValue->read(null, '1'));
 	}
 	
 

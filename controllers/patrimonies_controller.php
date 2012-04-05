@@ -113,7 +113,7 @@ class PatrimoniesController extends AppController {
     function admin_viewPdf($id = null)
     {
  		App::import('Vendor','xtcpdf');
-    	//$this->set('tcpdf',new XTCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false));
+    	$this->set('tcpdf',new XTCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false));
     	if (!$id) 
     	{
 			$this->Session->setFlash('Sorry, there was no PDF selected.');

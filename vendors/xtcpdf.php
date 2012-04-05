@@ -6,7 +6,7 @@ class XTCPDF  extends TCPDF
 
     var $xheadertext  = 'PDF created using CakePHP and TCPDF';
     var $xheadercolor = array(0,0,200);
-    var $xfootertext  = 'Copyright Â© %d XXXXXXXXXXX. All rights reserved.';
+    var $xfootertext  = 'Copyright. All rights reserved.';
     var $xfooterfont  = PDF_FONT_NAME_MAIN ;
     var $xfooterfontsize = 8 ;
 

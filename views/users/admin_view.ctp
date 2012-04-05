@@ -1,5 +1,5 @@
 <div class="users view">
-<h2><?php  __('User');?></h2>
+<h2><?php  __('Usuário');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Nome'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>

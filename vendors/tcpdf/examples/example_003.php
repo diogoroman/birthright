@@ -27,9 +27,6 @@
  * @since 2008-03-04
  */
 
-require_once('../config/lang/eng.php');
-require_once('../tcpdf.php');
-
 
 // Extend the TCPDF class to create custom Header and Footer
 class MYPDF extends TCPDF {

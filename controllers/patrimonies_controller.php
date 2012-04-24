@@ -109,7 +109,7 @@ class PatrimoniesController extends AppController {
 		$this->Session->setFlash(__('Patrimony was not deleted', true));
 		$this->redirect(array('action' => 'index'));
 	}
-
+	/*
     function admin_viewPdf($id = null)
     {
  		App::import('Vendor','xtcpdf');
@@ -122,7 +122,7 @@ class PatrimoniesController extends AppController {
 		$this->layout = 'pdf'; //this will use the pdf.ctp layout
 		$this->render();
     	
-    	/*
+    	
         if (!$id)
         {
             $this->Session->setFlash('Sorry, there was no property ID submitted.');
@@ -140,10 +140,20 @@ class PatrimoniesController extends AppController {
             $this->Session->setFlash('Sorry, there is no property with the submitted ID.');
             $this->redirect(array('action'=>'index'), null, true);
         }
-		*/
+		
         //$this->layout = 'pdf'; //this will use the pdf.ctp layout
         //$this->render();
     }
+    */
+    function admin_viewPdf($id = null) 
+    {
+		if (!$id) {
+		$this->Session->setFlash('Sorry, there was no PDF selected.');
+		$this->redirect(array('action'=>'index'), null, true);
+		}
+		$this->layout = 'pdf'; //this will use the pdf.ctp layout
+		$this->render();
+	}
 	
 }
 ?>

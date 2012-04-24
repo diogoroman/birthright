@@ -50,10 +50,10 @@ class EquipmentController extends AppController {
 		if (!empty($this->data)) {
 			$this->Equipment->create();
 			if ($this->Equipment->save($this->data)) {
-				$this->Session->setFlash(__('The equipment has been saved', true));
+				$this->Session->setFlash(__('O material foi gravado com sucesso', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The equipment could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('O material não pode ser gravado. Por favor, tente novamente.', true));
 			}
 		}
 		$kinds = $this->Equipment->Kind->find('list');
@@ -73,10 +73,10 @@ class EquipmentController extends AppController {
 		}
 		if (!empty($this->data)) {
 			if ($this->Equipment->save($this->data)) {
-				$this->Session->setFlash(__('The equipment has been saved', true));
+				$this->Session->setFlash(__('O Material foi modificado com sucesso', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The equipment could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('O material não pode ser modificado. Por favor, tente novamente.', true));
 			}
 		}
 		if (empty($this->data)) {

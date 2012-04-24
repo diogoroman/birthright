@@ -1,5 +1,5 @@
 <div class="kinds index">
-	<h2><?php __('Kinds');?></h2>
+	<h2><?php __('Classes');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th class="ui-widget-header"><?php echo $this->Paginator->sort('name');?></th>

@@ -48,10 +48,10 @@ class PatrimoniesController extends AppController {
 		if (!empty($this->data)) {
 			$this->Patrimony->create();
 			if ($this->Patrimony->save($this->data)) {
-				$this->Session->setFlash(__('The patrimony has been saved', true));
+				$this->Session->setFlash(__('O Patrimonio foi Gravado com Sucesso', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The patrimony could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('O Patrimonio não pode ser Gravado. Por favor, tente novamente', true));
 			}
 		}
 		if(!empty($equipmentId))

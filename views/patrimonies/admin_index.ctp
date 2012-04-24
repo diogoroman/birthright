@@ -10,10 +10,8 @@
 		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Seção', true),'section_id');?></th>
 		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Sala', true),'room');?></th>
 		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Status', true),'patrimony_status_id');?></th>
-		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Discrepancia', true),'discrepancy');?></th>
 		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Usuário', true),'user_id');?></th>
 		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Conferencia', true),'conference');?></th>
-		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Inclusão no Registro', true),'Equipment.includeRegister');?></th>
 		<th class="ui-widget-header"><?php __('Ações');?></th>
 	</tr>
 	<?php
@@ -37,14 +35,10 @@
 		<td>
 			<?php echo $this->Html->link($patrimony['PatrimonyStatus']['name'], array('controller' => 'patrimony_statuses', 'action' => 'view', $patrimony['PatrimonyStatus']['id'])); ?>
 		</td>
-		<td><?php echo $patrimony['Patrimony']['discrepancy']; ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($patrimony['User']['name'], array('controller' => 'users', 'action' => 'view', $patrimony['User']['id'])); ?>
 		</td>
 		<td><?php echo $this->Locale->dateTime($patrimony['Patrimony']['conference'], true, true); ?>&nbsp;</td>
-		<td>
-			<?php echo $this->Locale->dateTime($patrimony['Equipment']['includeRegister']); ?>
-		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('Cautela', true), array('action' => 'viewPdf', $patrimony['Patrimony']['id']),array('class' => 'action-view')); ?>
 			<?php echo $this->Html->link(__('Ver', true), array('action' => 'view', $patrimony['Patrimony']['id']), array('class' => 'action-view')); ?>

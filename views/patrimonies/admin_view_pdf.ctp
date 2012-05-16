@@ -15,11 +15,4 @@
 	$tcpdf->AddPage();
 	 
 	// create some HTML content
-	$htmlcontent = <<<EOF
-	Add HTML content here to print
-	EOF;
-	 
-	// output the HTML content
-	$tcpdf->writeHTML($htmlcontent, true, 0, true, 0);
-	$tcpdf->Output('filename.pdf', 'D');
 ?>

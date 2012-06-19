@@ -12,7 +12,8 @@ class PatrimoniesController extends AppController {
 			'queryFields' => array ( 'Equipment.description' => 'like',
 									  'Patrimony.orderNum' => '=',
 									  'Equipment.fcg' => '=',
-									  'Patrimony.id' => '=')
+									  'Patrimony.id' => '=',
+									  'Patrimony.bmpNumber' => '=')
 		)
 	);
 	

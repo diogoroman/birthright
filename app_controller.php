@@ -106,7 +106,7 @@ class AppController extends Controller
 		$this->Auth->autoRedirect = false;
 		$this->Auth->loginAction = array('controller' => 'users', 'action' => 'login', 'admin' => false);
 		$this->Auth->logoutRedirect = '/';
-		$this->Auth->loginRedirect = array('controller' => 'equipment');
+		$this->Auth->loginRedirect = array('controller' => 'patrimonies');
 		
 		$this->Auth->loginError = __('Falha no login. Por favor, verifique se o usuário e senha digitado estão corretos.', true);
 		$this->Auth->authError = __('Desculpe, você precisa estar autenticado para acessar esta página.', true);
@@ -241,12 +241,18 @@ class AppController extends Controller
 				__('Listar', true) => array(
 					'plugin' => false,
 					'controller' => 'patrimonies',
-					'action' => 'index', 
+					'action' => 'index',
 				),
 				__('Criar', true) => array(
 					'plugin' => false,
 					'controller' => 'patrimonies',
 					'action' => 'add',
+				),
+				__('Aguardando Descarga', true) => array(
+					'plugin' => false,
+					'controller' => 'patrimonies',
+					'action' => 'index',
+					'?' => array('filter' => 'waiting'),
 			)),
 			__('Seções', true) => array(
 				__('Listar', true) => array(

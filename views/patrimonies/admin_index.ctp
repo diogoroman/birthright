@@ -5,7 +5,8 @@
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Código Interno', true),'id');?></th>
-		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Ordem Numérica', true),'orderNum');?></th>
+		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('BMP',true),'bmpNumber');?></th>
+		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Patrimonio', true),'orderNum');?></th>
 		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Material', true),'Equipment.description');?></th>
 		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Seção', true),'section_id');?></th>
 		<th class="ui-widget-header"><?php echo $this->Paginator->sort(__('Sala', true),'room');?></th>
@@ -24,6 +25,7 @@
 	?>
 	<tr<?php echo $class;?>>
 		<td><?php echo $patrimony['Patrimony']['id']; ?>&nbsp;</td>
+		<td><?php echo $patrimony['Patrimony']['bmpNumber']; ?>&nbsp;</td>
 		<td><?php echo $patrimony['Patrimony']['orderNum']; ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($patrimony['Equipment']['description'], array('controller' => 'equipment', 'action' => 'view', $patrimony['Equipment']['id'])); ?>

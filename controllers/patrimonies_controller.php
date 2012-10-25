@@ -77,10 +77,10 @@ class PatrimoniesController extends AppController {
 		}
 		if (!empty($this->data)) {
 			if ($this->Patrimony->save($this->data)) {
-				$this->Session->setFlash(__('The patrimony has been saved', true));
-				$this->redirect(array('action' => 'index'));
+				$this->__setFlash('O Patrimonio foi modificado com sucesso','success');
+				$this->__goBack();
 			} else {
-				$this->Session->setFlash(__('The patrimony could not be saved. Please, try again.', true));
+				$this->__setFlash('The patrimony could not be saved. Please, try again.', 'error');
 			}
 		}
 		if (empty($this->data)) {

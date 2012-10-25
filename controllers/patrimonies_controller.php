@@ -77,7 +77,7 @@ class PatrimoniesController extends AppController {
 		}
 		if (!empty($this->data)) {
 			if ($this->Patrimony->save($this->data)) {
-				$this->__setFlash('O Patrimonio foi modificado com sucesso','success');
+				$this->__setFlash('O Patrimonio foi modificado com sucesso','system-success');
 				$this->__goBack();
 			} else {
 				$this->__setFlash('The patrimony could not be saved. Please, try again.', 'error');

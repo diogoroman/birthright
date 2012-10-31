@@ -18,12 +18,14 @@ class EquipmentController extends AppController {
 		if(!empty($this->params['url']['filter']) && $this->params['url']['filter'] == 'include')
 		{
 			$this->Equipment->recursive = 0;
+			$this->paginate['order'] = array('Equipment.created DESC');
 			$this->set('equipment', $this->paginate('Equipment',array(
 									 'Equipment.includeRegister =' => '0000-00-00 00:00:00')));
 		}
 		else
 		{
 			$this->Equipment->recursive = 0;
+			$this->paginate['order'] = array('Equipment.created DESC');
 			$this->set('equipment', $this->paginate());
 		}
 	}

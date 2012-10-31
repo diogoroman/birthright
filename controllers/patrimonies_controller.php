@@ -21,18 +21,21 @@ class PatrimoniesController extends AppController {
 		if(!empty($this->params['url']['filter']) && $this->params['url']['filter'] == 'waiting')
 		{
 			$this->Patrimony->recursive = 0;
+			$this->paginate['order'] = array('Patrimony.created DESC');
 			$this->set('patrimonies', $this->paginate('Patrimony',array(
 													  'Patrimony.patrimony_status_id =' => '3')));
 		}
 		else if(!empty($this->passedArgs['filter']) && $this->passedArgs['filter'] == 'waiting')
 		{
 			$this->Patrimony->recursive = 0;
+			$this->paginate['order'] = array('Patrimony.created DESC');
 			$this->set('patrimonies', $this->paginate('Patrimony',array(
 													  'Patrimony.patrimony_status_id =' => '3')));
 		}
 		else
 		{
 			$this->Patrimony->recursive = 0;
+			$this->paginate['order'] = array('Patrimony.created DESC');
 			$this->set('patrimonies', $this->paginate());
 		}
 	}
@@ -78,8 +81,12 @@ class PatrimoniesController extends AppController {
 		if (!empty($this->data)) {
 			if ($this->Patrimony->save($this->data)) {
 				$this->__setFlash('O Patrimonio foi modificado com sucesso','system-success');
-				$this->__goBack();
-				$this->__goBack();
+				if(!isset($this->lastPage))
+				{
+					print("lastPage não definida");
+				}
+				//$this->redirect(array('action' => 'index', 'name' => array('page' => $this->lastPage )));
+
 			} else {
 				$this->__setFlash('The patrimony could not be saved. Please, try again.', 'system-error');
 			}

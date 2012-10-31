@@ -41,11 +41,15 @@ class AppController extends Controller
 		'RSearch.RPaginator'
 	);
 		
-	public $paginate = array('limit' => 10);
+	public $paginate = array('limit' => 30);
 	
 	public $userLogged = false;
 
 	public $activeUser = null;
+
+	public $backUrl = null;
+
+	public $lastPage;
 	
 	
 	/*************************
@@ -67,6 +71,7 @@ class AppController extends Controller
 		}
 
 		$this->__setBackUrl();
+		$this->__setLastPage();
 		
 		parent::beforeFilter();
 	}
@@ -430,15 +435,25 @@ class AppController extends Controller
 		if($url !== null)
 		{
 			$this->set('backUrl', $url);
+			$this->backUrl = $url;
 		}
 		else if($this->referer() != $this->here)
 		{
 			// tenta setar url da tela anterior, caso não consiga manda para action index
 			$this->set('backUrl', $this->referer(array('action'=>'index'), TRUE));
+			$this->backUrl = $this->referer(array('action'=>'index'), TRUE);
 		}
 		else
 		{
 			$this->set('backUrl', array('action' => 'index'));
+			$this->backUrl = array('action' => 'index');
+		}
+	}
+	protected function __setLastPage()
+	{
+		if(isset($this->params['named']['page']))
+		{
+			$this->lastPage = $this->params['named']['page'];
 		}
 	}
 	

@@ -81,11 +81,6 @@ class PatrimoniesController extends AppController {
 		if (!empty($this->data)) {
 			if ($this->Patrimony->save($this->data)) {
 				$this->__setFlash('O Patrimonio foi modificado com sucesso','system-success');
-				if(!isset($this->lastPage))
-				{
-					print("lastPage não definida");
-				}
-				//$this->redirect(array('action' => 'index', 'name' => array('page' => $this->lastPage )));
 
 			} else {
 				$this->__setFlash('The patrimony could not be saved. Please, try again.', 'system-error');

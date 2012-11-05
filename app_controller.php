@@ -47,8 +47,6 @@ class AppController extends Controller
 
 	public $activeUser = null;
 
-	public $backUrl = null;
-
 	public $lastPage;
 	
 	
@@ -71,7 +69,6 @@ class AppController extends Controller
 		}
 
 		$this->__setBackUrl();
-		$this->__setLastPage();
 		
 		parent::beforeFilter();
 	}
@@ -435,25 +432,34 @@ class AppController extends Controller
 		if($url !== null)
 		{
 			$this->set('backUrl', $url);
-			$this->backUrl = $url;
+			$this->Session->write('backUrl',$url);
+			if(substr_compare($this->params['action'], '_index', -6, 6) == 0)
+			{
+				print_r($this->params['action']);
+				print_r($url);
+			}
+
 		}
 		else if($this->referer() != $this->here)
 		{
 			// tenta setar url da tela anterior, caso não consiga manda para action index
 			$this->set('backUrl', $this->referer(array('action'=>'index'), TRUE));
-			$this->backUrl = $this->referer(array('action'=>'index'), TRUE);
+			$this->Session->write('backUrl', $this->referer(array('action'=>'index'), TRUE));
+			if(substr_compare($this->params['action'], '_index', -6, 6) == 0)
+			{	
+				print_r($this->params['action']);
+				print_r($this->referer(array('action'=>'index'), TRUE));
+			}
 		}
 		else
 		{
 			$this->set('backUrl', array('action' => 'index'));
-			$this->backUrl = array('action' => 'index');
-		}
-	}
-	protected function __setLastPage()
-	{
-		if(isset($this->params['named']['page']))
-		{
-			$this->lastPage = $this->params['named']['page'];
+			$this->Session->write('backUrl', array('action' => 'index'));
+			if(substr_compare($this->params['action'], '_index', -6, 6) == 0)
+			{
+				print_r($this->params['action']);
+				print_r(array('action' => 'index'));
+			}
 		}
 	}
 	

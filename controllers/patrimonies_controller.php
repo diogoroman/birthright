@@ -75,20 +75,38 @@ class PatrimoniesController extends AppController {
 
 	function admin_edit($id = null) {
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid patrimony', true));
+			$this->Session->setFlash(__('Patrimonio Invalido', true));
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
+			//$this->Patrimony->set(array('lock' => '0'));
 			if ($this->Patrimony->save($this->data)) {
 				$this->__setFlash('O Patrimonio foi modificado com sucesso','system-success');
 				$this->redirect(array('action' => 'index'));
 
 			} else {
-				$this->__setFlash('The patrimony could not be saved. Please, try again.', 'system-error');
+				$this->__setFlash('O Patrimonio não pode ser gravado, tente novamente.', 'system-error');
 			}
 		}
 		if (empty($this->data)) {
 			$this->data = $this->Patrimony->read(null, $id);
+			/*
+			if($this->data['Patrimony']['lock'] == 1)
+			{
+				$this->__setFlash('Este patrimonio ja esta sendo editado por outra pessoa. Tente novamente mais tarde.', 'system-warning');
+				$this->redirect(array('action' => 'view', $this->data['Patrimony']['id']));
+			}
+
+			else
+			{
+				$this->Patrimony->set(array('lock' => '1'));
+				if(!$this->Patrimony->save())
+				{
+					$this->__setFlash('Erro interno, informe o desenvolvedor', 'system-error');
+					$this->redirect(array('action' => 'view', $this->data['Patrimony']['id']));
+				}
+			}
+			*/
 		}
 		$equipment = $this->Patrimony->Equipment->find('list',array('fields' => array('Equipment.id', 'Equipment.fcg')));
 		$organizations = $this->Patrimony->Organization->find('list');

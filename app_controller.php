@@ -47,7 +47,7 @@ class AppController extends Controller
 
 	public $activeUser = null;
 
-	public $lastPage;
+	public $action;
 	
 	
 	/*************************
@@ -70,17 +70,20 @@ class AppController extends Controller
 
 		$this->__setBackUrl();
 		
+
 		parent::beforeFilter();
 	}
-	
+
 	/**
 	 * Callback default
 	 * 
 	 * @return void
 	 */
+	
 	public function beforeRender()
 	{
 		$this->__setErrorLayout();
+
 	}
 	public function isAuthorized()
 	{
@@ -432,35 +435,49 @@ class AppController extends Controller
 		if($url !== null)
 		{
 			$this->set('backUrl', $url);
-			$this->Session->write('backUrl',$url);
-			if(substr_compare($this->params['action'], '_index', -6, 6) == 0)
+		}
+		else if($this->referer() != $this->here)
+		{
+			// tenta setar url da tela anterior, caso não consiga manda para action index
+			$this->set('backUrl', $this->referer(array('action'=>'index'), TRUE));
+		}
+		else
+		{
+			$this->set('backUrl', array('action' => 'index'));
+		}
+	}
+
+	protected function __setBackIndex($url = null)
+	{
+		if($url !== null)
+		{
+			if(substr_compare($this->Session->read('backUrl.action'), '_index', -6, 6) == 0)
 			{
-				print_r($this->params['action']);
+				print_r($this->Session->read('act'));
 				print_r($url);
+				$this->Session->write('backUrl',$url);
 			}
 
 		}
 		else if($this->referer() != $this->here)
 		{
 			// tenta setar url da tela anterior, caso não consiga manda para action index
-			$this->set('backUrl', $this->referer(array('action'=>'index'), TRUE));
-			$this->Session->write('backUrl', $this->referer(array('action'=>'index'), TRUE));
-			if(substr_compare($this->params['action'], '_index', -6, 6) == 0)
+			if(substr_compare($this->Session->read('act'), '_index', -6, 6) == 0)
 			{	
-				print_r($this->params['action']);
-				print_r($this->referer(array('action'=>'index'), TRUE));
+				print_r('(1)action = '.$this->Session->read('act'));
+				print_r(' referer = '.$this->referer(array('action'=>'index'), TRUE));
+				$this->Session->write('backUrl', $this->referer(array('action'=>'index'), TRUE));
 			}
 		}
 		else
 		{
-			$this->set('backUrl', array('action' => 'index'));
-			$this->Session->write('backUrl', array('action' => 'index'));
-			if(substr_compare($this->params['action'], '_index', -6, 6) == 0)
+			if(substr_compare($this->Session->read('act'), '_index', -6, 6) == 0)
 			{
-				print_r($this->params['action']);
-				print_r(array('action' => 'index'));
+				print_r('(2)action = '.$this->Session->read('act'));
+				print_r(' referer = '.array('action' => 'index'));
+				$this->Session->write('backUrl', array('action' => 'index'));
 			}
-		}
+		}	
 	}
 	
 	/**

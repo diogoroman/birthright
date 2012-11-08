@@ -38,7 +38,7 @@ class EquipmentController extends AppController {
 		//nao esta retornando todas as instacia de patrimony
 		//$this->set('equipment', $this->Equipment->read(null, $id));
 		$this->set('equipment', $this->Equipment->find('all', array('conditions' => array('Equipment.id' => $id),
-																	  'recursive' => 2)));
+																	'recursive' => 2)));
 		
 		/*$this->set('equipment', $this->Equipment->read(null, $id));
 		 * array('conditions' => array('Article.id' => 1))
@@ -52,10 +52,10 @@ class EquipmentController extends AppController {
 		if (!empty($this->data)) {
 			$this->Equipment->create();
 			if ($this->Equipment->save($this->data)) {
-				$this->Session->setFlash(__('O material foi gravado com sucesso', true));
-				$this->redirect(array('action' => 'index'));
+				$this->setFlash(__('O material foi gravado com sucesso', 'system-success'));
+				$this->redirect(array('action' => 'view', $this->Equipment->id));
 			} else {
-				$this->Session->setFlash(__('O material não pode ser gravado. Por favor, tente novamente.', true));
+				$this->setFlash(__('O material não pode ser gravado. Por favor, tente novamente.', 'system-error'));
 			}
 		}
 		$kinds = $this->Equipment->Kind->find('list');
@@ -75,8 +75,8 @@ class EquipmentController extends AppController {
 		}
 		if (!empty($this->data)) {
 			if ($this->Equipment->save($this->data)) {
-				$this->Session->setFlash(__('O Material foi modificado com sucesso', true));
-				$this->redirect(array('action' => 'index'));
+				$this->setFlash(__('O Material foi modificado com sucesso', 'system-success'));
+				$this->redirect(array('action' => 'view', $this->Equipment->id));
 			} else {
 				$this->Session->setFlash(__('O material não pode ser modificado. Por favor, tente novamente.', true));
 			}
@@ -98,14 +98,14 @@ class EquipmentController extends AppController {
 
 	function admin_delete($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for equipment', true));
+			$this->setFlash(__('Equipamento não encontrado, erro interno', 'system-error'));
 			$this->redirect(array('action'=>'index'));
 		}
 		if ($this->Equipment->delete($id)) {
-			$this->Session->setFlash(__('Equipment deleted', true));
+			$this->Session->setFlash(__('Equipamento Excluido com sucesso', 'system-success'));
 			$this->redirect(array('action'=>'index'));
 		}
-		$this->Session->setFlash(__('Equipment was not deleted', true));
+		$this->Session->setFlash(__('O Equipamento não foi Excluido', 'system-warning'));
 		$this->redirect(array('action' => 'index'));
 	}
 	/*

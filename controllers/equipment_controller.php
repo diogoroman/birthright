@@ -98,14 +98,14 @@ class EquipmentController extends AppController {
 
 	function admin_delete($id = null) {
 		if (!$id) {
-			$this->setFlash(__('Equipamento não encontrado, erro interno', 'system-error'));
+			$this->__setFlash(__('Equipamento não encontrado, erro interno', 'system-error'));
 			$this->redirect(array('action'=>'index'));
 		}
 		if ($this->Equipment->delete($id)) {
-			$this->Session->setFlash(__('Equipamento Excluido com sucesso', 'system-success'));
+			$this->__setFlash(__('Equipamento Excluido com sucesso', 'system-success'));
 			$this->redirect(array('action'=>'index'));
 		}
-		$this->Session->setFlash(__('O Equipamento não foi Excluido', 'system-warning'));
+		$this->__setFlash(__('O Equipamento não foi Excluido', 'system-warning'));
 		$this->redirect(array('action' => 'index'));
 	}
 	/*

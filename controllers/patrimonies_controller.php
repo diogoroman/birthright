@@ -82,7 +82,7 @@ class PatrimoniesController extends AppController {
 			//$this->Patrimony->set(array('lock' => '0'));
 			if ($this->Patrimony->save($this->data)) {
 				$this->__setFlash('O Patrimonio foi modificado com sucesso','system-success');
-				$this->redirect(array('action' => 'index'));
+				$this->redirect(array('action' => 'view', $this->Patrimony->id));
 
 			} else {
 				$this->__setFlash('O Patrimonio não pode ser gravado, tente novamente.', 'system-error');

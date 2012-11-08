@@ -52,7 +52,7 @@ class EquipmentController extends AppController {
 		if (!empty($this->data)) {
 			$this->Equipment->create();
 			if ($this->Equipment->save($this->data)) {
-				$this->setFlash(__('O material foi gravado com sucesso', 'system-success'));
+				$this->__setFlash(__('O material foi gravado com sucesso', 'system-success'));
 				$this->redirect(array('action' => 'view', $this->Equipment->id));
 			} else {
 				$this->setFlash(__('O material não pode ser gravado. Por favor, tente novamente.', 'system-error'));

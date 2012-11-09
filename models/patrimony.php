@@ -1,10 +1,18 @@
 <?php
 class Patrimony extends AppModel {
 	var $name = 'Patrimony';
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
-	var $actsAs = array('Locale.Locale');
 	//descomentar para acert_preco
 	//var $virtualFields = array('total' => 'SUM(Patrimony.priceUnit)');
+
+	public $actsAs = array(
+		'Locale.Locale',
+		'SuperFind.SuperFind',
+		'Logable' => array(
+			'userModel' => 'User',
+			'userKey' => 'user_id',
+			'change' => 'full', // options are 'list' or 'full'
+			'description_ids' => TRUE // options are TRUE or FALSE
+	));
 	
 	var $belongsTo = array(
 		'Equipment' => array(

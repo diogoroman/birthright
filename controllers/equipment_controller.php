@@ -75,7 +75,7 @@ class EquipmentController extends AppController {
 		}
 		if (!empty($this->data)) {
 			if ($this->Equipment->save($this->data)) {
-				$this->setFlash(__('O Material foi modificado com sucesso', 'system-success'));
+				$this->__setFlash(__('O Material foi modificado com sucesso', 'system-success'));
 				$this->redirect(array('action' => 'view', $this->Equipment->id));
 			} else {
 				$this->Session->setFlash(__('O material não pode ser modificado. Por favor, tente novamente.', true));

@@ -2,7 +2,15 @@
 class Equipment extends AppModel {
 	var $name = 'Equipment';
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
-	var $actsAs = array('Locale.Locale');
+	public $actsAs = array(
+		'Locale.Locale',
+		'SuperFind.SuperFind',
+		'Logable' => array(
+			'userModel' => 'User',
+			'userKey' => 'user_id',
+			'change' => 'full', // options are 'list' or 'full'
+			'description_ids' => TRUE // options are TRUE or FALSE
+	));
 	
 	var $belongsTo = array(
 		'Kind' => array(

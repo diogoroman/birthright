@@ -177,6 +177,10 @@ class PatrimoniesController extends AppController {
 		$this->layout = 'pdf'; //this will use the pdf.ctp layout
 		$this->render();
 	}
+	function admin_ajuda()
+	{
+
+	}
 	
 }
 ?>

@@ -327,6 +327,12 @@ class AppController extends Controller
 					)
 				),
 			),
+			__('Ajuda', true) => array(
+				'plugin' => false,
+				'controller' => 'patrimonies',
+				'action' => 'ajuda',
+				'admin' => true
+			),
 			__('Encerrar Sessão', true) => array(
 				'plugin' => false,
 				'controller' => 'users',

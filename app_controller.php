@@ -247,12 +247,12 @@ class AppController extends Controller
 					'plugin' => false,
 					'controller' => 'patrimonies',
 					'action' => 'index',
-				),
+				),/*
 				__('Criar', true) => array(
 					'plugin' => false,
 					'controller' => 'patrimonies',
 					'action' => 'add',
-				),
+				),*/
 				__('Aguardando Descarga', true) => array(
 					'plugin' => false,
 					'controller' => 'patrimonies',

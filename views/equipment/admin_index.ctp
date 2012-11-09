@@ -1,5 +1,6 @@
 <div class="equipment index">
 	<h2><?php __('Materiais');?></h2>
+	<h4><?php echo __('Adicione a descrição dos novos equipamentos aqui, na tela "ver" de cada equipamento há um link para adcionar um Patrimonio Relacionado. Um equipamento tem 1 ou mais patrimonios relacionados. Utilize a ferramenta de busca para buscar pela descrição ou numero FCG')?></h4>
 	<h4><?php echo $this->Html->link(__('Aguardando Inclusão no Registro', true), array('action' => 'index', '?' => array('filter' => 'include'))); ?></h4>
 	<h4><?php echo $this->Html->link(__('Todos os Registros', true), array('action' => 'index')); ?></h4>
 	<h4><?php //echo $this->Html->link(__('Acertar Preços', true), array('action' => 'acert_value')); ?></h4>

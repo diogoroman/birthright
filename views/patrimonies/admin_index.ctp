@@ -1,6 +1,7 @@
 
 <div class="patrimonies index">
 	<h2><?php __('Patrimonios');?></h2>
+	<h4><?php echo __('Adicione a localização física e outras informações referentes ao patrimonio. Um Patrimonio sempre esta relacionado a um Material. Utilize a ferramenta de busca para buscar pela descrição, número de patrimonio, número BMP ou Código Inteno')?></h4>
 	<h4><?php echo $this->Html->link(__('Aguardando Descarga', true), array('action' => 'index', '?' => array('filter' => 'waiting'))); ?></h4>
 	<table cellpadding="0" cellspacing="0">
 	<tr>

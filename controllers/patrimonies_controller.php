@@ -52,8 +52,18 @@ class PatrimoniesController extends AppController {
 		if (!empty($this->data)) {
 			$this->Patrimony->create();
 			if ($this->Patrimony->save($this->data)) {
-				$this->Session->setFlash(__('O Patrimonio foi Gravado com Sucesso', true));
-				$this->redirect(array('action' => 'index'));
+				if(!empty($this->data['Patrimony']['bmpNumber'])){
+					$idpat = array('type' => 'BMP', 'value' => $this->data['Patrimony']['bmpNumber']);
+				}
+				else if(!empty($this->data['Patrimony']['orderNum'])){
+					$idpat = array('type' => 'PATRIMONIO', 'value' => $this->data['Patrimony']['orderNum']);
+				}
+				else{
+					$idpat = array('type' => 'Código Interno', 'value' => $this->Patrimony->id);
+				}
+				$this->__setFlash('O Patrimonio '.$idpat['value'].'('.$idpat['type'].') foi Gravado com Sucesso','system-success');
+				print_r($this->data);
+				$this->redirect(array('controller' => 'Equipment', 'action' => 'view', $this->data['Patrimony']['equipment_id']));
 			} else {
 				$this->Session->setFlash(__('O Patrimonio não pode ser Gravado. Por favor, tente novamente', true));
 			}
@@ -81,9 +91,17 @@ class PatrimoniesController extends AppController {
 		if (!empty($this->data)) {
 			//$this->Patrimony->set(array('lock' => '0'));
 			if ($this->Patrimony->save($this->data)) {
-				$this->__setFlash('O Patrimonio foi modificado com sucesso','system-success');
+				if(!empty($this->data['Patrimony']['bmpNumber'])){
+					$idpat = array('type' => 'BMP', 'value' => $this->data['Patrimony']['bmpNumber']);
+				}
+				else if(!empty($this->data['Patrimony']['orderNum'])){
+					$idpat = array('type' => 'PATRIMONIO', 'value' => $this->data['Patrimony']['orderNum']);
+				}
+				else{
+					$idpat = array('type' => 'Código Interno', 'value' => $this->Patrimony->id);
+				}
+				$this->__setFlash('O Patrimonio '.$idpat['value'].'('.$idpat['type'].') foi modificado com sucesso','system-success');
 				$this->redirect(array('action' => 'view', $this->Patrimony->id));
-
 			} else {
 				$this->__setFlash('O Patrimonio não pode ser gravado, tente novamente.', 'system-error');
 			}

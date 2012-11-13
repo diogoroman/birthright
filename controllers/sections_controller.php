@@ -76,7 +76,8 @@ class SectionsController extends AppController {
 			$this->Session->setFlash(__('Invalid section', true));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->set('section', $this->Section->read(null, $id));
+		$this->set('section', $this->Section->find('all', array('conditions' => array('Section.id' => $id),
+																	'recursive' => 2)));
 	}
 
 	function admin_add() {

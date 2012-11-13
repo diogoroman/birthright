@@ -69,8 +69,8 @@ class AppController extends Controller
 		}
 
 		$this->__setBackUrl();
-		$this->__unLockEdit();
-		$this->__lockEdit();
+		//$this->__unLockEdit();
+		//$this->__lockEdit();
 
 		parent::beforeFilter();
 	}

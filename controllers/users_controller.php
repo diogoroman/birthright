@@ -65,7 +65,11 @@ class UsersController extends AppController {
 			$this->__setFlash('Selecione um usuário', 'system-warning');
 			$this->redirect(array('action' => 'index'));
 		}
+		$this->loadModel('Patrimony');
+		$this->set('patrimonies', $this->Patrimony->find('all', array('conditions' => 
+			array('Patrimony.user_id' => $id))));
 		$this->set('user', $this->User->read(null, $id));
+
 	}
 
 	function admin_add($group_id = null)

@@ -47,7 +47,7 @@ class AppController extends Controller
 
 	public $activeUser = null;
 
-	public $action;
+	public $action = null;
 	
 	
 	/*************************
@@ -69,7 +69,8 @@ class AppController extends Controller
 		}
 
 		$this->__setBackUrl();
-		
+		$this->__unLockEdit();
+		$this->__lockEdit();
 
 		parent::beforeFilter();
 	}
@@ -484,6 +485,24 @@ class AppController extends Controller
 				$this->Session->write('backUrl', array('action' => 'index'));
 			}
 		}	
+	}
+
+	protected function __lockEdit()
+	{
+		if(substr_compare($this->params['action'], '_edit',-5,5) == 0)
+		{
+			if($this->Session->check('lockEdit'))
+				$this->Session->write('lockEdit', $this->Session->read('lockEdit') + array($this->params['controller'] => $this->params['pass']['0']));
+			else
+				$this->Session->write('lockEdit', array($this->params['controller'] => array($this->params['pass']['0'])));
+			//print_r($this->Session);
+			print_r($this->Session->read('lockEdit'));
+			//$this->Session->delete('lockEdit');
+		} 
+	}
+	protected function __unLockEdit()
+	{
+			print_r(explode('/',$this->referer()));
 	}
 	
 	/**

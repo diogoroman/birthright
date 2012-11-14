@@ -492,7 +492,19 @@ class AppController extends Controller
 		if(substr_compare($this->params['action'], '_edit',-5,5) == 0)
 		{
 			if($this->Session->check('lockEdit'))
-				$this->Session->write('lockEdit', $this->Session->read('lockEdit') + array($this->params['controller'] => $this->params['pass']['0']));
+			{
+				$lockEdit = $this->Session->read('lockEdit');
+				if(array_key_exists($this->params['controller'],$lockEdit))
+				{
+					if(array_search($this->params['pass']['0'],$lockEdit[$this->params['controller']]) == null)
+						array_push($lockEdit[$this->params['controller']], $this->params['pass']['0']);
+				}
+				else
+					$lockEdit = $lockEdit + array($this->params['controller'] => $this->params['pass']['0']);
+					
+
+				$this->Session->write('lockEdit', $lockEdit);
+			}
 			else
 				$this->Session->write('lockEdit', array($this->params['controller'] => array($this->params['pass']['0'])));
 			//print_r($this->Session);

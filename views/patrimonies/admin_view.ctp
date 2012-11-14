@@ -16,7 +16,7 @@
 			<?php echo $patrimony['Patrimony']['serialNumber']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Ordem Numérica'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Número de Patrimonio'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $patrimony['Patrimony']['orderNum']; ?>
 			&nbsp;

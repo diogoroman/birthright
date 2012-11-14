@@ -8,9 +8,10 @@
  		
  	<?php echo $this->Html->link($patrimony['Equipment']['description'], array('controller' => 'equipment', 'action' => 'view', $patrimony['Equipment']['id'])); ?>
 	<?php
-		echo $this->Form->input('orderNum',array('label' => __('Ordem Numérica', true)));
+		echo $this->Form->input('orderNum',array('label' => __('Número de Patrimonio', true)));
 		echo $this->Form->input('cod',array('label' => __('Código Interno', true),
-										'value' => $patrimony['Patrimony']['id']));
+											'value' => $patrimony['Patrimony']['id'],
+											'disabled' => 'disabled'));
 		echo $this->Form->input('bmpNumber',array('label' => __('Número BMP', true)));
 		echo $this->Form->input('serialNumber',array('label' => __('Número Serial', true)));
 		echo $this->Form->input('equipment_id',array('label' => __('Ficha Carga Geral', true),));

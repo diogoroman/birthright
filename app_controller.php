@@ -68,6 +68,16 @@ class AppController extends Controller
 			$this->__buildMenu();
 		}
 
+		if($this->{$this->modelClass}->Behaviors->attached('Logable'))
+		{
+			{
+				$this->{$this->modelClass}->setUserData($this->activeUser);
+			}
+		}
+
+		//if($this->Auth->user('id')) {
+		//	AuditableConfig::$userId = $this->Auth->user('id');
+
 		$this->__setBackUrl();
 		//$this->__unLockEdit();
 		//$this->__lockEdit();

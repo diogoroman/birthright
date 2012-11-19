@@ -13,7 +13,14 @@ class Patrimony extends AppModel {
 			'change' => 'full', // options are 'list' or 'full'
 			'description_ids' => TRUE // options are TRUE or FALSE
 	));
-	
+	public $validate = array(
+		'conference' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				'message' => 'Informe a Data de Conferencia'
+			),
+		),
+	);
 	var $belongsTo = array(
 		'Equipment' => array(
 			'className' => 'Equipment',

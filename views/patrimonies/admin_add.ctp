@@ -1,7 +1,7 @@
 <?php 
 	echo $this->Html->script('datepicker', true); 
 ?>
-<div class="patrimonies form">
+<div class="form">
 <?php echo $this->Form->create('Patrimony');?>
 	<fieldset>
  		<legend><?php __('Adiciona Patrimonio'); ?></legend>

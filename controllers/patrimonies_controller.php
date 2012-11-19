@@ -65,7 +65,7 @@ class PatrimoniesController extends AppController {
 				print_r($this->data);
 				$this->redirect(array('controller' => 'Equipment', 'action' => 'view', $this->data['Patrimony']['equipment_id']));
 			} else {
-				$this->Session->setFlash(__('O Patrimonio não pode ser Gravado. Por favor, tente novamente', true));
+				$this->Session->setFlash(__('O Patrimonio não pode ser Gravado, verifique os campos preenchidos e tente novamente', true));
 			}
 		}
 		if(!empty($equipmentId))
@@ -103,7 +103,7 @@ class PatrimoniesController extends AppController {
 				$this->__setFlash('O Patrimonio '.$idpat['value'].'('.$idpat['type'].') foi modificado com sucesso','system-success');
 				$this->redirect(array('action' => 'view', $this->Patrimony->id));
 			} else {
-				$this->__setFlash('O Patrimonio não pode ser gravado, tente novamente.', 'system-error');
+				$this->__setFlash('O Patrimonio não pode ser Gravado, verifique os campos preenchidos e tente novamente', 'system-error');
 			}
 		}
 		if (empty($this->data)) {

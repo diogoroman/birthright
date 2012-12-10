@@ -1,6 +1,8 @@
 <?php
 class SectionsController extends AppController {
 
+	public $helpers = array('excel');
+
 	var $name = 'Sections';
 
 	public $components = array(
@@ -78,6 +80,18 @@ class SectionsController extends AppController {
 		}
 		$this->set('section', $this->Section->find('all', array('conditions' => array('Section.id' => $id),
 																	'recursive' => 2)));
+	}
+
+	function admin_toExcel($id = null){
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid section', true));
+			$this->redirect(array('action' => 'index'));
+		}
+		$this->layout = 'blank';
+		$this->loadModel('Patrimony');
+		$this->set('patrimonies', $this->Patrimony->find('all', array('conditions' => 
+			array('Patrimony.section_id' => $id))));
+
 	}
 
 	function admin_add() {

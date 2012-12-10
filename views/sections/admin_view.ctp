@@ -35,7 +35,8 @@
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th class="ui-widget-header"><?php __('Código Interno'); ?></th>
-		<th class="ui-widget-header"><?php __('Ordem Numérica'); ?></th>
+		<th class="ui-widget-header"><?php __('Patrimonio'); ?></th>
+		<th class="ui-widget-header"><?php __('BMP'); ?></th>
 		<th class="ui-widget-header"><?php __('Seção'); ?></th>
 		<th class="ui-widget-header"><?php __('Sala'); ?></th>
 		<th class="ui-widget-header"><?php __('Usuário'); ?></th>
@@ -53,6 +54,7 @@
 		<tr<?php echo $class;?>>
 			<td><?php echo $eq['id'];?></td>
 			<td><?php echo $eq['orderNum'];?></td>
+			<td><?php echo $eq['bmpNumber'];?></td>
 			<?php if(!empty($eq['Section']['name'])):?>
 			<td><?php echo $eq['Section']['name'];?></td>
 			<?php else:?>
@@ -82,6 +84,7 @@
 		</tr>
 	<?php endforeach; ?>
 	</table>
+	<?php echo $this->Html->link(__('Excel', true), array('controller' => 'sections','action' => 'toExcel', $section['0']['Section']['id']), array('class' => 'action-view')); ?>
 <?php endif; ?>
 
 

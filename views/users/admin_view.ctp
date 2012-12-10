@@ -35,7 +35,7 @@
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th class="ui-widget-header"><?php __('Código Interno'); ?></th>
-		<th class="ui-widget-header"><?php __('Ordem Numérica'); ?></th>
+		<th class="ui-widget-header"><?php __('Patrimonio'); ?></th>
 		<th class="ui-widget-header"><?php __('Descrição'); ?></th>
 		<th class="ui-widget-header"><?php __('Seção'); ?></th>
 		<th class="ui-widget-header"><?php __('Sala'); ?></th>

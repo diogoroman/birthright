@@ -2,7 +2,7 @@
 /**
  * PHPExcel
  *
- * Copyright (c) 2006 - 2012 PHPExcel
+ * Copyright (c) 2006 - 2009 PHPExcel
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -20,10 +20,14 @@
  *
  * @category   PHPExcel
  * @package    PHPExcel_Shared
- * @copyright  Copyright (c) 2006 - 2012 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright  Copyright (c) 2006 - 2009 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
- * @version    1.7.8, 2012-10-12
+ * @version    1.7.0, 2009-08-10
  */
+
+
+/** Register new zip wrapper */
+PHPExcel_Shared_ZipStreamWrapper::register();
 
 
 /**
@@ -31,7 +35,7 @@
  *
  * @category   PHPExcel
  * @package    PHPExcel_Shared
- * @copyright  Copyright (c) 2006 - 2012 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright  Copyright (c) 2006 - 2009 PHPExcel (http://www.codeplex.com/PHPExcel)
  */
 class PHPExcel_Shared_ZipStreamWrapper {
 	/**
@@ -71,13 +75,7 @@ class PHPExcel_Shared_ZipStreamWrapper {
     }
 
     /**
-	 * Implements support for fopen().
-	 *
-	 * @param	string	$path			resource name including scheme, e.g.
-	 * @param	string	$mode			only "r" is supported
-	 * @param	int		$options		mask of STREAM_REPORT_ERRORS and STREAM_USE_PATH
-	 * @param	string  &$openedPath	absolute path of the opened stream (out parameter)
-	 * @return	bool    true on success
+     * Open stream
      */
     public function stream_open($path, $mode, $options, &$opened_path) {
         // Check for mode
@@ -85,9 +83,24 @@ class PHPExcel_Shared_ZipStreamWrapper {
             throw new Exception('Mode ' . $mode . ' is not supported. Only read mode is supported.');
         }
 
-		$pos = strrpos($path, '#');
-		$url['host'] = substr($path, 6, $pos - 6); // 6: strlen('zip://')
-		$url['fragment'] = substr($path, $pos + 1);
+        // Parse URL
+        $url = @parse_url($path);
+
+        // Fix URL
+		if (!is_array($url)) {
+            $url['host'] = substr($path, strlen('zip://'));
+            $url['path'] = '';
+        }
+        if (strpos($url['host'], '#') !== false) {
+            if (!isset($url['fragment'])) {
+                $url['fragment']	= substr($url['host'], strpos($url['host'], '#') + 1) . $url['path'];
+                $url['host']		= substr($url['host'], 0, strpos($url['host'], '#'));
+                unset($url['path']);
+            }
+        } else {
+            $url['host']		= $url['host'] . $url['path'];
+            unset($url['path']);
+		}
 
         // Open archive
         $this->_archive = new ZipArchive();
@@ -101,19 +114,14 @@ class PHPExcel_Shared_ZipStreamWrapper {
     }
 
     /**
-	 * Implements support for fstat().
-	 *
-	 * @return  boolean
+     * Stat stream
      */
     public function stream_stat() {
         return $this->_archive->statName( $this->_fileNameInArchive );
     }
 
     /**
-	 * Implements support for fread(), fgets() etc.
-	 *
-	 * @param   int		$count	maximum number of bytes to read
-	 * @return  string
+     * Read stream
      */
     function stream_read($count) {
         $ret = substr($this->_data, $this->_position, $count);
@@ -122,10 +130,7 @@ class PHPExcel_Shared_ZipStreamWrapper {
     }
 
     /**
-	 * Returns the position of the file pointer, i.e. its offset into the file
-	 * stream. Implements support for ftell().
-	 *
-	 * @return  int
+     * Tell stream
      */
     public function stream_tell() {
         return $this->_position;
@@ -133,8 +138,6 @@ class PHPExcel_Shared_ZipStreamWrapper {
 
     /**
      * EOF stream
-	 *
-	 * @return	bool
      */
     public function stream_eof() {
         return $this->_position >= strlen($this->_data);
@@ -142,10 +145,6 @@ class PHPExcel_Shared_ZipStreamWrapper {
 
     /**
      * Seek stream
-	 *
-	 * @param	int		$offset	byte offset
-	 * @param	int		$whence	SEEK_SET, SEEK_CUR or SEEK_END
-	 * @return	bool
      */
     public function stream_seek($offset, $whence) {
         switch ($whence) {

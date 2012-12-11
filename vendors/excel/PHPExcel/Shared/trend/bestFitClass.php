@@ -2,7 +2,7 @@
 /**
  * PHPExcel
  *
- * Copyright (c) 2006 - 2012 PHPExcel
+ * Copyright (c) 2006 - 2009 PHPExcel
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -19,10 +19,10 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
  * @category   PHPExcel
- * @package    PHPExcel_Shared_Trend
- * @copyright  Copyright (c) 2006 - 2012 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @package    PHPExcel_Shared_Best_Fit
+ * @copyright  Copyright (c) 2006 - 2009 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
- * @version    1.7.8, 2012-10-12
+ * @version    1.7.0, 2009-08-10
  */
 
 
@@ -30,58 +30,23 @@
  * PHPExcel_Best_Fit
  *
  * @category   PHPExcel
- * @package    PHPExcel_Shared_Trend
- * @copyright  Copyright (c) 2006 - 2012 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @package    PHPExcel_Shared_Best_Fit
+ * @copyright  Copyright (c) 2006 - 2009 PHPExcel (http://www.codeplex.com/PHPExcel)
  */
 class PHPExcel_Best_Fit
 {
-	/**
-	 * Indicator flag for a calculation error
-	 *
-	 * @var	boolean
-	 **/
 	protected $_error				= False;
 
-	/**
-	 * Algorithm type to use for best-fit
-	 *
-	 * @var	string
-	 **/
 	protected $_bestFitType			= 'undetermined';
 
-	/**
-	 * Number of entries in the sets of x- and y-value arrays
-	 *
-	 * @var	int
-	 **/
 	protected $_valueCount			= 0;
 
-	/**
-	 * X-value dataseries of values
-	 *
-	 * @var	float[]
-	 **/
 	protected $_xValues				= array();
 
-	/**
-	 * Y-value dataseries of values
-	 *
-	 * @var	float[]
-	 **/
 	protected $_yValues				= array();
 
-	/**
-	 * Flag indicating whether values should be adjusted to Y=0
-	 *
-	 * @var	boolean
-	 **/
 	protected $_adjustToZero		= False;
 
-	/**
-	 * Y-value series of best-fit values
-	 *
-	 * @var	float[]
-	 **/
 	protected $_yBestFitValues		= array();
 
 	protected $_goodnessOfFit 		= 1;
@@ -123,55 +88,26 @@ class PHPExcel_Best_Fit
 	}	//	function getBestFitType()
 
 
-	/**
-	 * Return the Y-Value for a specified value of X
-	 *
-	 * @param	 float		$xValue			X-Value
-	 * @return	 float						Y-Value
-	 */
 	public function getValueOfYForX($xValue) {
 		return False;
 	}	//	function getValueOfYForX()
 
 
-	/**
-	 * Return the X-Value for a specified value of Y
-	 *
-	 * @param	 float		$yValue			Y-Value
-	 * @return	 float						X-Value
-	 */
 	public function getValueOfXForY($yValue) {
 		return False;
 	}	//	function getValueOfXForY()
 
 
-	/**
-	 * Return the original set of X-Values
-	 *
-	 * @return	 float[]				X-Values
-	 */
 	public function getXValues() {
 		return $this->_xValues;
 	}	//	function getValueOfXForY()
 
 
-	/**
-	 * Return the Equation of the best-fit line
-	 *
-	 * @param	 int		$dp		Number of places of decimal precision to display
-	 * @return	 string
-	 */
 	public function getEquation($dp=0) {
 		return False;
 	}	//	function getEquation()
 
 
-	/**
-	 * Return the Slope of the line
-	 *
-	 * @param	 int		$dp		Number of places of decimal precision to display
-	 * @return	 string
-	 */
 	public function getSlope($dp=0) {
 		if ($dp != 0) {
 			return round($this->_slope,$dp);
@@ -180,12 +116,6 @@ class PHPExcel_Best_Fit
 	}	//	function getSlope()
 
 
-	/**
-	 * Return the standard error of the Slope
-	 *
-	 * @param	 int		$dp		Number of places of decimal precision to display
-	 * @return	 string
-	 */
 	public function getSlopeSE($dp=0) {
 		if ($dp != 0) {
 			return round($this->_slopeSE,$dp);
@@ -194,12 +124,6 @@ class PHPExcel_Best_Fit
 	}	//	function getSlopeSE()
 
 
-	/**
-	 * Return the Value of X where it intersects Y = 0
-	 *
-	 * @param	 int		$dp		Number of places of decimal precision to display
-	 * @return	 string
-	 */
 	public function getIntersect($dp=0) {
 		if ($dp != 0) {
 			return round($this->_intersect,$dp);
@@ -208,12 +132,6 @@ class PHPExcel_Best_Fit
 	}	//	function getIntersect()
 
 
-	/**
-	 * Return the standard error of the Intersect
-	 *
-	 * @param	 int		$dp		Number of places of decimal precision to display
-	 * @return	 string
-	 */
 	public function getIntersectSE($dp=0) {
 		if ($dp != 0) {
 			return round($this->_intersectSE,$dp);
@@ -222,12 +140,6 @@ class PHPExcel_Best_Fit
 	}	//	function getIntersectSE()
 
 
-	/**
-	 * Return the goodness of fit for this regression
-	 *
-	 * @param	 int		$dp		Number of places of decimal precision to return
-	 * @return	 float
-	 */
 	public function getGoodnessOfFit($dp=0) {
 		if ($dp != 0) {
 			return round($this->_goodnessOfFit,$dp);
@@ -244,12 +156,6 @@ class PHPExcel_Best_Fit
 	}	//	function getGoodnessOfFitPercent()
 
 
-	/**
-	 * Return the standard deviation of the residuals for this regression
-	 *
-	 * @param	 int		$dp		Number of places of decimal precision to return
-	 * @return	 float
-	 */
 	public function getStdevOfResiduals($dp=0) {
 		if ($dp != 0) {
 			return round($this->_stdevOfResiduals,$dp);
@@ -333,11 +239,7 @@ class PHPExcel_Best_Fit
 		$this->_SSResiduals = $SSres;
 		$this->_DFResiduals = $this->_valueCount - 1 - $const;
 
-		if ($this->_DFResiduals == 0.0) {
-			$this->_stdevOfResiduals = 0.0;
-		} else {
-			$this->_stdevOfResiduals = sqrt($SSres / $this->_DFResiduals);
-		}
+		$this->_stdevOfResiduals = sqrt($SSres / $this->_DFResiduals);
 		if (($SStot == 0.0) || ($SSres == $SStot)) {
 			$this->_goodnessOfFit = 1;
 		} else {
@@ -350,17 +252,9 @@ class PHPExcel_Best_Fit
 		$this->_slopeSE = $this->_stdevOfResiduals / sqrt($SSsex);
 		$this->_intersectSE = $this->_stdevOfResiduals * sqrt(1 / ($this->_valueCount - ($sumX * $sumX) / $sumX2));
 		if ($this->_SSResiduals != 0.0) {
-			if ($this->_DFResiduals == 0.0) {
-				$this->_F = 0.0;
-			} else {
-				$this->_F = $this->_SSRegression / ($this->_SSResiduals / $this->_DFResiduals);
-			}
+			$this->_F = $this->_SSRegression / ($this->_SSResiduals / $this->_DFResiduals);
 		} else {
-			if ($this->_DFResiduals == 0.0) {
-				$this->_F = 0.0;
-			} else {
-				$this->_F = $this->_SSRegression / $this->_DFResiduals;
-			}
+			$this->_F = $this->_SSRegression / $this->_DFResiduals;
 		}
 	}	//	function _calculateGoodnessOfFit()
 
@@ -402,13 +296,6 @@ class PHPExcel_Best_Fit
 	}	//	function _leastSquareFit()
 
 
-	/**
-	 * Define the regression
-	 *
-	 * @param	float[]		$yValues	The set of Y-values for this regression
-	 * @param	float[]		$xValues	The set of X-values for this regression
-	 * @param	boolean		$const
-	 */
 	function __construct($yValues, $xValues=array(), $const=True) {
 		//	Calculate number of points
 		$nY = count($yValues);

@@ -2,7 +2,7 @@
 /**
  * PHPExcel
  *
- * Copyright (c) 2006 - 2012 PHPExcel
+ * Copyright (c) 2006 - 2009 PHPExcel
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -20,10 +20,73 @@
  *
  * @category   PHPExcel
  * @package    PHPExcel_Writer_Excel2007
- * @copyright  Copyright (c) 2006 - 2012 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright  Copyright (c) 2006 - 2009 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
- * @version    1.7.8, 2012-10-12
+ * @version    1.7.0, 2009-08-10
  */
+
+
+/** PHPExcel root directory */
+if (!defined('PHPEXCEL_ROOT')) {
+	/**
+	 * @ignore
+	 */
+	define('PHPEXCEL_ROOT', dirname(__FILE__) . '/../../');
+}
+
+/** PHPExcel */
+require_once PHPEXCEL_ROOT . 'PHPExcel.php';
+
+/** PHPExcel_HashTable */
+require_once PHPEXCEL_ROOT . 'PHPExcel/HashTable.php';
+
+/** PHPExcel_IComparable */
+require_once PHPEXCEL_ROOT . 'PHPExcel/IComparable.php';
+
+/** PHPExcel_Worksheet */
+require_once PHPEXCEL_ROOT . 'PHPExcel/Worksheet.php';
+
+/** PHPExcel_Cell */
+require_once PHPEXCEL_ROOT . 'PHPExcel/Cell.php';
+
+/** PHPExcel_IWriter */
+require_once PHPEXCEL_ROOT . 'PHPExcel/Writer/IWriter.php';
+
+/** PHPExcel_Shared_XMLWriter */
+require_once PHPEXCEL_ROOT . 'PHPExcel/Shared/XMLWriter.php';
+
+/** PHPExcel_Writer_Excel2007_WriterPart */
+require_once PHPEXCEL_ROOT . 'PHPExcel/Writer/Excel2007/WriterPart.php';
+
+/** PHPExcel_Writer_Excel2007_StringTable */
+require_once PHPEXCEL_ROOT . 'PHPExcel/Writer/Excel2007/StringTable.php';
+
+/** PHPExcel_Writer_Excel2007_ContentTypes */
+require_once PHPEXCEL_ROOT . 'PHPExcel/Writer/Excel2007/ContentTypes.php';
+
+/** PHPExcel_Writer_Excel2007_DocProps */
+require_once PHPEXCEL_ROOT . 'PHPExcel/Writer/Excel2007/DocProps.php';
+
+/** PHPExcel_Writer_Excel2007_Rels */
+require_once PHPEXCEL_ROOT . 'PHPExcel/Writer/Excel2007/Rels.php';
+
+/** PHPExcel_Writer_Excel2007_Theme */
+require_once PHPEXCEL_ROOT . 'PHPExcel/Writer/Excel2007/Theme.php';
+
+/** PHPExcel_Writer_Excel2007_Style */
+require_once PHPEXCEL_ROOT . 'PHPExcel/Writer/Excel2007/Style.php';
+
+/** PHPExcel_Writer_Excel2007_Workbook */
+require_once PHPEXCEL_ROOT . 'PHPExcel/Writer/Excel2007/Workbook.php';
+
+/** PHPExcel_Writer_Excel2007_Worksheet */
+require_once PHPEXCEL_ROOT . 'PHPExcel/Writer/Excel2007/Worksheet.php';
+
+/** PHPExcel_Writer_Excel2007_Drawing */
+require_once PHPEXCEL_ROOT . 'PHPExcel/Writer/Excel2007/Drawing.php';
+
+/** PHPExcel_Writer_Excel2007_Comments */
+require_once PHPEXCEL_ROOT . 'PHPExcel/Writer/Excel2007/Comments.php';
 
 
 /**
@@ -31,18 +94,10 @@
  *
  * @category   PHPExcel
  * @package    PHPExcel_Writer_Excel2007
- * @copyright  Copyright (c) 2006 - 2012 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright  Copyright (c) 2006 - 2009 PHPExcel (http://www.codeplex.com/PHPExcel)
  */
 class PHPExcel_Writer_Excel2007 implements PHPExcel_Writer_IWriter
 {
-	/**
-	 * Write charts that are defined in the workbook?
-	 * Identifies whether the Writer should write definitions for any charts that exist in the PHPExcel object;
-	 *
-	 * @var	boolean
-	 */
-	private $_includeCharts = false;
-
 	/**
 	 * Pre-calculate formulas
 	 *
@@ -62,7 +117,7 @@ class PHPExcel_Writer_Excel2007 implements PHPExcel_Writer_IWriter
 	 *
 	 * @var PHPExcel_Writer_Excel2007_WriterPart[]
 	 */
-	private $_writerParts	= array();
+	private $_writerParts;
 
 	/**
 	 * Private PHPExcel
@@ -76,7 +131,7 @@ class PHPExcel_Writer_Excel2007 implements PHPExcel_Writer_IWriter
 	 *
 	 * @var string[]
 	 */
-	private $_stringTable	= array();
+	private $_stringTable;
 
 	/**
 	 * Private unique PHPExcel_Style_Conditional HashTable
@@ -126,13 +181,13 @@ class PHPExcel_Writer_Excel2007 implements PHPExcel_Writer_IWriter
 	 * @var boolean
 	 */
 	private $_useDiskCaching = false;
-
+	
 	/**
 	 * Disk caching directory
 	 *
 	 * @var string
 	 */
-	private $_diskCachingDirectory	= './';
+	private $_diskCachingDirectory;
 
     /**
      * Create a new PHPExcel_Writer_Excel2007
@@ -143,34 +198,35 @@ class PHPExcel_Writer_Excel2007 implements PHPExcel_Writer_IWriter
     {
     	// Assign PHPExcel
 		$this->setPHPExcel($pPHPExcel);
+		
+		// Set up disk caching location
+		$this->_diskCachingDirectory = './';
 
-    	$writerPartsArray = array(	'stringtable'	=> 'PHPExcel_Writer_Excel2007_StringTable',
-									'contenttypes'	=> 'PHPExcel_Writer_Excel2007_ContentTypes',
-									'docprops' 		=> 'PHPExcel_Writer_Excel2007_DocProps',
-									'rels'			=> 'PHPExcel_Writer_Excel2007_Rels',
-									'theme' 		=> 'PHPExcel_Writer_Excel2007_Theme',
-									'style' 		=> 'PHPExcel_Writer_Excel2007_Style',
-									'workbook' 		=> 'PHPExcel_Writer_Excel2007_Workbook',
-									'worksheet' 	=> 'PHPExcel_Writer_Excel2007_Worksheet',
-									'drawing' 		=> 'PHPExcel_Writer_Excel2007_Drawing',
-									'comments' 		=> 'PHPExcel_Writer_Excel2007_Comments',
-									'chart'			=> 'PHPExcel_Writer_Excel2007_Chart',
-								 );
+    	// Initialise writer parts
+    	$this->_writerParts['stringtable']		= new PHPExcel_Writer_Excel2007_StringTable();
+		$this->_writerParts['contenttypes'] 	= new PHPExcel_Writer_Excel2007_ContentTypes();
+		$this->_writerParts['docprops'] 		= new PHPExcel_Writer_Excel2007_DocProps();
+		$this->_writerParts['rels'] 			= new PHPExcel_Writer_Excel2007_Rels();
+		$this->_writerParts['theme'] 			= new PHPExcel_Writer_Excel2007_Theme();
+		$this->_writerParts['style'] 			= new PHPExcel_Writer_Excel2007_Style();
+		$this->_writerParts['workbook'] 		= new PHPExcel_Writer_Excel2007_Workbook();
+		$this->_writerParts['worksheet'] 		= new PHPExcel_Writer_Excel2007_Worksheet();
+		$this->_writerParts['drawing'] 			= new PHPExcel_Writer_Excel2007_Drawing();
+		$this->_writerParts['comments'] 		= new PHPExcel_Writer_Excel2007_Comments();
 
-    	//	Initialise writer parts
-		//		and Assign their parent IWriters
-		foreach ($writerPartsArray as $writer => $class) {
-			$this->_writerParts[$writer] = new $class($this);
+		// Assign parent IWriter
+		foreach ($this->_writerParts as $writer) {
+			$writer->setParentWriter($this);
 		}
-
-    	$hashTablesArray = array( '_stylesConditionalHashTable',	'_fillHashTable',		'_fontHashTable',
-								  '_bordersHashTable',				'_numFmtHashTable',		'_drawingHashTable'
-							    );
 
 		// Set HashTable variables
-		foreach ($hashTablesArray as $tableName) {
-			$this->$tableName 	= new PHPExcel_HashTable();
-		}
+		$this->_stringTable					= array();
+		$this->_stylesConditionalHashTable 	= new PHPExcel_HashTable();
+		$this->_fillHashTable 				= new PHPExcel_HashTable();
+		$this->_fontHashTable 				= new PHPExcel_HashTable();
+		$this->_bordersHashTable 			= new PHPExcel_HashTable();
+		$this->_numFmtHashTable 			= new PHPExcel_HashTable();
+		$this->_drawingHashTable 			= new PHPExcel_HashTable();
     }
 
 	/**
@@ -179,7 +235,7 @@ class PHPExcel_Writer_Excel2007 implements PHPExcel_Writer_IWriter
 	 * @param 	string 	$pPartName		Writer part name
 	 * @return 	PHPExcel_Writer_Excel2007_WriterPart
 	 */
-	public function getWriterPart($pPartName = '') {
+	function getWriterPart($pPartName = '') {
 		if ($pPartName != '' && isset($this->_writerParts[strtolower($pPartName)])) {
 			return $this->_writerParts[strtolower($pPartName)];
 		} else {
@@ -190,26 +246,24 @@ class PHPExcel_Writer_Excel2007 implements PHPExcel_Writer_IWriter
 	/**
 	 * Save PHPExcel to file
 	 *
-	 * @param 	string 		$pFilename
+	 * @param 	string 		$pFileName
 	 * @throws 	Exception
 	 */
 	public function save($pFilename = null)
 	{
-		if ($this->_spreadSheet !== NULL) {
+		if (!is_null($this->_spreadSheet)) {
 			// garbage collect
 			$this->_spreadSheet->garbageCollect();
 
 			// If $pFilename is php://output or php://stdout, make it a temporary file...
 			$originalFilename = $pFilename;
 			if (strtolower($pFilename) == 'php://output' || strtolower($pFilename) == 'php://stdout') {
-				$pFilename = @tempnam(PHPExcel_Shared_File::sys_get_temp_dir(), 'phpxltmp');
+				$pFilename = @tempnam('./', 'phpxltmp');
 				if ($pFilename == '') {
 					$pFilename = $originalFilename;
 				}
 			}
 
-			$saveDebugLog = PHPExcel_Calculation::getInstance()->writeDebugLog;
-			PHPExcel_Calculation::getInstance()->writeDebugLog = false;
 			$saveDateReturnType = PHPExcel_Calculation_Functions::getReturnDateType();
 			PHPExcel_Calculation_Functions::setReturnDateType(PHPExcel_Calculation_Functions::RETURNDATE_EXCEL);
 
@@ -230,27 +284,17 @@ class PHPExcel_Writer_Excel2007 implements PHPExcel_Writer_IWriter
 			$this->_drawingHashTable->addFromSource( 			$this->getWriterPart('Drawing')->allDrawings($this->_spreadSheet) 		);
 
 			// Create new ZIP file and open it for writing
-			$zipClass = PHPExcel_Settings::getZipClass();
-			$objZip = new $zipClass();
+			$objZip = new ZipArchive();
 
-			//	Retrieve OVERWRITE and CREATE constants from the instantiated zip class
-			//	This method of accessing constant values from a dynamic class should work with all appropriate versions of PHP
-			$ro = new ReflectionObject($objZip);
-			$zipOverWrite = $ro->getConstant('OVERWRITE');
-			$zipCreate = $ro->getConstant('CREATE');
-
-			if (file_exists($pFilename)) {
-				unlink($pFilename);
-			}
 			// Try opening the ZIP file
-			if ($objZip->open($pFilename, $zipOverWrite) !== true) {
-				if ($objZip->open($pFilename, $zipCreate) !== true) {
+			if ($objZip->open($pFilename, ZIPARCHIVE::OVERWRITE) !== true) {
+				if ($objZip->open($pFilename, ZIPARCHIVE::CREATE) !== true) {
 					throw new Exception("Could not open " . $pFilename . " for writing.");
 				}
 			}
 
 			// Add [Content_Types].xml to ZIP file
-			$objZip->addFromString('[Content_Types].xml', 			$this->getWriterPart('ContentTypes')->writeContentTypes($this->_spreadSheet, $this->_includeCharts));
+			$objZip->addFromString('[Content_Types].xml', 			$this->getWriterPart('ContentTypes')->writeContentTypes($this->_spreadSheet));
 
 			// Add relationships to ZIP file
 			$objZip->addFromString('_rels/.rels', 					$this->getWriterPart('Rels')->writeRelationships($this->_spreadSheet));
@@ -259,10 +303,6 @@ class PHPExcel_Writer_Excel2007 implements PHPExcel_Writer_IWriter
 			// Add document properties to ZIP file
 			$objZip->addFromString('docProps/app.xml', 				$this->getWriterPart('DocProps')->writeDocPropsApp($this->_spreadSheet));
 			$objZip->addFromString('docProps/core.xml', 			$this->getWriterPart('DocProps')->writeDocPropsCore($this->_spreadSheet));
-			$customPropertiesPart = $this->getWriterPart('DocProps')->writeDocPropsCustom($this->_spreadSheet);
-			if ($customPropertiesPart !== NULL) {
-				$objZip->addFromString('docProps/custom.xml', 		$customPropertiesPart);
-			}
 
 			// Add theme to ZIP file
 			$objZip->addFromString('xl/theme/theme1.xml', 			$this->getWriterPart('Theme')->writeTheme($this->_spreadSheet));
@@ -274,43 +314,26 @@ class PHPExcel_Writer_Excel2007 implements PHPExcel_Writer_IWriter
 			$objZip->addFromString('xl/styles.xml', 				$this->getWriterPart('Style')->writeStyles($this->_spreadSheet));
 
 			// Add workbook to ZIP file
-			$objZip->addFromString('xl/workbook.xml', 				$this->getWriterPart('Workbook')->writeWorkbook($this->_spreadSheet, $this->_preCalculateFormulas));
+			$objZip->addFromString('xl/workbook.xml', 				$this->getWriterPart('Workbook')->writeWorkbook($this->_spreadSheet));
 
-			$chartCount = 0;
 			// Add worksheets
 			for ($i = 0; $i < $this->_spreadSheet->getSheetCount(); ++$i) {
-				$objZip->addFromString('xl/worksheets/sheet' . ($i + 1) . '.xml', $this->getWriterPart('Worksheet')->writeWorksheet($this->_spreadSheet->getSheet($i), $this->_stringTable, $this->_includeCharts));
-				if ($this->_includeCharts) {
-					$charts = $this->_spreadSheet->getSheet($i)->getChartCollection();
-					if (count($charts) > 0) {
-						foreach($charts as $chart) {
-							$objZip->addFromString('xl/charts/chart' . ($chartCount + 1) . '.xml', $this->getWriterPart('Chart')->writeChart($chart));
-							$chartCount++;
-						}
-					}
-				}
+				$objZip->addFromString('xl/worksheets/sheet' . ($i + 1) . '.xml', $this->getWriterPart('Worksheet')->writeWorksheet($this->_spreadSheet->getSheet($i), $this->_stringTable));
 			}
 
-			$chartRef1 = $chartRef2 = 0;
 			// Add worksheet relationships (drawings, ...)
 			for ($i = 0; $i < $this->_spreadSheet->getSheetCount(); ++$i) {
 
 				// Add relationships
-				$objZip->addFromString('xl/worksheets/_rels/sheet' . ($i + 1) . '.xml.rels', 	$this->getWriterPart('Rels')->writeWorksheetRelationships($this->_spreadSheet->getSheet($i), ($i + 1), $this->_includeCharts));
+				$objZip->addFromString('xl/worksheets/_rels/sheet' . ($i + 1) . '.xml.rels', 	$this->getWriterPart('Rels')->writeWorksheetRelationships($this->_spreadSheet->getSheet($i), ($i + 1)));
 
-				$drawings = $this->_spreadSheet->getSheet($i)->getDrawingCollection();
-				$drawingCount = count($drawings);
-				if ($this->_includeCharts) {
-					$chartCount = $this->_spreadSheet->getSheet($i)->getChartCount();
-				}
-
-				// Add drawing and image relationship parts
-				if (($drawingCount > 0) || ($chartCount > 0)) {
+				// Add drawing relationship parts
+				if ($this->_spreadSheet->getSheet($i)->getDrawingCollection()->count() > 0) {
 					// Drawing relationships
-					$objZip->addFromString('xl/drawings/_rels/drawing' . ($i + 1) . '.xml.rels', $this->getWriterPart('Rels')->writeDrawingRelationships($this->_spreadSheet->getSheet($i),$chartRef1, $this->_includeCharts));
+					$objZip->addFromString('xl/drawings/_rels/drawing' . ($i + 1) . '.xml.rels', $this->getWriterPart('Rels')->writeDrawingRelationships($this->_spreadSheet->getSheet($i)));
 
 					// Drawings
-					$objZip->addFromString('xl/drawings/drawing' . ($i + 1) . '.xml', $this->getWriterPart('Drawing')->writeDrawings($this->_spreadSheet->getSheet($i),$chartRef2,$this->_includeCharts));
+					$objZip->addFromString('xl/drawings/drawing' . ($i + 1) . '.xml', $this->getWriterPart('Drawing')->writeDrawings($this->_spreadSheet->getSheet($i)));
 				}
 
 				// Add comment relationship parts
@@ -371,7 +394,6 @@ class PHPExcel_Writer_Excel2007 implements PHPExcel_Writer_IWriter
 			}
 
 			PHPExcel_Calculation_Functions::setReturnDateType($saveDateReturnType);
-			PHPExcel_Calculation::getInstance()->writeDebugLog = $saveDebugLog;
 
 			// Close file
 			if ($objZip->close() === false) {
@@ -397,7 +419,7 @@ class PHPExcel_Writer_Excel2007 implements PHPExcel_Writer_IWriter
 	 * @throws Exception
 	 */
 	public function getPHPExcel() {
-		if ($this->_spreadSheet !== null) {
+		if (!is_null($this->_spreadSheet)) {
 			return $this->_spreadSheet;
 		} else {
 			throw new Exception("No PHPExcel assigned.");
@@ -479,31 +501,6 @@ class PHPExcel_Writer_Excel2007 implements PHPExcel_Writer_IWriter
     	return $this->_drawingHashTable;
     }
 
-	/**
-	 * Write charts in workbook?
-	 *		If this is true, then the Writer will write definitions for any charts that exist in the PHPExcel object.
-	 *		If false (the default) it will ignore any charts defined in the PHPExcel object.
-	 *
-	 * @return	boolean
-	 */
-	public function getIncludeCharts() {
-		return $this->_includeCharts;
-	}
-
-	/**
-	 * Set write charts in workbook
-	 *		Set to true, to advise the Writer to include any charts that exist in the PHPExcel object.
-	 *		Set to false (the default) to ignore charts.
-	 *
-	 * @param	boolean	$pValue
-	 *
-	 * @return	PHPExcel_Writer_Excel2007
-	 */
-	public function setIncludeCharts($pValue = false) {
-		$this->_includeCharts = (boolean) $pValue;
-		return $this;
-	}
-
     /**
      * Get Pre-Calculate Formulas
      *
@@ -561,8 +558,8 @@ class PHPExcel_Writer_Excel2007 implements PHPExcel_Writer_IWriter
 	 */
 	public function setUseDiskCaching($pValue = false, $pDirectory = null) {
 		$this->_useDiskCaching = $pValue;
-
-		if ($pDirectory !== NULL) {
+		
+		if (!is_null($pDirectory)) {
     		if (is_dir($pDirectory)) {
     			$this->_diskCachingDirectory = $pDirectory;
     		} else {
@@ -571,7 +568,7 @@ class PHPExcel_Writer_Excel2007 implements PHPExcel_Writer_IWriter
 		}
 		return $this;
 	}
-
+	    
 	/**
 	 * Get disk caching directory
 	 *

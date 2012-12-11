@@ -16,9 +16,7 @@
  *	@license PHP v3.0
  *	@version 1.1
  */
-class PHPExcel_Shared_JAMA_QRDecomposition {
-
-	const MatrixRankException	= "Can only perform operation on full-rank matrix.";
+class QRDecomposition {
 
 	/**
 	 *	Array for internal storage of decomposition.
@@ -52,7 +50,7 @@ class PHPExcel_Shared_JAMA_QRDecomposition {
 	 *	@return Structure to access R and the Householder vectors and compute Q.
 	 */
 	public function __construct($A) {
-		if($A instanceof PHPExcel_Shared_JAMA_Matrix) {
+		if($A instanceof Matrix) {
 			// Initialize.
 			$this->QR = $A->getArrayCopy();
 			$this->m  = $A->getRowDimension();
@@ -88,7 +86,7 @@ class PHPExcel_Shared_JAMA_QRDecomposition {
 				$this->Rdiag[$k] = -$nrm;
 			}
 		} else {
-			throw new Exception(PHPExcel_Shared_JAMA_Matrix::ArgumentTypeException);
+			throw new Exception(JAMAError(ArgumentTypeException));
 		}
 	}	//	function __construct()
 
@@ -123,7 +121,7 @@ class PHPExcel_Shared_JAMA_QRDecomposition {
 				}
 			}
 		}
-		return new PHPExcel_Shared_JAMA_Matrix($H);
+		return new Matrix($H);
 	}	//	function getH()
 
 
@@ -144,7 +142,7 @@ class PHPExcel_Shared_JAMA_QRDecomposition {
 				}
 			}
 		}
-		return new PHPExcel_Shared_JAMA_Matrix($R);
+		return new Matrix($R);
 	}	//	function getR()
 
 
@@ -181,7 +179,7 @@ class PHPExcel_Shared_JAMA_QRDecomposition {
 			}
 		}
 		*/
-		return new PHPExcel_Shared_JAMA_Matrix($Q);
+		return new Matrix($Q);
 	}	//	function getQ()
 
 
@@ -221,14 +219,14 @@ class PHPExcel_Shared_JAMA_QRDecomposition {
 						}
 					}
 				}
-				$X = new PHPExcel_Shared_JAMA_Matrix($X);
+				$X = new Matrix($X);
 				return ($X->getMatrix(0, $this->n-1, 0, $nx));
 			} else {
-				throw new Exception(self::MatrixRankException);
+				throw new Exception(JAMAError(MatrixRankException));
 			}
 		} else {
-			throw new Exception(PHPExcel_Shared_JAMA_Matrix::MatrixDimensionException);
+			throw new Exception(JAMAError(MatrixDimensionException));
 		}
 	}	//	function solve()
 
-}	//	PHPExcel_Shared_JAMA_class QRDecomposition
+}	//	class QRDecomposition

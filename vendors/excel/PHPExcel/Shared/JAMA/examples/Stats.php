@@ -126,7 +126,7 @@ class Base {/*{{{*/
      * @access  private
      * @var array
      */
-    public $_data = null;
+    var $_data = null;
 
     /**
      * Expanded data set. Only set when cummulative data
@@ -135,7 +135,7 @@ class Base {/*{{{*/
      * @access  private
      * @var array
      */
-    public $_dataExpanded = null;
+    var $_dataExpanded = null;
 
     /**
      * Flag for data type, one of STATS_DATA_SIMPLE or
@@ -144,7 +144,7 @@ class Base {/*{{{*/
      * @access  private
      * @var int
      */
-    public $_dataOption = null;
+    var $_dataOption = null;
 
     /**
      * Flag for null handling options. One of STATS_REJECT_NULL,
@@ -153,7 +153,7 @@ class Base {/*{{{*/
      * @access  private
      * @var int
      */
-    public $_nullOption;
+    var $_nullOption;
 
     /**
      * Array for caching result values, should be reset
@@ -162,7 +162,7 @@ class Base {/*{{{*/
      * @access private
      * @var array
      */
-    public $_calculatedValues = array();
+    var $_calculatedValues = array();
 
     /*}}}*/
 

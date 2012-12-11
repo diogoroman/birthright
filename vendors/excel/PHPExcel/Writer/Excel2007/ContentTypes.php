@@ -2,7 +2,7 @@
 /**
  * PHPExcel
  *
- * Copyright (c) 2006 - 2012 PHPExcel
+ * Copyright (c) 2006 - 2009 PHPExcel
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -20,10 +20,34 @@
  *
  * @category   PHPExcel
  * @package    PHPExcel_Writer_Excel2007
- * @copyright  Copyright (c) 2006 - 2012 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright  Copyright (c) 2006 - 2009 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
- * @version    1.7.8, 2012-10-12
+ * @version    1.7.0, 2009-08-10
  */
+
+
+/** PHPExcel root directory */
+if (!defined('PHPEXCEL_ROOT')) {
+	/**
+	 * @ignore
+	 */
+	define('PHPEXCEL_ROOT', dirname(__FILE__) . '/../../../');
+}
+
+/** PHPExcel */
+require_once PHPEXCEL_ROOT . 'PHPExcel.php';
+
+/** PHPExcel_Writer_Excel2007 */
+require_once PHPEXCEL_ROOT . 'PHPExcel/Writer/Excel2007.php';
+
+/** PHPExcel_Writer_Excel2007_WriterPart */
+require_once PHPEXCEL_ROOT . 'PHPExcel/Writer/Excel2007/WriterPart.php';
+
+/** PHPExcel_Shared_File */
+require_once PHPEXCEL_ROOT . 'PHPExcel/Shared/File.php';
+
+/** PHPExcel_Shared_XMLWriter */
+require_once PHPEXCEL_ROOT . 'PHPExcel/Shared/XMLWriter.php';
 
 
 /**
@@ -31,19 +55,18 @@
  *
  * @category   PHPExcel
  * @package    PHPExcel_Writer_Excel2007
- * @copyright  Copyright (c) 2006 - 2012 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright  Copyright (c) 2006 - 2009 PHPExcel (http://www.codeplex.com/PHPExcel)
  */
 class PHPExcel_Writer_Excel2007_ContentTypes extends PHPExcel_Writer_Excel2007_WriterPart
 {
 	/**
 	 * Write content types to XML format
 	 *
-	 * @param 	PHPExcel	$pPHPExcel
-	 * @param	boolean		$includeCharts	Flag indicating if we should include drawing details for charts
+	 * @param 	PHPExcel $pPHPExcel
 	 * @return 	string 						XML Output
 	 * @throws 	Exception
 	 */
-	public function writeContentTypes(PHPExcel $pPHPExcel = null, $includeCharts = FALSE)
+	public function writeContentTypes(PHPExcel $pPHPExcel = null)
 	{
 		// Create XML writer
 		$objWriter = null;
@@ -99,13 +122,6 @@ class PHPExcel_Writer_Excel2007_ContentTypes extends PHPExcel_Writer_Excel2007_W
 				$objWriter, '/docProps/core.xml', 'application/vnd.openxmlformats-package.core-properties+xml'
 			);
 
-			$customPropertyList = $pPHPExcel->getProperties()->getCustomProperties();
-			if (!empty($customPropertyList)) {
-				$this->_writeOverrideContentType(
-					$objWriter, '/docProps/custom.xml', 'application/vnd.openxmlformats-officedocument.custom-properties+xml'
-				);
-			}
-
 			// Worksheets
 			$sheetCount = $pPHPExcel->getSheetCount();
 			for ($i = 0; $i < $sheetCount; ++$i) {
@@ -120,26 +136,11 @@ class PHPExcel_Writer_Excel2007_ContentTypes extends PHPExcel_Writer_Excel2007_W
 			);
 
 			// Add worksheet relationship content types
-			$chart = 1;
 			for ($i = 0; $i < $sheetCount; ++$i) {
-				$drawings = $pPHPExcel->getSheet($i)->getDrawingCollection();
-				$drawingCount = count($drawings);
-				$chartCount = ($includeCharts) ? $pPHPExcel->getSheet($i)->getChartCount() : 0;
-
-				//	We need a drawing relationship for the worksheet if we have either drawings or charts
-				if (($drawingCount > 0) || ($chartCount > 0)) {
+				if ($pPHPExcel->getSheet($i)->getDrawingCollection()->count() > 0) {
 					$this->_writeOverrideContentType(
 						$objWriter, '/xl/drawings/drawing' . ($i + 1) . '.xml', 'application/vnd.openxmlformats-officedocument.drawing+xml'
 					);
-				}
-
-				//	If we have charts, then we need a chart relationship for every individual chart
-				if ($chartCount > 0) {
-					for ($c = 0; $c < $chartCount; ++$c) {
-						$this->_writeOverrideContentType(
-							$objWriter, '/xl/charts/chart' . $chart++ . '.xml', 'application/vnd.openxmlformats-officedocument.drawingml.chart+xml'
-						);
-					}
 				}
 			}
 
@@ -158,7 +159,7 @@ class PHPExcel_Writer_Excel2007_ContentTypes extends PHPExcel_Writer_Excel2007_W
 			for ($i = 0; $i < $mediaCount; ++$i) {
 				$extension 	= '';
 				$mimeType 	= '';
-
+				
 				if ($this->getParentWriter()->getDrawingHashTable()->getByIndex($i) instanceof PHPExcel_Worksheet_Drawing) {
 					$extension 	= strtolower($this->getParentWriter()->getDrawingHashTable()->getByIndex($i)->getExtension());
 					$mimeType 	= $this->_getImageMimeType( $this->getParentWriter()->getDrawingHashTable()->getByIndex($i)->getPath() );
@@ -166,10 +167,10 @@ class PHPExcel_Writer_Excel2007_ContentTypes extends PHPExcel_Writer_Excel2007_W
 					$extension 	= strtolower($this->getParentWriter()->getDrawingHashTable()->getByIndex($i)->getMimeType());
 					$extension 	= explode('/', $extension);
 					$extension 	= $extension[1];
-
+					
 					$mimeType 	= $this->getParentWriter()->getDrawingHashTable()->getByIndex($i)->getMimeType();
 				}
-
+				
 				if (!isset( $aMediaContentTypes[$extension]) ) {
 						$aMediaContentTypes[$extension] = $mimeType;
 
@@ -178,7 +179,7 @@ class PHPExcel_Writer_Excel2007_ContentTypes extends PHPExcel_Writer_Excel2007_W
 						);
 				}
 			}
-
+			
 			$sheetCount = $pPHPExcel->getSheetCount();
 			for ($i = 0; $i < $sheetCount; ++$i) {
 				if (count($pPHPExcel->getSheet()->getHeaderFooter()->getImages()) > 0) {

@@ -2,130 +2,147 @@
 /**
  * PHPExcel
  *
- * Copyright (c) 2006 - 2012 PHPExcel
+ * Copyright (c) 2006 - 2009 PHPExcel
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
- *
+ * 
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
  * @category   PHPExcel
  * @package    PHPExcel_Worksheet
- * @copyright  Copyright (c) 2006 - 2012 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright  Copyright (c) 2006 - 2009 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
- * @version    1.7.8, 2012-10-12
+ * @version    1.7.0, 2009-08-10
  */
 
+
+/** PHPExcel root directory */
+if (!defined('PHPEXCEL_ROOT')) {
+	/**
+	 * @ignore
+	 */
+	define('PHPEXCEL_ROOT', dirname(__FILE__) . '/../../');
+}
+
+/** PHPExcel_IComparable */
+require_once PHPEXCEL_ROOT . 'PHPExcel/IComparable.php';
+
+/** PHPExcel_Worksheet */
+require_once PHPEXCEL_ROOT . 'PHPExcel/Worksheet.php';
+
+/** PHPExcel_Worksheet_Drawing_Shadow */
+require_once PHPEXCEL_ROOT . 'PHPExcel/Worksheet/Drawing/Shadow.php';
 
 /**
  * PHPExcel_Worksheet_BaseDrawing
  *
  * @category   PHPExcel
  * @package    PHPExcel_Worksheet
- * @copyright  Copyright (c) 2006 - 2012 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright  Copyright (c) 2006 - 2009 PHPExcel (http://www.codeplex.com/PHPExcel)
  */
 class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
-{
+{		
 	/**
 	 * Image counter
 	 *
 	 * @var int
 	 */
 	private static $_imageCounter = 0;
-
+	
 	/**
 	 * Image index
 	 *
 	 * @var int
 	 */
 	private $_imageIndex = 0;
-
+	
 	/**
 	 * Name
 	 *
 	 * @var string
 	 */
 	protected $_name;
-
+	
 	/**
 	 * Description
 	 *
 	 * @var string
 	 */
 	protected $_description;
-
+	
 	/**
 	 * Worksheet
 	 *
 	 * @var PHPExcel_Worksheet
 	 */
 	protected $_worksheet;
-
+	
 	/**
 	 * Coordinates
 	 *
 	 * @var string
 	 */
 	protected $_coordinates;
-
+	
 	/**
 	 * Offset X
 	 *
 	 * @var int
 	 */
 	protected $_offsetX;
-
+	
 	/**
 	 * Offset Y
 	 *
 	 * @var int
 	 */
 	protected $_offsetY;
-
+	
 	/**
 	 * Width
 	 *
 	 * @var int
 	 */
 	protected $_width;
-
+	
 	/**
 	 * Height
 	 *
 	 * @var int
 	 */
 	protected $_height;
-
+	
 	/**
 	 * Proportional resize
 	 *
 	 * @var boolean
 	 */
 	protected $_resizeProportional;
-
+	
 	/**
 	 * Rotation
 	 *
 	 * @var int
 	 */
 	protected $_rotation;
-
+	
 	/**
 	 * Shadow
 	 *
 	 * @var PHPExcel_Worksheet_Drawing_Shadow
 	 */
-	protected $_shadow;
-
+	protected $_shadow;	
+	
     /**
      * Create a new PHPExcel_Worksheet_BaseDrawing
      */
@@ -143,12 +160,12 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
     	$this->_resizeProportional	= true;
     	$this->_rotation			= 0;
     	$this->_shadow				= new PHPExcel_Worksheet_Drawing_Shadow();
-
+		
 		// Set image index
 		self::$_imageCounter++;
 		$this->_imageIndex 			= self::$_imageCounter;
     }
-
+	
     /**
      * Get image index
      *
@@ -157,7 +174,7 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
     public function getImageIndex() {
     	return $this->_imageIndex;
     }
-
+       
     /**
      * Get Name
      *
@@ -166,7 +183,7 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
     public function getName() {
     	return $this->_name;
     }
-
+    
     /**
      * Set Name
      *
@@ -177,7 +194,7 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
     	$this->_name = $pValue;
     	return $this;
     }
-
+    
     /**
      * Get Description
      *
@@ -186,7 +203,7 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
     public function getDescription() {
     	return $this->_description;
     }
-
+    
     /**
      * Set Description
      *
@@ -206,7 +223,7 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
     public function getWorksheet() {
     	return $this->_worksheet;
     }
-
+    
     /**
      * Set Worksheet
      *
@@ -225,7 +242,7 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
     		if ($pOverrideOld) {
     			// Remove drawing from old PHPExcel_Worksheet
     			$iterator = $this->_worksheet->getDrawingCollection()->getIterator();
-
+    				
     			while ($iterator->valid()) {
     				if ($iterator->current()->getHashCode() == $this->getHashCode()) {
     					$this->_worksheet->getDrawingCollection()->offsetUnset( $iterator->key() );
@@ -233,7 +250,7 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
     					break;
     				}
     			}
-
+    				
     			// Set new PHPExcel_Worksheet
     			$this->setWorksheet($pValue);
     		} else {
@@ -242,7 +259,7 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
     	}
     	return $this;
     }
-
+    
     /**
      * Get Coordinates
      *
@@ -250,8 +267,8 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
      */
     public function getCoordinates() {
     	return $this->_coordinates;
-    }
-
+    }    
+    
     /**
      * Set Coordinates
      *
@@ -262,7 +279,7 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
     	$this->_coordinates = $pValue;
     	return $this;
     }
-
+    
     /**
      * Get OffsetX
      *
@@ -271,7 +288,7 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
     public function getOffsetX() {
     	return $this->_offsetX;
     }
-
+    
     /**
      * Set OffsetX
      *
@@ -282,7 +299,7 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
     	$this->_offsetX = $pValue;
     	return $this;
     }
-
+    
     /**
      * Get OffsetY
      *
@@ -291,7 +308,7 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
     public function getOffsetY() {
     	return $this->_offsetY;
     }
-
+    
     /**
      * Set OffsetY
      *
@@ -302,7 +319,7 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
     	$this->_offsetY = $pValue;
     	return $this;
     }
-
+    
     /**
      * Get Width
      *
@@ -311,7 +328,7 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
     public function getWidth() {
     	return $this->_width;
     }
-
+    
     /**
      * Set Width
      *
@@ -321,16 +338,16 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
     public function setWidth($pValue = 0) {
     	// Resize proportional?
     	if ($this->_resizeProportional && $pValue != 0) {
-    		$ratio = $this->_height / $this->_width;
+    		$ratio = $this->_height / $this->_width;    		
     		$this->_height = round($ratio * $pValue);
     	}
-
+    	
     	// Set width
     	$this->_width = $pValue;
-
+    	
     	return $this;
     }
-
+    
     /**
      * Get Height
      *
@@ -339,7 +356,7 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
     public function getHeight() {
     	return $this->_height;
     }
-
+    
     /**
      * Set Height
      *
@@ -349,16 +366,16 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
     public function setHeight($pValue = 0) {
     	// Resize proportional?
     	if ($this->_resizeProportional && $pValue != 0) {
-    		$ratio = $this->_width / $this->_height;
+    		$ratio = $this->_width / $this->_height;   		
     		$this->_width = round($ratio * $pValue);
     	}
-
+    	
     	// Set height
     	$this->_height = $pValue;
-
+    	
     	return $this;
     }
-
+    
     /**
      * Set width and height with proportional resize
 	 * Example:
@@ -386,7 +403,7 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
 		}
 		return $this;
 	}
-
+    
     /**
      * Get ResizeProportional
      *
@@ -395,7 +412,7 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
     public function getResizeProportional() {
     	return $this->_resizeProportional;
     }
-
+    
     /**
      * Set ResizeProportional
      *
@@ -406,7 +423,7 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
     	$this->_resizeProportional = $pValue;
     	return $this;
     }
-
+    
     /**
      * Get Rotation
      *
@@ -415,7 +432,7 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
     public function getRotation() {
     	return $this->_rotation;
     }
-
+    
     /**
      * Set Rotation
      *
@@ -426,7 +443,7 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
     	$this->_rotation = $pValue;
     	return $this;
     }
-
+    
     /**
      * Get Shadow
      *
@@ -435,7 +452,7 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
     public function getShadow() {
     	return $this->_shadow;
     }
-
+    
     /**
      * Set Shadow
      *
@@ -452,7 +469,7 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
 	 * Get hash code
 	 *
 	 * @return string	Hash code
-	 */
+	 */	
 	public function getHashCode() {
     	return md5(
     		  $this->_name
@@ -468,7 +485,38 @@ class PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
     		. __CLASS__
     	);
     }
-
+    
+    /**
+     * Hash index
+     *
+     * @var string
+     */
+    private $_hashIndex;
+    
+	/**
+	 * Get hash index
+	 * 
+	 * Note that this index may vary during script execution! Only reliable moment is
+	 * while doing a write of a workbook and when changes are not allowed.
+	 *
+	 * @return string	Hash index
+	 */
+	public function getHashIndex() {
+		return $this->_hashIndex;
+	}
+	
+	/**
+	 * Set hash index
+	 * 
+	 * Note that this index may vary during script execution! Only reliable moment is
+	 * while doing a write of a workbook and when changes are not allowed.
+	 *
+	 * @param string	$value	Hash index
+	 */
+	public function setHashIndex($value) {
+		$this->_hashIndex = $value;
+	}
+        
 	/**
 	 * Implement PHP __clone to create a deep clone, not just a shallow copy.
 	 */

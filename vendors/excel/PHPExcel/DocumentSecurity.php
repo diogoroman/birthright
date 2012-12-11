@@ -2,28 +2,40 @@
 /**
  * PHPExcel
  *
- * Copyright (c) 2006 - 2012 PHPExcel
+ * Copyright (c) 2006 - 2009 PHPExcel
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
- *
+ * 
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
  * @category   PHPExcel
  * @package    PHPExcel
- * @copyright  Copyright (c) 2006 - 2012 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright  Copyright (c) 2006 - 2009 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
- * @version    1.7.8, 2012-10-12
+ * @version    1.7.0, 2009-08-10
  */
+
+
+/** PHPExcel root directory */
+if (!defined('PHPEXCEL_ROOT')) {
+	/**
+	 * @ignore
+	 */
+	define('PHPEXCEL_ROOT', dirname(__FILE__) . '/../');
+}
+
+/** PHPExcel_Shared_PasswordHasher */
+require_once PHPEXCEL_ROOT . 'PHPExcel/Shared/PasswordHasher.php';
 
 
 /**
@@ -31,7 +43,7 @@
  *
  * @category   PHPExcel
  * @package    PHPExcel
- * @copyright  Copyright (c) 2006 - 2012 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright  Copyright (c) 2006 - 2009 PHPExcel (http://www.codeplex.com/PHPExcel)
  */
 class PHPExcel_DocumentSecurity
 {
@@ -41,35 +53,35 @@ class PHPExcel_DocumentSecurity
 	 * @var boolean
 	 */
 	private $_lockRevision;
-
+	
 	/**
 	 * LockStructure
 	 *
 	 * @var boolean
 	 */
 	private $_lockStructure;
-
+	
 	/**
 	 * LockWindows
 	 *
 	 * @var boolean
 	 */
 	private $_lockWindows;
-
+	
 	/**
 	 * RevisionsPassword
 	 *
 	 * @var string
 	 */
 	private $_revisionsPassword;
-
+	
 	/**
 	 * WorkbookPassword
 	 *
 	 * @var string
 	 */
 	private $_workbookPassword;
-
+	
     /**
      * Create a new PHPExcel_DocumentSecurity
      */
@@ -82,7 +94,7 @@ class PHPExcel_DocumentSecurity
     	$this->_revisionsPassword	= '';
     	$this->_workbookPassword	= '';
     }
-
+    
     /**
      * Is some sort of dcument security enabled?
      *
@@ -93,7 +105,7 @@ class PHPExcel_DocumentSecurity
 		    	$this->_lockStructure ||
 		    	$this->_lockWindows;
     }
-
+    
     /**
      * Get LockRevision
      *
@@ -102,7 +114,7 @@ class PHPExcel_DocumentSecurity
     function getLockRevision() {
     	return $this->_lockRevision;
     }
-
+    
     /**
      * Set LockRevision
      *
@@ -113,7 +125,7 @@ class PHPExcel_DocumentSecurity
     	$this->_lockRevision = $pValue;
     	return $this;
     }
-
+    
     /**
      * Get LockStructure
      *
@@ -122,7 +134,7 @@ class PHPExcel_DocumentSecurity
     function getLockStructure() {
     	return $this->_lockStructure;
     }
-
+    
     /**
      * Set LockStructure
      *
@@ -133,7 +145,7 @@ class PHPExcel_DocumentSecurity
 		$this->_lockStructure = $pValue;
 		return $this;
     }
-
+    
     /**
      * Get LockWindows
      *
@@ -142,7 +154,7 @@ class PHPExcel_DocumentSecurity
     function getLockWindows() {
     	return $this->_lockWindows;
     }
-
+    
     /**
      * Set LockWindows
      *
@@ -153,7 +165,7 @@ class PHPExcel_DocumentSecurity
     	$this->_lockWindows = $pValue;
     	return $this;
     }
-
+    
     /**
      * Get RevisionsPassword (hashed)
      *
@@ -162,7 +174,7 @@ class PHPExcel_DocumentSecurity
     function getRevisionsPassword() {
     	return $this->_revisionsPassword;
     }
-
+    
     /**
      * Set RevisionsPassword
      *
@@ -177,7 +189,7 @@ class PHPExcel_DocumentSecurity
     	$this->_revisionsPassword = $pValue;
     	return $this;
     }
-
+    
     /**
      * Get WorkbookPassword (hashed)
      *

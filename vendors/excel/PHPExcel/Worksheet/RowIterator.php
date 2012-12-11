@@ -2,7 +2,7 @@
 /**
  * PHPExcel
  *
- * Copyright (c) 2006 - 2012 PHPExcel
+ * Copyright (c) 2006 - 2009 PHPExcel
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -19,23 +19,41 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
  * @category   PHPExcel
- * @package	PHPExcel_Worksheet
- * @copyright  Copyright (c) 2006 - 2012 PHPExcel (http://www.codeplex.com/PHPExcel)
- * @license	http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
- * @version	1.7.8, 2012-10-12
+ * @package    PHPExcel_Worksheet
+ * @copyright  Copyright (c) 2006 - 2009 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
+ * @version    1.7.0, 2009-08-10
  */
+
+
+/** PHPExcel root directory */
+if (!defined('PHPEXCEL_ROOT')) {
+	/**
+	 * @ignore
+	 */
+	define('PHPEXCEL_ROOT', dirname(__FILE__) . '/../../');
+}
+
+/** PHPExcel */
+require_once PHPEXCEL_ROOT . 'PHPExcel.php';
+
+/** PHPExcel_Worksheet */
+require_once PHPEXCEL_ROOT . 'PHPExcel/Worksheet.php';
+
+/** PHPExcel_Worksheet_Row */
+require_once PHPEXCEL_ROOT . 'PHPExcel/Worksheet/Row.php';
 
 
 /**
  * PHPExcel_Worksheet_RowIterator
- *
+ * 
  * Used to iterate rows in a PHPExcel_Worksheet
  *
  * @category   PHPExcel
- * @package	PHPExcel_Worksheet
- * @copyright  Copyright (c) 2006 - 2012 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @package    PHPExcel_Worksheet
+ * @copyright  Copyright (c) 2006 - 2009 PHPExcel (http://www.codeplex.com/PHPExcel)
  */
-class PHPExcel_Worksheet_RowIterator implements Iterator
+class PHPExcel_Worksheet_RowIterator extends IteratorIterator
 {
 	/**
 	 * PHPExcel_Worksheet to iterate
@@ -43,106 +61,69 @@ class PHPExcel_Worksheet_RowIterator implements Iterator
 	 * @var PHPExcel_Worksheet
 	 */
 	private $_subject;
-
+	
 	/**
 	 * Current iterator position
 	 *
 	 * @var int
 	 */
-	private $_position = 1;
-
-	/**
-	 * Start position
-	 *
-	 * @var int
-	 */
-	private $_startRow = 1;
-
+	private $_position = 0;
 
 	/**
 	 * Create a new row iterator
 	 *
-	 * @param	PHPExcel_Worksheet	$subject	The worksheet to iterate over
-	 * @param	integer				$startRow	The row number at which to start iterating
+	 * @param PHPExcel_Worksheet 		$subject
 	 */
-	public function __construct(PHPExcel_Worksheet $subject = null, $startRow = 1) {
+	public function __construct(PHPExcel_Worksheet $subject = null) {
 		// Set subject
 		$this->_subject = $subject;
-		$this->resetStart($startRow);
 	}
-
+	
 	/**
 	 * Destructor
 	 */
 	public function __destruct() {
 		unset($this->_subject);
 	}
-
+	
 	/**
-	 * (Re)Set the start row and the current row pointer
-	 *
-	 * @param integer	$startRow	The row number at which to start iterating
+	 * Rewind iterator
 	 */
-	public function resetStart($startRow = 1) {
-		$this->_startRow = $startRow;
-		$this->seek($startRow);
-	}
+    public function rewind() {
+        $this->_position = 1;
+    }
 
-	/**
-	 * Set the row pointer to the selected row
-	 *
-	 * @param integer	$row	The row number to set the current pointer at
-	 */
-	public function seek($row = 1) {
-		$this->_position = $row;
-	}
+    /**
+     * Current PHPExcel_Worksheet_Row
+     *
+     * @return PHPExcel_Worksheet_Row
+     */
+    public function current() {
+    	return new PHPExcel_Worksheet_Row($this->_subject, $this->_position);
+    }
 
-	/**
-	 * Rewind the iterator to the starting row
-	 */
-	public function rewind() {
-		$this->_position = $this->_startRow;
-	}
+    /**
+     * Current key
+     *
+     * @return int
+     */
+    public function key() {
+        return $this->_position;
+    }
 
-	/**
-	 * Return the current row in this worksheet
-	 *
-	 * @return PHPExcel_Worksheet_Row
-	 */
-	public function current() {
-		return new PHPExcel_Worksheet_Row($this->_subject, $this->_position);
-	}
+    /**
+     * Next value
+     */
+    public function next() {
+        ++$this->_position;
+    }
 
-	/**
-	 * Return the current iterator key
-	 *
-	 * @return int
-	 */
-	public function key() {
-		return $this->_position;
-	}
-
-	/**
-	 * Set the iterator to its next value
-	 */
-	public function next() {
-		++$this->_position;
-	}
-
-	/**
-	 * Set the iterator to its previous value
-	 */
-	public function prev() {
-		if ($this->_position > 1)
-			--$this->_position;
-	}
-
-	/**
-	 * Indicate if more rows exist in the worksheet
-	 *
-	 * @return boolean
-	 */
-	public function valid() {
-		return $this->_position <= $this->_subject->getHighestRow();
-	}
+    /**
+     * More PHPExcel_Worksheet_Row instances available?
+     *
+     * @return boolean
+     */
+    public function valid() {
+        return $this->_position <= $this->_subject->getHighestRow();
+    }
 }

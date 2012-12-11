@@ -61,6 +61,9 @@ Configure::write('Language.default', 'pt-br');
 /* Definição de locale para formatar saída de Data, Hora, moedas e etc */
 setlocale(LC_ALL, 'pt_BR.utf-8', 'pt_BR', 'pt-br', 'pt_BR.iso-8859-1');
 
+/*APENAS PARA FUNCIONAR O EXPORT EXCEL*/
+ini_set('display_errors', false);
+
 /*
  * Include local bootstrap, only for settings specify enviroment (local machine of developer or production)
  */

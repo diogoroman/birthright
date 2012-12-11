@@ -84,7 +84,9 @@
 		</tr>
 	<?php endforeach; ?>
 	</table>
-	<?php echo $this->Html->link(__('Excel', true), array('controller' => 'sections','action' => 'toExcel', $section['0']['Section']['id']), array('class' => 'action-view')); ?>
+	
+	<?php echo $this->Html->link(__('Exportar para Excel', true), array('controller' => 'sections','action' => 'toExcel', $section['0']['Section']['id'])); ?>
+	
 <?php endif; ?>
 
 

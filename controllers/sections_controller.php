@@ -88,9 +88,13 @@ class SectionsController extends AppController {
 			$this->redirect(array('action' => 'index'));
 		}
 		$this->layout = 'blank';
+		/*
 		$this->loadModel('Patrimony');
 		$this->set('patrimonies', $this->Patrimony->find('all', array('conditions' => 
 			array('Patrimony.section_id' => $id))));
+		*/
+		$this->set('section', $this->Section->find('all', array('conditions' => array('Section.id' => $id),
+																	'recursive' => 2)));
 
 	}
 

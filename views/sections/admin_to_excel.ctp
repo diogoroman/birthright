@@ -37,5 +37,5 @@
 		</tr>
 	<?php endforeach; ?>
 	</table>
-	 <?php //$excel->generate($section['0']['Patrimony'], 'LISTA DE TI '.$section['0']['Section']['name']);?> 
+	 <?php $excel->generate($section['0']['Patrimony'], 'LISTA DE TI '.$section['0']['Section']['name']);?> 
 <?php endif; ?>

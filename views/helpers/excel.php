@@ -1,7 +1,7 @@
 <?php 
-App::import('Vendor','PHPExcel',array('file' => 'excel/PHPExcel.php'));
-App::import('Vendor','PHPExcelWriter',array('file' => 'excel/PHPExcel/Writer/Excel5.php'));
 
+App::import('Vendor','PHPExcel',array('file' => 'excel/PHPExcel.php'));
+App::import('Vendor','PHPExcelWriter',array('file' => 'excel/PHPExcel/Writer/Excel2007.php')); 
 class ExcelHelper extends AppHelper {
     
     var $xls;
@@ -61,12 +61,11 @@ class ExcelHelper extends AppHelper {
     }
             
     function _output($title) {
-        header("Content-type: application/vnd.ms-excel"); 
-        header('Content-Disposition: attachment;filename="'.$title.'.xls"');
+        header('Content-Type: application/vnd.openXMLformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="'.$title.'.xlsx"');
         header('Cache-Control: max-age=0');
-        $objWriter = new PHPExcel_Writer_Excel5($this->xls);
-        $objWriter->setTempDir(TMP);
+        $objWriter = new PHPExcel_Writer_Excel2007($this->xls);
         $objWriter->save('php://output');
     }
-}
+} 
 ?> 

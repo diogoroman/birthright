@@ -1,4 +1,5 @@
 <?php
+App::import('Vendor','xtcpdf');
 class SectionsController extends AppController {
 
 	public $helpers = array('excel');
@@ -140,5 +141,23 @@ class SectionsController extends AppController {
 		$this->Session->setFlash(__('Section was not deleted', true));
 		$this->redirect(array('action' => 'index'));
 	}
+
+	function admin_reportPatrimony() {
+		$xpdf = new Xtcpdf('L', PDF_UNIT, 'A4', true, 'UTF-8', false);
+		$xpdf->SetCreator('Birthright - Patrimonio ATI/SINFO');
+		$xpdf->SetAuthor('ATI/SINFO');
+		$xpdf->mainTitle =  '';
+		$xpdf->xfootertext = '';
+		//$xpdf->xheaderimage = Configure::read('Comitiva.certified_img');
+		$xpdf->xheadertext = '';
+		$xpdf->date = date('d-m-Y');
+
+		$this->layout = 'blank';
+		$this->set('xpdf', $xpdf);
+		$this->set('sections', $this->Section->find('all', array('recursive' => 2)));
+		//$this->response->type('application/pdf');
+
+	}
+
 }
 ?>

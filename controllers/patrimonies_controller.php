@@ -151,42 +151,7 @@ class PatrimoniesController extends AppController {
 		$this->Session->setFlash(__('Patrimony was not deleted', true));
 		$this->redirect(array('action' => 'index'));
 	}
-	/*
-    function admin_viewPdf($id = null)
-    {
- 		App::import('Vendor','xtcpdf');
-    	$this->set('pdf',new XTCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false));
-    	if (!$id) 
-    	{
-			$this->Session->setFlash('Sorry, there was no PDF selected.');
-			$this->redirect(array('action'=>'index'), null, true);
-		}
-		$this->layout = 'pdf'; //this will use the pdf.ctp layout
-		$this->render();
-    	
-    	
-        if (!$id)
-        {
-            $this->Session->setFlash('Sorry, there was no property ID submitted.');
-            $this->redirect(array('action'=>'index'), null, true);
-        }
-        Configure::write('debug',0); // Otherwise we cannot use this method while developing
-		
-        $id = intval($id);
-		
-        
-        $property = $this->__view($id); // here the data is pulled from the database and set for the view
-		
-        if (empty($property))
-        {
-            $this->Session->setFlash('Sorry, there is no property with the submitted ID.');
-            $this->redirect(array('action'=>'index'), null, true);
-        }
-		
-        //$this->layout = 'pdf'; //this will use the pdf.ctp layout
-        //$this->render();
-    }
-    */
+
     function admin_viewPdf($id = null) 
     {
 		$xpdf = new Xtcpdf('L', PDF_UNIT, 'A4', true, 'UTF-8', false);

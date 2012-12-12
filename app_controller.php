@@ -338,6 +338,13 @@ class AppController extends Controller
 					)
 				),
 			),
+			__('Relatórios', true) => array(
+				__('Patrimonios por Seção', true) => array(
+					'plugin' => false,
+					'controller' => 'sections',
+					'action' => 'reportPatrimony', 
+				)
+			),
 			__('Ajuda', true) => array(
 				'plugin' => false,
 				'controller' => 'patrimonies',

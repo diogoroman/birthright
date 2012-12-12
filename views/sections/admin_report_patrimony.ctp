@@ -3,12 +3,13 @@
 
 // set cell margins
 $xpdf->setCellMargins(1, 1, 1, 1);
-$xpdf->SetAutoPageBreak( true, 0);
-$xpdf->SetMargins(20,20,20);
-$xpdf->SetFont('Aller-Std-Rg','',20);
-$xpdf->SetTextColor(130,130,130);
+$xpdf->SetAutoPageBreak( true, 20);
+$xpdf->SetMargins(20,20,20,20);
+$xpdf->SetFont('Aller-Std-Rg','',12);
+$xpdf->SetTextColor(0,0,0);
 $xpdf->SetFillColor(224, 235, 255);
-//$xpdf->AddPage();
+$xpdf->SetHeaderData('', '', 'Grupamento de Infraestrutura e Apoio de São José dos Campos \n Assessoria de Tecnologia da Informação', '');
+$xpdf->AddPage();
 
 
 $fill = 0;
@@ -37,7 +38,7 @@ foreach($sections as $section)
 				$xpdf->MultiCell(100, 0, $patrimony['User']['name'], '','C',0, 0);
 			}
 			//$xpdf->MultiCell(0, 0, '', 'R','C',0, 1);
-			$xpdf->Ln();
+			$xpdf->Ln(12);
 		}
 	}
 
@@ -48,5 +49,5 @@ foreach($sections as $section)
 //$xpdf->MultiCell(130,10, $patrimony['Patrimony']['id'], null, 'C', null, null, 85,125);
 //$xpdf->SetFont('Aller-Std-Rg','',16);
 //$xpdf->MultiCell(130,10, 'Participou do PHPMS Conf 2012 realizado no Senac/MS nos dias 17 e 18 de Agosto de 2012, organizado pelo PHPMS e com carga horária total de 9,5 horas', null, 'C', null, null, 85,135);
-$xpdf->Output('certificado.pdf', 'I');
+$xpdf->Output('ATI_SECAO.pdf', 'I');
 ?>

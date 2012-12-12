@@ -1,49 +1,59 @@
 <?php
 App::import('Vendor','tcpdf/tcpdf');
 
-class XTCPDF  extends TCPDF
+/**
+ * Classe que extende TCPDF e personaliza a exibição do cabeçalho e rodapé
+ */
+class Xtcpdf extends TCPDF
 {
-
-    var $xheadertext  = 'PDF created using CakePHP and TCPDF';
-    var $xheadercolor = array(0,0,200);
-    var $xfootertext  = 'Copyright. All rights reserved.';
-    var $xfooterfont  = PDF_FONT_NAME_MAIN ;
-    var $xfooterfontsize = 8 ;
-
+    public $xheadertext;
+    public $xheadercolor;
+    public $xfootertext;
+    public $xheaderimage;
+    public $mainTitle;
+    public $date;
 
     /**
-    * Overwrites the default header
-    * set the text in the view using
-    *    $fpdf->xheadertext = 'YOUR ORGANIZATION';
-    * set the fill color in the view using
-    *    $fpdf->xheadercolor = array(0,0,100); (r, g, b)
-    * set the font in the view using
-    *    $fpdf->setHeaderFont(array('YourFont','',fontsize));
-    */
-    function Header()
+     * (non-PHPdoc)
+     * @see TCPDF::Header()
+     */
+    public function Header()
     {
+        if(!empty($this->xheaderimage))
+        {
+            // $this->setImageScale(PDF_IMAGE_SCALE_RATIO);
+            // $this->Image($this->xheaderimage, 0,0,1169,826,null,null,'T',true,'300', 'C');
+        }
 
-        list($r, $b, $g) = $this->xheadercolor;
-        $this->setY(10); // shouldn't be needed due to page margin, but helas, otherwise it's at the page top
-        $this->SetFillColor($r, $b, $g);
-        $this->SetTextColor(0 , 0, 0);
-        $this->Cell(0,20, '', 0,1,'C', 1);
-        $this->Text(15,26,$this->xheadertext );
+        $this->SetFont('', 'B', 16);
+        $this->Ln(16);
+        $this->Cell(0, 0, $this->xheadertext, 0, false, 'C', 0, '', 0, false, 'M', 'M');
     }
 
     /**
-    * Overwrites the default footer
-    * set the text in the view using
-    * $fpdf->xfootertext = 'Copyright Â© %d YOUR ORGANIZATION. All rights reserved.';
-    */
-    function Footer()
+     *
+     */
+    public function Footer()
     {
-        $year = date('Y');
-        $footertext = sprintf($this->xfootertext, $year);
-        $this->SetY(-20);
-        $this->SetTextColor(0, 0, 0);
-        $this->SetFont($this->xfooterfont,'',$this->xfooterfontsize);
-        $this->Cell(0,8, $footertext,'T',1,'C');
+        $this->setY(275);
+        $this->SetFont('', 'B', 7);
+        $this->Line(28, $this->getY(), 178, $this->GetY());
+        $this->shiftY(2);
+        $this->MultiCell(0, 30, $this->xfootertext, false, 'C', 0, null);
+        $this->shiftY(5);
+        $this->SetFont('', 'B', 9);
+        $this->Cell(0, 15, $this->PageNo(), 0, false, 'R', 0, '', 0, false, 'M', 'M');
+        $this->shiftY(-15);
     }
+
+    public function shiftX($offset = 0)
+    {
+        $this->x += $offset;
+    }
+
+    public function shiftY($offset = 0)
+    {
+        $this->y+=$offset;
+    }
+
 }
-?> 

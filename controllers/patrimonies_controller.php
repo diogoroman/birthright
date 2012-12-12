@@ -1,4 +1,5 @@
 <?php
+App::import('Vendor','xtcpdf');
 class PatrimoniesController extends AppController {
 
 	var $name = 'Patrimonies';
@@ -188,12 +189,19 @@ class PatrimoniesController extends AppController {
     */
     function admin_viewPdf($id = null) 
     {
-		if (!$id) {
-		$this->Session->setFlash('Sorry, there was no PDF selected.');
-		$this->redirect(array('action'=>'index'), null, true);
-		}
-		$this->layout = 'pdf'; //this will use the pdf.ctp layout
-		$this->render();
+		$xpdf = new Xtcpdf('L', PDF_UNIT, 'A4', true, 'UTF-8', false);
+		$xpdf->SetCreator('Birthright - Patrimonio ATI/SINFO');
+		$xpdf->SetAuthor('PHPMS');
+		$xpdf->mainTitle =  '';
+		$xpdf->xfootertext = '';
+		//$xpdf->xheaderimage = Configure::read('Comitiva.certified_img');
+		$xpdf->xheadertext = '';
+		$xpdf->date = date('d-m-Y');
+
+		$this->layout = 'blank';
+		$this->set('xpdf', $xpdf);
+		$this->set('patrimony', $this->Patrimony->read(null, $id));
+		//$this->response->type('application/pdf');
 	}
 	function admin_ajuda()
 	{

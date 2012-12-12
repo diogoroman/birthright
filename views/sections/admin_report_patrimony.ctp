@@ -35,10 +35,13 @@ foreach($sections as $section)
 			$xpdf->MultiCell(60, 0, $patrimony['room'], '', 'C', 0, 0);
 			if(!empty($patrimony['User']))
 			{
-				$xpdf->MultiCell(100, 0, $patrimony['User']['name'], '','C',0, 0);
+				$xpdf->MultiCell(100, 0, $patrimony['User']['name'], '','C',0, 1);
 			}
-			//$xpdf->MultiCell(0, 0, '', 'R','C',0, 1);
-			$xpdf->Ln(12);
+			else
+			{
+				$xpdf->MultiCell(100, 0, '', '','C',0, 1);
+			}
+			//$xpdf->Ln(20);
 		}
 	}
 

@@ -15,7 +15,7 @@ $xpdf->AddPage();
 $fill = 0;
 foreach($patrimonies as $patrimony)
 {
-	if(!empty($patrimony['Patrimony']['section_id']) and !empty($patrimony['Patrimony']['conference']))
+	if(!empty($patrimony['Patrimony']['section_id']) && !empty($patrimony['Patrimony']['conference']))
 	{
 		$xpdf->MultiCell(260,0, $patrimony['Equipment']['description'], 'T','L', 0, 1);
 		$xpdf->MultiCell(20, 0, 'CI', '', 'C', 0, 0);

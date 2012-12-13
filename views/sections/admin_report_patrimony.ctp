@@ -5,7 +5,7 @@
 $xpdf->setCellMargins(1, 1, 1, 1);
 $xpdf->SetAutoPageBreak( true, 20);
 $xpdf->SetMargins(20,20,20,20);
-$xpdf->SetFont('Aller-Std-Rg','',12);
+$xpdf->SetFont('Aller-Std-Rg','',10);
 $xpdf->SetTextColor(0,0,0);
 $xpdf->SetFillColor(224, 235, 255);
 $xpdf->SetHeaderData('', '', 'Grupamento de Infraestrutura e Apoio de São José dos Campos \n Assessoria de Tecnologia da Informação', '');

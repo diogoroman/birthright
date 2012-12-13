@@ -343,7 +343,12 @@ class AppController extends Controller
 					'plugin' => false,
 					'controller' => 'sections',
 					'action' => 'reportPatrimony', 
-				)
+				),
+				__('Patrimonios Não Conferidos', true) => array(
+					'plugin' => false,
+					'controller' => 'patrimonies',
+					'action' => 'reportNotCheck', 
+				),
 			),
 			__('Ajuda', true) => array(
 				'plugin' => false,

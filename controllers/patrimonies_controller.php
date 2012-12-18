@@ -190,6 +190,24 @@ class PatrimoniesController extends AppController {
 		//$this->response->type('application/pdf');
 
 	}
+	function admin_reportWaitDischarge()
+	{
+
+		$xpdf = new Xtcpdf('L', PDF_UNIT, 'A4', true, 'UTF-8', false);
+		$xpdf->SetCreator('Birthright - Patrimonio ATI/SINFO');
+		$xpdf->SetAuthor('ATI/SINFO');
+		$xpdf->mainTitle =  '';
+		$xpdf->xfootertext = '';
+		//$xpdf->xheaderimage = Configure::read('Comitiva.certified_img');
+		$xpdf->xheadertext = '';
+		$xpdf->date = date('d-m-Y');
+
+		$this->layout = 'blank';
+		$this->set('xpdf', $xpdf);
+		$this->set('patrimonies', $this->Patrimony->find('all', array('recursive' => 0)));
+		//$this->response->type('application/pdf');
+
+	}
 	
 }
 ?>

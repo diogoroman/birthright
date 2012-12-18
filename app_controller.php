@@ -349,6 +349,11 @@ class AppController extends Controller
 					'controller' => 'patrimonies',
 					'action' => 'reportNotCheck', 
 				),
+				__('Patrimonios Aguardando Descarga', true) => array(
+					'plugin' => false,
+					'controller' => 'patrimonies',
+					'action' => 'reportWaitDischarge', 
+				)
 			),
 			__('Ajuda', true) => array(
 				'plugin' => false,

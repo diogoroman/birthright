@@ -13,6 +13,16 @@ class Patrimony extends AppModel {
 			'change' => 'full', // options are 'list' or 'full'
 			'description_ids' => TRUE // options are TRUE or FALSE
 	));
+
+	public $validate = array(
+		'bmpNumber' => array(
+			'unique' => array(
+				'rule' => 'isUnique',
+				'message' => 'O número BMP deve ser único.',
+				'allowEmpty' => true
+		))
+	);
+
 	var $belongsTo = array(
 		'Equipment' => array(
 			'className' => 'Equipment',

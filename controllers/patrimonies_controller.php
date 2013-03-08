@@ -63,10 +63,10 @@ class PatrimoniesController extends AppController {
 					$idpat = array('type' => 'Código Interno', 'value' => $this->Patrimony->id);
 				}
 				$this->__setFlash('O Patrimonio '.$idpat['value'].'('.$idpat['type'].') foi Gravado com Sucesso','system-success');
-				print_r($this->data);
+				//print_r($this->data);
 				$this->redirect(array('controller' => 'Equipment', 'action' => 'view', $this->data['Patrimony']['equipment_id']));
 			} else {
-				$this->Session->setFlash(__('O Patrimonio não pode ser Gravado, verifique os campos preenchidos e tente novamente', true));
+				$this->setFlash(__('O Patrimonio não pode ser Gravado, verifique os campos preenchidos e tente novamente', 'system-error'));
 			}
 		}
 		if(!empty($equipmentId))

@@ -11,7 +11,7 @@ class Equipment extends AppModel {
 			'change' => 'full', // options are 'list' or 'full'
 			'description_ids' => TRUE // options are TRUE or FALSE
 	));
-	
+
 	var $belongsTo = array(
 		'Kind' => array(
 			'className' => 'Kind',

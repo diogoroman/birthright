@@ -353,6 +353,11 @@ class AppController extends Controller
 					'plugin' => false,
 					'controller' => 'patrimonies',
 					'action' => 'reportWaitDischarge', 
+				),
+				__('Patrimonios Sob Cautela', true) => array(
+					'plugin' => false,
+					'controller' => 'patrimonies',
+					'action' => 'reportEmCautela',
 				)
 			),
 			__('Ajuda', true) => array(

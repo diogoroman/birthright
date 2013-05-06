@@ -5,8 +5,8 @@ class DATABASE_CONFIG {
 		'driver' => 'mysql',
 		'persistent' => false,
 		'host' => 'localhost',
-		'login' => 'diogo',
-		'password' => '190201',
+		'login' => 'patrimonio',
+		'password' => 'BD$patrimonio#gia',
 		'database' => 'birthright',
 	);
 	

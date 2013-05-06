@@ -6,7 +6,7 @@ class DATABASE_CONFIG {
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'patrimonio',
-		'password' => 'BD$patrimonio#gia',
+		'password' => 'BD$birthright#gia',
 		'database' => 'birthright',
 	);
 	

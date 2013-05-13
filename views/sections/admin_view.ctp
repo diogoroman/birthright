@@ -37,7 +37,7 @@
 		<th class="ui-widget-header"><?php __('Código Interno'); ?></th>
 		<th class="ui-widget-header"><?php __('Patrimonio'); ?></th>
 		<th class="ui-widget-header"><?php __('BMP'); ?></th>
-		<th class="ui-widget-header"><?php __('Seção'); ?></th>
+		<th class="ui-widget-header"><?php __('Descrição'); ?></th>
 		<th class="ui-widget-header"><?php __('Sala'); ?></th>
 		<th class="ui-widget-header"><?php __('Usuário'); ?></th>
 		<th class="ui-widget-header"><?php __('Conferencia'); ?></th>
@@ -55,11 +55,7 @@
 			<td><?php echo $eq['id'];?></td>
 			<td><?php echo $eq['orderNum'];?></td>
 			<td><?php echo $eq['bmpNumber'];?></td>
-			<?php if(!empty($eq['Section']['name'])):?>
-			<td><?php echo $eq['Section']['name'];?></td>
-			<?php else:?>
-			<td><?php echo $eq['section_id'];?></td>
-			<?php endif; ?>
+			<td><?php echo $eq['Equipment']['description'];?></td>
 			<td><?php echo $eq['room'];?></td>
 			<?php if(!empty($eq['User']['name'])):?>
 			<td><?php echo $eq['User']['name'];?></td>

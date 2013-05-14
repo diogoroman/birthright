@@ -1,11 +1,8 @@
 <div class="counts index">
-	<h2><?php __('Counts');?></h2>
+	<h2><?php __('Conta');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th class="ui-widget-header"><?php echo $this->Paginator->sort('id');?></th>
-			<th class="ui-widget-header"><?php echo $this->Paginator->sort('created');?></th>
-			<th class="ui-widget-header"><?php echo $this->Paginator->sort('modified');?></th>
-			<th class="ui-widget-header"><?php echo $this->Paginator->sort('name');?></th>
+			<th class="ui-widget-header"><?php echo $this->Paginator->sort('Nome');?></th>
 			<th class="ui-widget-header"><?php echo $this->Paginator->sort('cod');?></th>
 			<th class="ui-widget-header"><?php __('Ações');?></th>
 	</tr>
@@ -18,9 +15,6 @@
 		}
 	?>
 	<tr<?php echo $class;?>>
-		<td><?php echo $count['Count']['id']; ?>&nbsp;</td>
-		<td><?php echo $count['Count']['created']; ?>&nbsp;</td>
-		<td><?php echo $count['Count']['modified']; ?>&nbsp;</td>
 		<td><?php echo $count['Count']['name']; ?>&nbsp;</td>
 		<td><?php echo $count['Count']['cod']; ?>&nbsp;</td>
 		<td class="actions">

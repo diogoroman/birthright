@@ -76,7 +76,8 @@ class CountsController extends AppController {
 			$this->Session->setFlash(__('Invalid count', true));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->set('count', $this->Count->read(null, $id));
+		$this->set('count', $this->Count->find('all', array('conditions' => array('Count.id' => $id),
+															'recursive' => 2)));
 	}
 
 	function admin_add() {

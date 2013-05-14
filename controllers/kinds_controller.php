@@ -76,7 +76,8 @@ class KindsController extends AppController {
 			$this->Session->setFlash(__('Invalid kind', true));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->set('kind', $this->Kind->read(null, $id));
+		$this->set('kind', $this->Kind->find('all', array('conditions' => array('Kind.id' => $id),
+															'recursive' => 2)));
 	}
 
 	function admin_add() {

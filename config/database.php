@@ -8,6 +8,7 @@ class DATABASE_CONFIG {
 		'login' => 'patrimonio',
 		'password' => 'BD$birthright#gia',
 		'database' => 'birthright',
+		'encoding' => 'utf8',
 	);
 	
 		var $test = array(

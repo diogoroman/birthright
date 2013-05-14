@@ -11,6 +11,7 @@
 	<?php
 	$i = 0;
 	foreach ($kinds as $kind):
+		if (!empty($kind['Equipment'])):
 		$class = null;
 		if ($i++ % 2 == 0) {
 			$class = ' class="altrow"';
@@ -27,6 +28,7 @@
 			<?php echo $this->Html->link(__('Excluir', true), array('action' => 'delete', $kind['Kind']['id']),array('class' => 'action-delete'), null, sprintf(__('Are you sure you want to delete # %s?', true), $kind['Kind']['id'])); ?>
 		</td>
 	</tr>
+	<?php endif; ?>
 <?php endforeach; ?>
 	</table>
 	<p>

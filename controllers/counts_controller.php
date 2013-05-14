@@ -2,6 +2,7 @@
 class CountsController extends AppController {
 
 	var $name = 'Counts';
+	var $uses = array('Count', 'Equipment');
 
 	public $components = array(
 		'RSearch.PaginationFilter' => array(
@@ -67,7 +68,7 @@ class CountsController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
 	function admin_index() {
-		$this->Count->recursive = 0;
+		$this->Count->recursive = 1;
 		$this->set('counts', $this->paginate());
 	}
 

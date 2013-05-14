@@ -1,5 +1,6 @@
 <div class="counts index">
 	<h2><?php __('Conta');?></h2>
+
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th class="ui-widget-header"><?php echo $this->Paginator->sort('Nome');?></th>
@@ -9,6 +10,7 @@
 	<?php
 	$i = 0;
 	foreach ($counts as $count):
+		if (!empty($count['Equipment'])):
 		$class = null;
 		if ($i++ % 2 == 0) {
 			$class = ' class="altrow"';
@@ -23,6 +25,7 @@
 			<?php echo $this->Html->link(__('Excluir', true), array('action' => 'delete', $count['Count']['id']), array('class' => 'action-delete'), null, sprintf(__('Are you sure you want to delete # %s?', true), $count['Count']['id'])); ?>
 		</td>
 	</tr>
+	<?php endif; ?>
 <?php endforeach; ?>
 	</table>
 	<p>

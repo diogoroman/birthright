@@ -67,7 +67,7 @@ class KindsController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
 	function admin_index() {
-		$this->Kind->recursive = 0;
+		$this->Kind->recursive = 1;
 		$this->set('kinds', $this->paginate());
 	}
 

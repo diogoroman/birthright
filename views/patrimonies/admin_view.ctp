@@ -54,7 +54,11 @@
 			<?php echo $patrimony['Patrimony']['observation']; ?>
 			&nbsp;
 		</dd>
-		
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Preço Unitário'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $patrimony['Patrimony']['priceUnit']; ?>
+			&nbsp;
+		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Usuário'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($patrimony['User']['name'], array('controller' => 'users', 'action' => 'view', $patrimony['User']['id'])); ?>

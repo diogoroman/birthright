@@ -28,6 +28,7 @@
 															'default' => $defaultValues['DefaultValue']['patrimony_status_id']));
 		echo $this->Form->input('discrepancy',array('label' => __('Discrepancia',true)));
 		echo $this->Form->input('observation',array('label' => __('Observações',true)));
+		echo $this->Form->input('priceUnit',array('label' => __('Preço Unitário',true)));
 		echo $this->Form->input('user_id',array('label' => __('Usuário', true),
 												  'empty' => 'Selecione o responsável'));
 		echo $this->Form->input('conference',array('label' => __('Conferencia', true),

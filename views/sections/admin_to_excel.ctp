@@ -10,6 +10,7 @@
 		<th class="ui-widget-header"><?php __('Patrimonio'); ?></th>
 		<th class="ui-widget-header"><?php __('BMP'); ?></th>
 		<th class="ui-widget-header"><?php __('Descrição'); ?></th>
+		<th class="ui-widget-header"><?php __('Valor Unitário'); ?></th>
 		<th class="ui-widget-header"><?php __('Sala'); ?></th>
 		<th class="ui-widget-header"><?php __('Usuário'); ?></th>
 		<th class="ui-widget-header"><?php __('Conferencia'); ?></th>
@@ -27,6 +28,7 @@
 			<td><?php echo $eq['orderNum'];?></td>
 			<td><?php echo $eq['bmpNumber'];?></td>
 			<td><?php echo $eq['Equipment']['description'];?></td>
+			<td><?php echo $eq['priceUnit'];?></td>
 			<td><?php echo $eq['room'];?></td>
 			<?php if(!empty($eq['User']['name'])):?>
 			<td><?php echo $eq['User']['name'];?></td>

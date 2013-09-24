@@ -36,6 +36,7 @@
 	<tr>
 		<th class="ui-widget-header"><?php __('Código Interno'); ?></th>
 		<th class="ui-widget-header"><?php __('Patrimonio'); ?></th>
+		<th class="ui-widget-header"><?php __('BMP'); ?></th>
 		<th class="ui-widget-header"><?php __('Descrição'); ?></th>
 		<th class="ui-widget-header"><?php __('Seção'); ?></th>
 		<th class="ui-widget-header"><?php __('Sala'); ?></th>
@@ -53,6 +54,7 @@
 		<tr<?php echo $class;?>>
 			<td><?php echo $eq['Patrimony']['id'];?></td>
 			<td><?php echo $eq['Patrimony']['orderNum'];?></td>
+			<td><?php echo $eq['Patrimony']['bmpNumber'];?></td>
 			<td><?php echo $eq['Equipment']['description'];?></td>
 			<?php if(!empty($eq['Section']['name'])):?>
 			<td><?php echo $eq['Section']['name'];?></td>

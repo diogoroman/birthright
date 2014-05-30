@@ -36,7 +36,7 @@ if (!defined('DS')) {
  *
  */
 if (!defined('ROOT')) {
-	define('ROOT', DS . 'home' . DS . 'diogo' . DS . 'Develop' . DS . 'Cake13' . DS . 'cakephp');
+	define('ROOT', dirname(dirname(dirname(__FILE__))));
 }
 
 /**
@@ -44,7 +44,7 @@ if (!defined('ROOT')) {
  *
  */
 if (!defined('APP_DIR')) {
-	define('APP_DIR', 'birthright');
+	define('APP_DIR', basename(dirname(dirname(__FILE__))));
 }
 
 /**
@@ -68,14 +68,13 @@ if (!defined('APP_DIR')) {
  * Change at your own risk.
  *
  */
-/*
 if (!defined('WEBROOT_DIR')) {
 	define('WEBROOT_DIR', basename(dirname(__FILE__)));
 }
 if (!defined('WWW_ROOT')) {
 	define('WWW_ROOT', dirname(__FILE__) . DS);
 }
- 
+
 // for built-in server
 if (php_sapi_name() === 'cli-server') {
 	if ($_SERVER['REQUEST_URI'] !== '/' && file_exists(WWW_ROOT . $_SERVER['PHP_SELF'])) {
@@ -107,4 +106,3 @@ $Dispatcher->dispatch(
 	new CakeRequest(),
 	new CakeResponse()
 );
- */

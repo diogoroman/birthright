@@ -67,8 +67,8 @@ ini_set('display_errors', false);
 /*
  * Include local bootstrap, only for settings specify enviroment (local machine of developer or production)
  */
-if(file_exists(APP . 'Config' . 'bootstrap.local.php'))
+if(file_exists(APP . 'Configs' . 'bootstrap.local.php'))
 {
-	include(APP . 'Config' . 'bootstrap.local.php');
+	include(APP . 'Configs' . 'bootstrap.local.php');
 }
 

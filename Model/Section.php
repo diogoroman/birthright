@@ -4,7 +4,7 @@ class Section extends AppModel {
 	var $displayField = 'name';
 	var $order = "Section.name";
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
-
+        /*
 	public $actsAs = array(
 		'Locale.Locale',
 		'SuperFind.SuperFind',
@@ -14,7 +14,7 @@ class Section extends AppModel {
 			'change' => 'full', // options are 'list' or 'full'
 			'description_ids' => TRUE // options are TRUE or FALSE
 	));
-
+        */
 	var $hasOne = array(
 		'DefaultValue' => array(
 			'className' => 'DefaultValue',

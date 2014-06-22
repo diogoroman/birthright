@@ -1,9 +1,14 @@
 <?php
+
+App::uses('AppController', 'Controller');
+
 class EquipmentController extends AppController {
 	var $name = 'Equipment';
-
+        public $components = array('Paginator');
+        public $paginate = array();
+        
 	var $helpers = array('Locale.Locale');
-	
+	/*
 	public $components = array(
 		'RSearch.PaginationFilter' => array(
 			'autoFilter' => true,
@@ -12,15 +17,15 @@ class EquipmentController extends AppController {
 									 'Equipment.fcg' => '=')
 		)
 	);
-	
-	
-	function admin_index() {
+	*/
+        
+	function index() {
 		if(!empty($this->params['url']['filter']) && $this->params['url']['filter'] == 'include')
 		{
 			$this->Equipment->recursive = 0;
 			$this->paginate['order'] = array('Equipment.created DESC');
 			$this->set('equipment', $this->paginate('Equipment',array(
-									 'Equipment.includeRegister =' => '0000-00-00 00:00:00')));
+						'Equipment.includeRegister =' => '0000-00-00 00:00:00')));
 		}
 		else
 		{
@@ -29,16 +34,15 @@ class EquipmentController extends AppController {
 			$this->set('equipment', $this->paginate());
 		}
 	}
-
-	function admin_view($id = null) {
+        function view($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid equipment', true));
-			$this->redirect(array('action' => 'index'));
+			return $this->redirect(array('action' => 'index'));
 		}
 		//nao esta retornando todas as instacia de patrimony
 		//$this->set('equipment', $this->Equipment->read(null, $id));
 		$this->set('equipment', $this->Equipment->find('all', array('conditions' => array('Equipment.id' => $id),
-																	'recursive' => 2)));
+                                                                                                  'recursive' => 2)));
 		
 		/*$this->set('equipment', $this->Equipment->read(null, $id));
 		 * array('conditions' => array('Article.id' => 1))
@@ -47,15 +51,16 @@ class EquipmentController extends AppController {
 		 * section_related
 		 */
 	}
-
-	function admin_add() {
+        function add() {
 		if (!empty($this->data)) {
 			$this->Equipment->create();
 			if ($this->Equipment->save($this->data)) {
-				$this->__setFlash(__('O material foi gravado com sucesso', 'system-success'));
+				$this->__setFlash('O material foi gravado com sucesso', 'system-success');
 				$this->redirect(array('action' => 'view', $this->Equipment->id));
+                                
+                                return $this->Equipment->id;
 			} else {
-				$this->setFlash(__('O material não pode ser gravado. Por favor, tente novamente.', 'system-error'));
+				return $this->setFlash('O material não pode ser gravado. Por favor, tente novamente.', 'system-error');
 			}
 		}
 		$kinds = $this->Equipment->Kind->find('list');
@@ -67,18 +72,18 @@ class EquipmentController extends AppController {
 		//busca os valores padrões
 		$this->set('defaultValues', $this->Equipment->Kind->DefaultValue->read(null, '1'));
 	}
-
-	function admin_edit($id = null) {
+        function edit($id = null) {
+                print_r($this->request->params);
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid equipment', true));
-			$this->redirect(array('action' => 'index'));
+			return $this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
 			if ($this->Equipment->save($this->data)) {
-				$this->__setFlash(__('O Material foi modificado com sucesso', 'system-success'));
-				$this->redirect(array('action' => 'view', $this->Equipment->id));
+				$this->__setFlash('O Material foi modificado com sucesso', 'system-success');
+				return $this->redirect(array('action' => 'view', $this->Equipment->id));
 			} else {
-				$this->Session->setFlash(__('O material não pode ser modificado. Por favor, tente novamente.', true));
+				$this->Session->setFlash('O material não pode ser modificado. Por favor, tente novamente.');
 			}
 		}
 		if (empty($this->data)) {
@@ -95,18 +100,17 @@ class EquipmentController extends AppController {
 		$this->set('defaultValues', $this->Equipment->Kind->DefaultValue->read(null, '1'));
 		
 	}
-
-	function admin_delete($id = null) {
+        function delete($id = null) {
 		if (!$id) {
-			$this->__setFlash(__('Equipamento não encontrado, erro interno', 'system-error'));
-			$this->redirect(array('action'=>'index'));
+			$this->__setFlash('Equipamento não encontrado, erro interno', 'system-error');
+			return $this->redirect(array('action'=>'index'));
 		}
 		if ($this->Equipment->delete($id)) {
-			$this->__setFlash(__('Equipamento Excluido com sucesso', 'system-success'));
-			$this->redirect(array('action'=>'index'));
+			$this->__setFlash('Equipamento Excluido com sucesso', 'system-success');
+			return $this->redirect(array('action'=>'index'));
 		}
-		$this->__setFlash(__('O Equipamento não foi Excluido', 'system-warning'));
-		$this->redirect(array('action' => 'index'));
+		$this->__setFlash('O Equipamento não foi Excluido', 'system-warning');
+		return $this->redirect(array('action' => 'index'));
 	}
 	/*
 	function admin_acert_value($id = null)
@@ -118,11 +122,11 @@ class EquipmentController extends AppController {
 			foreach ($allEquipment as $equipmentId)
 			{
 				$quantity = $this->Equipment->Patrimony->find('count',array(
-															  'conditions' => array('Patrimony.equipment_id' => $equipmentId),
-															  'recursive' => '-1'));
+									'conditions' => array('Patrimony.equipment_id' => $equipmentId),
+									'recursive' => '-1'));
 				
 				$total = $this->Equipment->Patrimony->find('all', array('fields' => array('total'),
-																		'conditions' => array('Patrimony.equipment_id' => $equipmentId)));
+										'conditions' => array('Patrimony.equipment_id' => $equipmentId)));
 				$this->Equipment->read(null,$equipmentId);
 				$this->Equipment->set(array(
 					'quantity' => $quantity,

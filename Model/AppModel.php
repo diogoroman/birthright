@@ -21,6 +21,7 @@
  * @since         Advocacia(tm) v 0.1
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
+App::uses('Model', 'Model');
 class AppModel extends Model
 {
 	public $actsAs = array('Containable');

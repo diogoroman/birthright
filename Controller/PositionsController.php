@@ -2,6 +2,8 @@
 class PositionsController extends AppController {
 
 	var $name = 'Positions';
+        public $components = array('Paginator');
+        public $paginate = array();
 
 	function index() {
 		$this->Position->recursive = 0;

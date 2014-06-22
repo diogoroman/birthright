@@ -3,7 +3,7 @@ class CountsController extends AppController {
 
 	var $name = 'Counts';
 	var $uses = array('Count', 'Equipment');
-
+        /*
 	public $components = array(
 		'RSearch.PaginationFilter' => array(
 			'autoFilter' => true,
@@ -11,7 +11,7 @@ class CountsController extends AppController {
 			'queryFields' => array ('Count.name' => 'like')
 		)
 	);
-	
+	*/
 	function index() {
 		$this->Count->recursive = 0;
 		$this->set('counts', $this->paginate());

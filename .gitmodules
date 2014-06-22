@@ -1,0 +1,12 @@
+[submodule "Plugin/debug_kit"]
+	path = Plugin/debug_kit
+	url = https://github.com/cakephp/debug_kit.git
+[submodule "Plugin/localized"]
+	path = Plugin/localized
+	url = https://github.com/cakephp/localized.git
+[submodule "Plugin/locale"]
+	path = Plugin/locale
+	url = https://github.com/radig/locale.git
+[submodule "Plugin/search"]
+	path = Plugin/search
+	url = git@github.com:CakeDC/search.git

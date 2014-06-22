@@ -22,20 +22,37 @@
 class LogsController extends AppController {
 
 	public $name = 'Logs';
-
+        /*
 	public $components = array(
 		'RSearch.PaginationFilter' => array(
 			'autoFilter' => true,
 			'comparassion' => 'or',
 			'queryFields' => array ( 'Log.title' => 'like', 'Log.description' => 'like', 'Log.created' => '=')
 	));
-	
+	*/
+        public function index()
+	{
+		$this->Log->recursive = 0;
+		$this->set('logs', $this->paginate());
+	}
+        
 	public function admin_index()
 	{
 		$this->Log->recursive = 0;
 		$this->set('logs', $this->paginate());
 	}
 
+        public function view($id = null)
+	{
+		if (!$id)
+		{
+			$this->Session->setFlash(sprintf(__('%s inválido.', true), 'Log'));
+			$this->redirect(array('action' => 'index'));
+		}
+		
+		$this->set('log', $this->Log->read(null, $id));
+	}
+        
 	public function admin_view($id = null)
 	{
 		if (!$id)

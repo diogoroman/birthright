@@ -34,6 +34,7 @@ class Group extends AppModel
 	 * Behaviors
 	 * @var string actsAs
 	 */
+        /*
 	public $actsAs = array(
 		'Logable' => array(
 			'userModel' => 'User',
@@ -41,7 +42,7 @@ class Group extends AppModel
 			'change' => 'full', // options are 'list' or 'full'
 			'description_ids' => TRUE // options are TRUE or FALSE
 	));
-	
+	*/
 	/**
 	 * Associações do tipo HABTM 
 	 * @var array $hasAndBelongsToMany

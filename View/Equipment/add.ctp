@@ -1,36 +1,34 @@
+<?php 
+	echo $this->Html->script('datepicker', false);
+?>
 <div class="equipment form">
 <?php echo $this->Form->create('Equipment');?>
 	<fieldset>
- 		<legend><?php __('Add Equipment'); ?></legend>
+ 		<legend><?php echo __('Inclusão de Material'); ?></legend>
 	<?php
-		echo $this->Form->input('description');
-		echo $this->Form->input('cod');
-		echo $this->Form->input('kind_id');
-		echo $this->Form->input('count_id');
-		echo $this->Form->input('measure');
-		echo $this->Form->input('alias');
-		echo $this->Form->input('organization_id');
-		echo $this->Form->input('section_id');
-		echo $this->Form->input('room');
-		echo $this->Form->input('user_id');
+		echo $this->Form->input('fcg',array('label' => __('FCG', true)));
+		echo $this->Form->input('description',array('label' => __('Descrição', true)));
+		echo $this->Form->input('kind_id',array('label' => __('Classe', true),
+                                                                      'default' => $defaultValues['DefaultValue']['kind_id'],
+                                                                      'empty' => 'Selecione uma classe'));
+		echo $this->Form->input('count_id',array('label' => __('Conta', true),
+                                                                       'default' => $defaultValues['DefaultValue']['count_id'],
+                                                                       'empty' => 'Selecione uma conta'));
+		echo $this->Form->input('equipment_type_id',array('label' => __('Tipo', true),
+                                                                  'default' => $defaultValues['DefaultValue']['equipment_type_id']));
+		echo $this->Form->input('alias',array('label' => __('Descrição Resumida', true)));
+		echo $this->Form->input('owner_id',array('label' => __('Seção Pertencente', true),
+                                                                       'default' => $defaultValues['DefaultValue']['section_id']));
+		echo $this->Form->input('price',array('label' => __('Preço Total', true)));
+		echo $this->Form->input('measure',array('label' => __('Unidade de Medida', true),
+                                                                      'default' => $defaultValues['DefaultValue']['measure_id']));
+		echo $this->Form->input('quantity',array('label' => __('Quantidade', true)));
+		echo $this->Form->input('includeRegister',array('label' => __('Incluido no Registro', true),
+                                                                              'autocomplete' => 'off',
+                                                                              'class' => 'term',
+                                                                              'type' => 'text',
+                                                                              'value' => $this->Locale->dateTime($this->data['Equipment']['sendRegister'],true,true)));
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit', true));?>
-</div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Html->link(__('List Equipment', true), array('action' => 'index'));?></li>
-		<li><?php echo $this->Html->link(__('List Kinds', true), array('controller' => 'kinds', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Kind', true), array('controller' => 'kinds', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Counts', true), array('controller' => 'counts', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Count', true), array('controller' => 'counts', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Organizations', true), array('controller' => 'organizations', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Organization', true), array('controller' => 'organizations', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Sections', true), array('controller' => 'sections', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Section', true), array('controller' => 'sections', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Users', true), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User', true), array('controller' => 'users', 'action' => 'add')); ?> </li>
-	</ul>
+<?php echo $this->Form->end(__('Enviar', true));?>
 </div>

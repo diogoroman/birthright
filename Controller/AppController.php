@@ -19,8 +19,9 @@
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 
-App::import('Model', 'User');
-App::import('Model', 'Group');
+App::uses('Model', 'User');
+App::uses('Model', 'Group');
+App::uses('Controller', 'Controller');
 
 class AppController extends Controller
 {
@@ -28,8 +29,10 @@ class AppController extends Controller
 	 * Cake Controller atributes
 	 ****************************/
 	
-	public $components = array('Auth', 'Session', 'RequestHandler', 'DebugKit.Toolbar');
-	
+	public $components = array('Session', 'RequestHandler', 'DebugKit.Toolbar');
+	/*
+        public $components = array('Auth', 'Session', 'RequestHandler', 'DebugKit.Toolbar');
+         * 
 	public $helpers = array(
 		'Html',
 		'Form',
@@ -49,7 +52,7 @@ class AppController extends Controller
 
 	public $action = null;
 	
-	
+	*/
 	/*************************
 	 * Cake Callbacks
 	 ************************/
@@ -59,21 +62,22 @@ class AppController extends Controller
 	 * 
 	 * @return void
 	 */
+        
 	public function beforeFilter()
 	{
-		$this->__setupAuth();
+		//$this->__setupAuth();
 
-		if($this->userLogged === true)
-		{
+		//if($this->userLogged === true)
+		//{
 			$this->__buildMenu();
-		}
+		//}
 
-		if($this->{$this->modelClass}->Behaviors->attached('Logable'))
-		{
-			{
-				$this->{$this->modelClass}->setUserData($this->activeUser);
-			}
-		}
+		//if($this->{$this->modelClass}->Behaviors->attached('Logable'))
+		//{
+		//	{
+		//		$this->{$this->modelClass}->setUserData($this->activeUser);
+		//	}
+		//}
 
 		//if($this->Auth->user('id')) {
 		//	AuditableConfig::$userId = $this->Auth->user('id');
@@ -84,7 +88,7 @@ class AppController extends Controller
 
 		parent::beforeFilter();
 	}
-
+        
 	/**
 	 * Callback default
 	 * 
@@ -96,6 +100,7 @@ class AppController extends Controller
 		$this->__setErrorLayout();
 
 	}
+        /*
 	public function isAuthorized()
 	{
 		if(($this->userLogged === TRUE) && $this->__checkGroup($this->params['prefix']))
@@ -105,7 +110,7 @@ class AppController extends Controller
 		
 		return false;
 	}
-	
+	*/
 	/***************************
 	 * Auxiliar methods
 	 **************************/
@@ -115,6 +120,7 @@ class AppController extends Controller
 	 * Configura o componente Auth, responsável pela
 	 * autenticação de usuário
 	 */
+        /*
 	private function __setupAuth()
 	{
 		$this->Auth->authorize = 'controller';
@@ -140,12 +146,14 @@ class AppController extends Controller
 			$this->__setUserData($activeUser);
 		}
 	}
-	
+	*/
 	/**
 	 * Construção geral de menu
 	 */
+        
 	private function __buildMenu()
 	{
+            /*
 		if(!$this->userLogged)
 		{
 			if($this->Session->check('Advocacia.Menu'))
@@ -155,39 +163,41 @@ class AppController extends Controller
 			
 			return;
 		}
-		
+            */
 		$menu = array();
 		
-		if($this->activeUser && isset($this->params['prefix']))
-		{
-			if(!$this->Session->check('Advocacia.Menu'))
+		//if($this->activeUser && isset($this->params['prefix']))
+		//{
+			if(!$this->Session->check('Patrimony.Menu'))
 			{
-				switch($this->params['prefix'])
-				{
-					case 'admin':
+		//		switch($this->params['prefix'])
+		//		{
+		//			case 'admin':
 						$menu = $this->__buildAdminMenu();
-					break;
-				}
+		//			break;
+		//		}
 			}
 			else
 			{
-				$menu = $this->Session->read('Advocacia.Menu');
+				$menu = $this->Session->read('Patrimony.Menu');
 			}
-		}
+		//}
 		$this->set('menuItems', $menu);
 	}
 	
+        
 	/**
 	 * Constrói menu administrativo
 	 */
+        
 	private function __buildAdminMenu()
 	{
-		$groupActions = array();
+		//$groupActions = array();
 		
-		$userActions = array();
+		//$userActions = array();
 
-		$groups = Group::getAll();
-		
+		//$groups = Group::getAll();
+		/*
 		foreach($groups as $id => $group)
 		{
 			$userActions[$group] = array(
@@ -205,7 +215,7 @@ class AppController extends Controller
 				),						
 			);
 		}
-	
+                */
 		$menu = array(
 			__('Usuários', true) => array_merge(array(
 				__('Listar Todos',true) => array(
@@ -258,12 +268,12 @@ class AppController extends Controller
 					'plugin' => false,
 					'controller' => 'patrimonies',
 					'action' => 'index',
-				),/*
-				__('Criar', true) => array(
-					'plugin' => false,
-					'controller' => 'patrimonies',
-					'action' => 'add',
-				),*/
+				),
+				//__('Criar', true) => array(
+				//	'plugin' => false,
+				//	'controller' => 'patrimonies',
+				//	'action' => 'add',
+				//),
 				__('Aguardando Descarga', true) => array(
 					'plugin' => false,
 					'controller' => 'patrimonies',
@@ -374,7 +384,7 @@ class AppController extends Controller
 			)
 		);
 		
-		$this->Session->write('Advocacia.Menu', $menu);
+		$this->Session->write('Patrimony.Menu', $menu);
 		return $menu;
 	}
 	
@@ -383,6 +393,7 @@ class AppController extends Controller
 	 * 
 	 * @param array $activeUser
 	 */
+        /*
 	protected function __setUserData($activeUser = null)
 	{
 		if(!empty($activeUser))
@@ -400,7 +411,7 @@ class AppController extends Controller
 			$this->set('activeUser', $activeUser);
 		}
 	}
-	
+	*/
 	/**
 	 * Método auxiliar para verificar se um determinado usuário
 	 * pertence a um determinado grupo.
@@ -409,6 +420,7 @@ class AppController extends Controller
 	 * 
 	 * @return bool TRUE caso pertença, FALSE caso contrário
 	 */
+        /*
 	protected function __checkGroup($group)
 	{		
 		if(in_array($group, $this->activeUser['User']['groups']))
@@ -416,10 +428,12 @@ class AppController extends Controller
 		
 		return false;
 	} 
-	
+	*/
+        
 	/**
 	 * 
 	 */
+        
 	private function __setErrorLayout()
 	{
 		if($this->name == 'CakeError')
@@ -429,14 +443,16 @@ class AppController extends Controller
 		}
 	}
 	
+        
 	/**
 	 * RServices
 	 * Método que garante configurações necessárias para o funcionamento correto de requisições assincronas
 	 * Deve ser invocado no inicio de todos os métodos que tratam este tipo de requisição
 	 */
+        
 	protected function __isAjax($autoRender = false)
 	{
-		/* Configurações necessárias para o funcionamento correto do ajax */
+		//Configurações necessárias para o funcionamento correto do ajax
 		Configure::write('debug', 0);
 		
 		$this->disableCache();
@@ -449,6 +465,7 @@ class AppController extends Controller
 	 * 
 	 * @return void
 	 */
+        
 	protected function __goBack()
 	{
 		// caso a página anterior seja diferente da página atual
@@ -469,6 +486,7 @@ class AppController extends Controller
 	 * 
 	 * @param string|array $url
 	 */
+        
 	protected function __setBackUrl($url = null)
 	{
 		if($url !== null)
@@ -485,7 +503,8 @@ class AppController extends Controller
 			$this->set('backUrl', array('action' => 'index'));
 		}
 	}
-
+        
+        
 	protected function __setBackIndex($url = null)
 	{
 		if($url !== null)
@@ -518,7 +537,8 @@ class AppController extends Controller
 			}
 		}	
 	}
-
+        
+        
 	protected function __lockEdit()
 	{
 		if(substr_compare($this->params['action'], '_edit',-5,5) == 0)
@@ -544,6 +564,8 @@ class AppController extends Controller
 			//$this->Session->delete('lockEdit');
 		} 
 	}
+         
+         
 	protected function __unLockEdit()
 	{
 			print_r(explode('/',$this->referer()));
@@ -557,8 +579,11 @@ class AppController extends Controller
 	 *
 	 * @return void
 	 */
+        
 	protected function __setFlash($message, $class)
 	{
 		$this->Session->setFlash(__($message, true), 'default', array('class' => $class));
 	}
+         
+         
 }

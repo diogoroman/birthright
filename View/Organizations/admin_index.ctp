@@ -40,7 +40,7 @@
 	
 	
 	echo $this->Paginator->counter(array(
-	'format' => __('Página %page% de %pages%, mostrando %current% registros de %count%, começando no registro %start% e terminando no %end%', true)
+	'format' => __('Página %page% de %pages%, mostrando %current% registros de %count%, começando no registro %start% e terminando no %end%')
 	));
 	?>	</p>
 

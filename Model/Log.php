@@ -31,7 +31,7 @@ class Log extends AppModel
 	 */
 	public $order = 'created DESC';
 	
-	public $actsAs = array('Locale.Locale' => array('ignoreAutomagic' => false));
+	//public $actsAs = array('Locale.Locale' => array('ignoreAutomagic' => false));
 	
 }
 ?>

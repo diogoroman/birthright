@@ -2,7 +2,7 @@
 class KindsController extends AppController {
 
 	var $name = 'Kinds';
-
+        /*
 	public $components = array(
 		'RSearch.PaginationFilter' => array(
 			'autoFilter' => true,
@@ -10,7 +10,7 @@ class KindsController extends AppController {
 			'queryFields' => array ('Kind.name' => 'like')
 		)
 	);
-	
+	*/
 	function index() {
 		$this->Kind->recursive = 0;
 		$this->set('kinds', $this->paginate());

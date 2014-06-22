@@ -3,7 +3,9 @@ class User extends AppModel {
 	var $name = 'User';
 	var $displayField = 'name';
 	var $order = "User.name";
-	
+        public $actsAs = array('Search.Searchable');
+        
+	/*
 	public $actsAs = array(
 		'Locale.Locale',
 		'SuperFind.SuperFind',
@@ -13,7 +15,7 @@ class User extends AppModel {
 			'change' => 'full', // options are 'list' or 'full'
 			'description_ids' => TRUE // options are TRUE or FALSE
 	));
-	
+	*/
 	public $validate = array(
 		'name' => array(
 			'notempty' => array(
@@ -85,6 +87,7 @@ class User extends AppModel {
 	 * @param $extra
 	 * @return array resultado
 	 */
+        
 	public function paginate($conditions = null,$fields, $order, $limit, $page = 1, $recursive = null, $extra = array())
 	{
 		$options = array(
@@ -103,6 +106,7 @@ class User extends AppModel {
 	 * @param array $conditions
 	 * @param int $recursive
 	 */
+        
 	public function paginateCount($conditions = null, $recursive = null, $extra = array())
 	{
 		$options = array(
@@ -111,7 +115,7 @@ class User extends AppModel {
 		);
 		return $this->superFind('count', $options);
 	}
-
+        
 	/**
 	 * **************************************************
 	 * Begin of copyrighted content to Matt Curry

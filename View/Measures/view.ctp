@@ -13,12 +13,12 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Created'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $measure['Measure']['created']; ?>
+			<?php echo $this->Locale->dateTime($measure['Measure']['created']); ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Modified'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $measure['Measure']['modified']; ?>
+			<?php echo $this->Locale->dateTime($measure['Measure']['modified']); ?>
 			&nbsp;
 		</dd>
 	</dl>

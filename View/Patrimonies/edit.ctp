@@ -1,35 +1,38 @@
+<?php 
+	echo $this->Html->script('datepicker', true); 
+?>
 <div class="patrimonies form">
 <?php echo $this->Form->create('Patrimony');?>
 	<fieldset>
- 		<legend><?php __('Edit Patrimony'); ?></legend>
+ 		<legend><?php __('Alterar Patrimonio'); ?></legend>
+ 		
+ 	<?php echo $this->Html->link($patrimony['Equipment']['description'], array('controller' => 'equipment', 'action' => 'view', $patrimony['Equipment']['id'])); ?>
 	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('equipment_id');
-		echo $this->Form->input('organization_id');
-		echo $this->Form->input('section_id');
-		echo $this->Form->input('room');
-		echo $this->Form->input('discrepancy');
-		echo $this->Form->input('user_id');
-		echo $this->Form->input('conference');
-		echo $this->Form->input('orderNum');
-		echo $this->Form->input('intervalConf');
+		echo $this->Form->input('orderNum',array('label' => __('Número de Patrimonio', true)));
+		echo $this->Form->input('cod',array('label' => __('Código Interno', true),
+											'value' => $patrimony['Patrimony']['id'],
+											'disabled' => 'disabled'));
+		echo $this->Form->input('bmpNumber',array('label' => __('Número BMP', true)));
+		echo $this->Form->input('serialNumber',array('label' => __('Número Serial', true)));
+		echo $this->Form->input('equipment_id',array('label' => __('Ficha Carga Geral', true),));
+		echo $this->Form->input('section_id',array('label' => __('Seção dentro da OM', true),
+												     'default' => $defaultValues['DefaultValue']['section_id'],
+													 'empty' => 'Selecione a seção'));
+		echo $this->Form->input('room',array('label' => __('Sala', true),
+														   'default' => 'Depósito'));
+		echo $this->Form->input('patrimony_status_id',array('label' => __('Status', true),
+															'default' => $defaultValues['DefaultValue']['patrimony_status_id']));
+		echo $this->Form->input('discrepancy',array('label' => __('Discrepancia',true)));
+		echo $this->Form->input('observation',array('label' => __('Observações',true)));
+		echo $this->Form->input('priceUnit',array('label' => __('Preço Unitário',true)));
+		echo $this->Form->input('user_id',array('label' => __('Usuário', true),
+												  'empty' => 'Selecione o responsável'));
+		echo $this->Form->input('conference',array('label' => __('Conferencia', true),
+											'class' => 'term',
+											'type' => 'text',
+											'value' => $this->Locale->dateTime($this->data['Patrimony']['conference'], true, true)));
+		echo $this->Form->input('intervalConf',array('label' => __('Periodo para Conferencia', true)));
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit', true));?>
-</div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $this->Form->value('Patrimony.id')), null, sprintf(__('Are you sure you want to delete # %s?', true), $this->Form->value('Patrimony.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Patrimonies', true), array('action' => 'index'));?></li>
-		<li><?php echo $this->Html->link(__('List Equipment', true), array('controller' => 'equipment', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Equipment', true), array('controller' => 'equipment', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Organizations', true), array('controller' => 'organizations', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Organization', true), array('controller' => 'organizations', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Sections', true), array('controller' => 'sections', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Section', true), array('controller' => 'sections', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Users', true), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User', true), array('controller' => 'users', 'action' => 'add')); ?> </li>
-	</ul>
+<?php echo $this->Form->end(__('Enviar', true));?>
 </div>

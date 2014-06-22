@@ -6,13 +6,15 @@ class Patrimony extends AppModel {
 
 	public $actsAs = array(
 		'Locale.Locale',
+            /*
 		'SuperFind.SuperFind',
 		'Logable' => array(
 			'userModel' => 'User',
 			'userKey' => 'user_id',
 			'change' => 'full', // options are 'list' or 'full'
-			'description_ids' => TRUE // options are TRUE or FALSE
-	));
+			'description_ids' => TRUE) // options are TRUE or FALSE
+             * */
+	);
 
 	public $validate = array(
 		'bmpNumber' => array(
@@ -29,7 +31,8 @@ class Patrimony extends AppModel {
 			'foreignKey' => 'equipment_id',
 			'conditions' => '',
 			'fields' => '',
-			'order' => ''
+			'order' => '',
+                        'counterCache' => true
 		),
 		'PatrimonyStatus' => array(
 			'className' => 'PatrimonyStatus',

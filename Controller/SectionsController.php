@@ -1,11 +1,16 @@
 <?php
 App::import('Vendor','xtcpdf');
 class SectionsController extends AppController {
+    
+        var $name = 'Sections';
+        public $components = array('Paginator');
+        public $paginate = array();
+        
+	var $helpers = array('Locale.Locale');
 
-	public $helpers = array('excel');
+	//public $helpers = array('Excel');
 
-	var $name = 'Sections';
-
+        /*
 	public $components = array(
 		'RSearch.PaginationFilter' => array(
 			'autoFilter' => true,
@@ -13,7 +18,7 @@ class SectionsController extends AppController {
 			'queryFields' => array ('Section.name' => 'like')
 		)
 	);
-	
+	*/
 	function index() {
 		$this->Section->recursive = 0;
 		$this->set('sections', $this->paginate());
@@ -82,23 +87,23 @@ class SectionsController extends AppController {
 		$this->set('section', $this->Section->find('all', array('conditions' => array('Section.id' => $id),
 																	'recursive' => 2)));
 	}
-
+        /*
 	function admin_toExcel($id = null){
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid section', true));
 			$this->redirect(array('action' => 'index'));
 		}
 		$this->layout = 'blank';
-		/*
-		$this->loadModel('Patrimony');
-		$this->set('patrimonies', $this->Patrimony->find('all', array('conditions' => 
-			array('Patrimony.section_id' => $id))));
-		*/
-		$this->set('section', $this->Section->find('all', array('conditions' => array('Section.id' => $id),
-																	'recursive' => 2)));
+		
+		//$this->loadModel('Patrimony');
+		//$this->set('patrimonies', $this->Patrimony->find('all', array('conditions' => 
+		//	array('Patrimony.section_id' => $id))));
+		//
+		//$this->set('section', $this->Section->find('all', array('conditions' => array('Section.id' => $id),
+		//															'recursive' => 2)));
 
 	}
-
+        */
 	function admin_add() {
 		if (!empty($this->data)) {
 			$this->Section->create();
@@ -141,7 +146,7 @@ class SectionsController extends AppController {
 		$this->Session->setFlash(__('Section was not deleted', true));
 		$this->redirect(array('action' => 'index'));
 	}
-
+        /*
 	function admin_reportPatrimony() {
 		$xpdf = new Xtcpdf('L', PDF_UNIT, 'A4', true, 'UTF-8', false);
 		$xpdf->SetCreator('Birthright - Patrimonio ATI/SINFO');
@@ -158,6 +163,6 @@ class SectionsController extends AppController {
 		//$this->response->type('application/pdf');
 
 	}
-
+        */
 }
 ?>

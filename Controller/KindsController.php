@@ -1,4 +1,6 @@
 <?php
+
+App::uses('AppController', 'Controller');
 class KindsController extends AppController {
 
 	var $name = 'Kinds';

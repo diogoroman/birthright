@@ -1,5 +1,6 @@
 <?php
 App::import('Vendor','xtcpdf');
+App::uses('AppController', 'Controller');
 class SectionsController extends AppController {
     
         var $name = 'Sections';

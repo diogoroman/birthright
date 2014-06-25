@@ -19,6 +19,8 @@
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 
+App::uses('AppController', 'Controller');
+
 class LogsController extends AppController {
 
 	public $name = 'Logs';

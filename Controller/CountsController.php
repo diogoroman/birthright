@@ -1,4 +1,5 @@
 <?php
+App::uses('AppController', 'Controller');
 class CountsController extends AppController {
 
 	var $name = 'Counts';

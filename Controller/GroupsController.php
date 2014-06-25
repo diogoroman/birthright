@@ -1,4 +1,5 @@
 <?php
+App::uses('AppController', 'Controller');
 class GroupsController extends AppController {
 
 	var $name = 'Groups';

@@ -38,9 +38,6 @@ class EquipmentControllerTest extends ControllerTestCase{
     }
     
     public function testAdd(){
-        
-         
-         
         $dados = array(
             'Equipment' => array(
                 'fcg' => 123456789,

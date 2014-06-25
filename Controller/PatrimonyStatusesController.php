@@ -1,4 +1,6 @@
 <?php
+
+App::uses('AppController', 'Controller');
 class PatrimonyStatusesController extends AppController {
 
 	var $name = 'PatrimonyStatuses';

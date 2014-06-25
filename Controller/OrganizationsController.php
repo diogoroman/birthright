@@ -1,4 +1,6 @@
 <?php
+
+App::uses('AppController', 'Controller');
 class OrganizationsController extends AppController {
 
 	var $name = 'Organizations';

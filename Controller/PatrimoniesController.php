@@ -1,4 +1,6 @@
 <?php
+
+App::uses('AppController', 'Controller');
 //App::import('Vendor','xtcpdf');
 class PatrimoniesController extends AppController {
 

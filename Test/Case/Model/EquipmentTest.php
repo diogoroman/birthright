@@ -32,7 +32,7 @@ class EquipmentTest extends CakeTestCase{
         $this->assertArrayHasKey(751,$result_semparam);
         $this->assertArrayHasKey(752,$result_semparam);
         $this->assertArrayNotHasKey(85,$result_semparam);
-        echo $result_semparam[750];
-        $this->expectOutputString(750);
+        //echo $result_semparam[750];
+        //$this->expectOutputString(750);
     }
 }

@@ -25,14 +25,5 @@ class EquipmentTest extends CakeTestCase{
         $this->assertArrayHasKey(751,$result);
         $this->assertArrayHasKey(752,$result);
         $this->assertArrayNotHasKey(85,$result);
-        //echo $result[750];
-        //$this->expectOutputString("Primeiro EquipmentoSemPatrimonio");
-        $result_semparam = $this->Equipment->equipmentWithoutPatrimony();
-        $this->assertArrayHasKey(750,$result_semparam);
-        $this->assertArrayHasKey(751,$result_semparam);
-        $this->assertArrayHasKey(752,$result_semparam);
-        $this->assertArrayNotHasKey(85,$result_semparam);
-        //echo $result_semparam[750];
-        //$this->expectOutputString(750);
     }
 }

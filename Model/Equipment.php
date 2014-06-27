@@ -17,9 +17,15 @@ class Equipment extends AppModel {
 		'price' => array(
 			'valor' => array(
 				'rule' => 'numeric',
-				'message' => 'O campo valor deve ter apenas números',
+				'message' => 'O campo valor deve conter apenas números',
 				'allowEmpty' => true
-		))
+		)),
+                'quantity' => array(
+			'valor' => array(
+				'rule' => 'numeric',
+				'message' => 'O campo quantidade deve conter apenas números',
+				'allowEmpty' => true
+		)),
 	);
         
 	var $belongsTo = array(

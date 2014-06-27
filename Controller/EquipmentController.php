@@ -66,7 +66,7 @@ class EquipmentController extends AppController {
 				$this->redirect(array('action' => 'view', $this->Equipment->id));
                                 return $this->Equipment->id;
 			} else {
-				return $this->setFlash('O material não pode ser gravado. Por favor, tente novamente.', 'system-error');
+				return $this->__setFlash('O material não pode ser gravado. Por favor, tente novamente.', 'system-error');
 			}
 		}
 		$kinds = $this->Equipment->Kind->find('list');
@@ -95,6 +95,7 @@ class EquipmentController extends AppController {
 		if (empty($this->data)) {
 			$this->data = $this->Equipment->read(null, $id);
                         $this->set('data',$this->data);
+                        pr($this->data);
 		}
 		$kinds = $this->Equipment->Kind->find('list');
 		$counts = $this->Equipment->Count->find('list');

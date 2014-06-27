@@ -80,6 +80,40 @@ class EquipmentControllerTest extends ControllerTestCase{
         $this->assertContains($flash_message, 'Equipamento Excluido com sucesso');
         debug($result);
     }
+    //Adição com valor invalido no preço
+    public function testInvalidPriceAdd(){
+        $dados = array(
+            'Equipment' => array(
+                'fcg' => 123456789,
+                'description' => 'teste_automático',
+                'quantity' => 100,
+                'equipment_type_id' => 1,
+                'price' => 'oopoiu'
+            )
+        );
+        $this->testAction('/equipment/add/');
+        $this->testAction('/equipment/add/', array('data' => $dados));
+        $flash_message = $this->Equipment->Session->read('Message.flash.message');
+        $this->assertContains($flash_message, 'O material não pode ser gravado. Por favor, tente novamente.');
+        
+    }
+    //Adição com valor invalido na quantidade
+    public function testInvalidQuantityAdd(){
+        $dados = array(
+            'Equipment' => array(
+                'fcg' => 123456789,
+                'description' => 'teste_automático',
+                'quantity' => 'alkfjdalk',
+                'equipment_type_id' => 1,
+                'price' => 125000
+            )
+        );
+        $this->testAction('/equipment/add/');
+        $this->testAction('/equipment/add/', array('data' => $dados));
+        $flash_message = $this->Equipment->Session->read('Message.flash.message');
+        $this->assertContains($flash_message, 'O material não pode ser gravado. Por favor, tente novamente.');
+        
+    }
     
     public function testEdit(){
         $result = $this->testAction('equipment/edit/750', array('return' => 'contents'));
@@ -87,6 +121,16 @@ class EquipmentControllerTest extends ControllerTestCase{
         $this->assertContains('Primeiro EquipmentoSemPatrimonio',$result);
         $flash_message = $this->Equipment->Session->read('Message.flash.message');
         $this->assertContains($flash_message,'O Material foi modificado com sucesso');
+        debug($result);
+    }
+    
+    public function testInvalidEdit(){
+        $result = $this->testAction('equipment/edit/750', array('return' => 'contents'));
+        $this->vars['data']['Equipment']['price'] = 'adfadf';
+        $this->testAction('equipment/edit/750', array('data' => $this->vars['data']));
+        $this->assertContains('Primeiro EquipmentoSemPatrimonio',$result);
+        $flash_message = $this->Equipment->Session->read('Message.flash.message');
+        $this->assertContains($flash_message,'O material não pode ser modificado. Por favor, tente novamente.');
         debug($result);
     }
     

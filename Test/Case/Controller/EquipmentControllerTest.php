@@ -27,7 +27,7 @@ class EquipmentControllerTest extends ControllerTestCase{
         
        $result = $this->testAction('/equipment/index', array('return' => 'contents'));
        $this->assertArrayHasKey('equipment',$this->vars);
-       $this->assertContains('IMPRESSORA HP LASERJET 1000',$result);
+       $this->assertContains('IMPRESSORA MOD 930 C MARCA HP',$result);
         debug($result);
     }
     

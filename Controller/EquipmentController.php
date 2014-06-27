@@ -36,13 +36,20 @@ class EquipmentController extends AppController {
 	}
         function view($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid equipment', true));
+			$this->__setFlash('Impossível Mostrar um Equipamento Vazio','system-warning');
 			return $this->redirect(array('action' => 'index'));
 		}
 		//nao esta retornando todas as instacia de patrimony
 		//$this->set('equipment', $this->Equipment->read(null, $id));
-		$this->set('equipment', $this->Equipment->find('all', array('conditions' => array('Equipment.id' => $id),
-                                                                                                  'recursive' => 2)));
+                $this->data = $this->Equipment->find('all', array('conditions' => array('Equipment.id' => $id), 'recursive' => 2));
+                if(!empty($this->data)){
+                    $this->set('equipment', $this->data);
+                }
+                else{
+                    $this->__setFlash('Equipamento Inexistente','system-warning');
+                    $this->redirect(array('action' => 'index'));
+                    return 0; 
+                }
 		
 		/*$this->set('equipment', $this->Equipment->read(null, $id));
 		 * array('conditions' => array('Article.id' => 1))
@@ -57,7 +64,6 @@ class EquipmentController extends AppController {
 			if ($this->Equipment->save($this->data)) {
 				$this->__setFlash('O material foi gravado com sucesso', 'system-success');
 				$this->redirect(array('action' => 'view', $this->Equipment->id));
-                                
                                 return $this->Equipment->id;
 			} else {
 				return $this->setFlash('O material não pode ser gravado. Por favor, tente novamente.', 'system-error');
@@ -73,9 +79,9 @@ class EquipmentController extends AppController {
 		$this->set('defaultValues', $this->Equipment->Kind->DefaultValue->read(null, '1'));
 	}
         function edit($id = null) {
-                print_r($this->request->params);
+                //print_r($this->request->params);
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid equipment', true));
+			$this->__setFlash('Equipamento Inválido','system-warning');
 			return $this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
@@ -88,6 +94,7 @@ class EquipmentController extends AppController {
 		}
 		if (empty($this->data)) {
 			$this->data = $this->Equipment->read(null, $id);
+                        $this->set('data',$this->data);
 		}
 		$kinds = $this->Equipment->Kind->find('list');
 		$counts = $this->Equipment->Count->find('list');
@@ -102,7 +109,7 @@ class EquipmentController extends AppController {
 	}
         function delete($id = null) {
 		if (!$id) {
-			$this->__setFlash('Equipamento não encontrado, erro interno', 'system-error');
+			$this->__setFlash('Equipamento vazio', 'system-error');
 			return $this->redirect(array('action'=>'index'));
 		}
 		if ($this->Equipment->delete($id)) {

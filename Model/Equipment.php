@@ -13,6 +13,15 @@ class Equipment extends AppModel {
 			'description_ids' => TRUE) // options are TRUE or FALSE*/
 	);
         
+        public $validate = array(
+		'price' => array(
+			'valor' => array(
+				'rule' => 'numeric',
+				'message' => 'O campo valor deve ter apenas números',
+				'allowEmpty' => true
+		))
+	);
+        
 	var $belongsTo = array(
 		'Kind' => array(
 			'className' => 'Kind',

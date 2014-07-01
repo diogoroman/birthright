@@ -70,7 +70,6 @@ class EquipmentControllerTest extends ControllerTestCase{
                 'price' => 125000
             )
         );
-        
         $this->testAction('/equipment/add/');
         $id = $this->testAction('/equipment/add/', array('data' => $dados));
         $flash_message = $this->Equipment->Session->read('Message.flash.message');

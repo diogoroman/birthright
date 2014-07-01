@@ -82,20 +82,23 @@ class EquipmentController extends AppController {
                 //print_r($this->request->params);
 		if (!$id && empty($this->data)) {
 			$this->__setFlash('Equipamento Inválido','system-warning');
-			return $this->redirect(array('action' => 'index'));
+			$this->redirect(array('action' => 'index'));
+                        return 0;
 		}
 		if (!empty($this->data)) {
 			if ($this->Equipment->save($this->data)) {
 				$this->__setFlash('O Material foi modificado com sucesso', 'system-success');
-				return $this->redirect(array('action' => 'view', $this->Equipment->id));
+				$this->redirect(array('action' => 'view', $this->Equipment->id));
+                                return $id;
 			} else {
 				$this->Session->setFlash('O material não pode ser modificado. Por favor, tente novamente.');
+                                $this->redirect(array('action' => 'edit', $this->Equipment->id));
+                                return $id;
 			}
 		}
 		if (empty($this->data)) {
 			$this->data = $this->Equipment->read(null, $id);
                         $this->set('data',$this->data);
-                        pr($this->data);
 		}
 		$kinds = $this->Equipment->Kind->find('list');
 		$counts = $this->Equipment->Count->find('list');

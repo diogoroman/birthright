@@ -57,7 +57,7 @@ Os registros de Log apresentam o CRUD para quaisquer entidades do sistema.
 
 Dependendo do contexto a ferramenta de busca permite fazer uma busca por diversos termos. Por padrão sempre é possível fazer buscas por ID e Nome em quaisquer umas das entidades.
 
-Por exemplo: Se o usuário estiver vendo a tela de Patrimonios essa ferramenta possibilita fazer buscas por nome, identificadores de Patrimonio ou detentor (Usuário). Agora caso o usuário esteja visualizando a tela do Log do Sistema, a ferramenta permite fazer uma buscas por ID do Patrimonio ou pelo Nome ou ID do Usuário.
+Por exemplo: Se o usuário estiver vendo a tela de Patrimonios essa ferramenta possibilita fazer buscas por nome, identificadores de Patrimonio ou Detentor (Usuário). Agora caso o usuário esteja visualizando a tela do Log do Sistema, a ferramenta permite fazer uma buscas por ID do Patrimonio ou pelo Nome ou ID do Usuário.
 
 [![Inf Log](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(23)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen%20(23).JPG?raw=true "Informação de Log")
 

@@ -1,11 +1,11 @@
 ### O Sistema patrimonial para controle dos material carga da Assessoria de Tecnologia da Informação (ATI) do GAP-SJ.
 
-Este foi um projeto que nasceu para solucionar o problema de controle dos ativos computacionais do GAP-SJ. Com cerca de um mil usuários conectados na rede, o GAP-SJ é uma Unidade Militar grande cujo gerenciamento patrimonial antes era uma tarefa árdua e repetitiva. A principal dificuldade é que todos os Computadores, Impressoras, pendrivers e etc da unidade estão na carga do Chefe da ATI. Alem disso, esta unidade possui vários prédios dentro de um campus muito grande, o Campus CTA. Antes do sistema o controle era feito através de fichas de papel e um arquivo físico e isso gerava inúmeros problemas.
+Este foi um projeto que nasceu para solucionar o problema de controle patrimonial do GAP-SJ. Além de todos os materias carga de seu setor, isto é, mesas, cadeiras, grampeadores e etc. O chefe da ATI do GAP-SJ deve se responsabilizar por todos os Computadores, Impressoras, pendrivers e alguns outros recursos de TI da unidade inteira, estamos falando em cerca de trezentos usuários. O GAP-SJ é uma Unidade Militar grande e espalhada cujo gerenciamento patrimonial antes era uma tarefa árdua e repetitiva. Antes desse sistema o controle era feito através de fichas de papel e um arquivo físico e isso gerava inúmeros problemas.
 
-Portanto, o principal serviço desse sistema é gerar um inventário atualizado e confiável de maneira rápida para as autoridades interessadas.
+Portanto, o principal serviço desse sistema é gerar um inventário atualizado, confiável e de maneira rápida para as autoridades interessadas. 
 Com a implantação desse sistema foi possível economizar varias horas de trabalho dos servidores da ATI, que agora podem focar suas energias em tarefas mais importantes para o setor.
 
-O sistema foi descontinuado, pois foi desenvolvido apenas pelo então chefe da ATI, o Primeiro Tenente Roman. Contudo este sistema vem se provando no tempo com mais de 9 anos de uso rodando de maneira estável.
+O sistema foi descontinuado, pois o desenvolvimeto foi realizado pelo então chefe da ATI, o Primeiro Tenente Roman. Contudo este sistema vem se provando no tempo com mais de 9 anos de uso rodando de maneira estável.
 
 Screenshots
 -----------

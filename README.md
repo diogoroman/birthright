@@ -18,5 +18,33 @@ Clique para ver.
 
 ### Menus
 [![Menu Usuários](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(4)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(4).jpeg?raw=true "Menu Usuários")
+[![Menu Materiais](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(5)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(5).jpeg?raw=true "Menu Materiais")
+[![Menu Seções](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(6)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(6).jpeg?raw=true "Menu Seções")
+[![Menu Patrimonios](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(7)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(7).jpeg?raw=true "Menu Patrimonios")
+[![Menu Dependentes](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(8)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(8).jpeg?raw=true "Menu Dependentes")
+[![Menu Configurações](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(9)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(9).jpeg?raw=true "Menu Configurações")
+[![Submenu Configurações](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(10)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(10).jpeg?raw=true "Submenu Configurações")
+[![Menu Relatórios](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(11)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(11).jpeg?raw=true "Menu Relatórios")
 
-[![Menu Materiais](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(5)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(5).jpeg?raw=true "Menu Usuários")
+### Tela Materiais
+[![Menu Relatórios](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(12)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(12).jpeg?raw=true "Menu Relatórios")
+
+### Tela de Inclusão de Materiais
+[![Tela Materiais](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(13)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(13).jpeg?raw=true "Tela Materiais")
+
+### Tela de Inclusão de uma Conta Patrimonial
+[![Conta Patrimonial](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(14)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(14).jpeg?raw=true "Conta Patrimonial")
+
+### Tela de Configuração de Grupos de Usuários
+[![Users](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(15)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(15).jpeg?raw=true "Users")
+
+### Tela de Configuração de Valores Padrões
+[![Default](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(16)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(16).jpeg?raw=true "Default")
+
+### Mensagem de Logout
+[![Logout](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(18)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(18).jpeg?raw=true "Logout")
+
+### Exemplo de Relatórios gerados em PDF
+[![Relatório por Seção](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(19)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(19).jpeg?raw=true "Relatório por Seção")
+[![Relatório por Situação](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(20)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(20).jpeg?raw=true "Relatório por Situação")
+

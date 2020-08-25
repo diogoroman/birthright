@@ -7,5 +7,17 @@ Screenshots
 -----------
 
 Clique para ver.
-
+###login
 [![Tela de Login](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(1)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(1).jpeg?raw=true "Tela de Login")
+
+###logado
+[![Home](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(2)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(2).jpeg?raw=true "Home")
+
+###Lista de Patrimonios
+[![Patrimonios Listados](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(3)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(3).jpeg?raw=true "Patrimonios Listados")
+
+###Menu Usuários
+[![Menu Usuários](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(4)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(4).jpeg?raw=true "Menu Usuários")
+
+###Menu Materiais
+[![Menu Materiais](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(5)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(5).jpeg?raw=true "Menu Usuários")

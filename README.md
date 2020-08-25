@@ -5,7 +5,7 @@ Este foi um projeto que nasceu para solucionar o problema de controle patrimonia
 Portanto, o principal serviço desse sistema é gerar um inventário atualizado, confiável e de maneira rápida para as autoridades interessadas. 
 Com a implantação desse sistema foi possível economizar varias horas de trabalho dos servidores da ATI, que agora podem focar suas energias em tarefas mais importantes para o setor.
 
-O sistema foi descontinuado, pois o desenvolvimento foi realizado pelo então chefe da ATI, o Primeiro Tenente Roman. Contudo, esta versão vem se provando no tempo, com mais de 9 anos de uso nunca foi noticiado algum bug que levasse o sistema a parar.
+O sistema foi descontinuado, pois o desenvolvimento foi realizado pelo então chefe da ATI, o Primeiro Tenente Roman. Contudo, esta versão vem se provando no tempo, com mais de 8 anos de uso nunca foi noticiado algum bug que levasse o sistema a parar.
 
 Screenshots
 -----------

@@ -52,8 +52,8 @@ Os registros de Log apresentam o CRUD para quaisquer entidades do sistema.
 
 ### Ferramenta de Busca Coringa
 
-Dependendo do contexto a ferramenta de busca permite fazer uma busca por diversos termos.
-Por exemplo: Se o usuário estiver vendo a tela de Patrimonios essa ferramenta possibilita fazer buscas por nome, identificadores de patrimonio e detentor. Agora caso o usuário esteja visualizando a tela do Log do Sistema, a ferramente permite fazer uma buscas por Id do Patrimonio ou pelo Nome ou Id do Usuário.
+Dependendo do contexto a ferramenta de busca permite fazer uma busca por diversos termos. Por padrão sempre é possível fazer buscas por Id e Nome em quaisquer umas das entidades.
+Por exemplo: Se o usuário estiver vendo a tela de Patrimonios essa ferramenta possibilita fazer buscas por nome, identificadores de patrimonio ou detentor. Agora caso o usuário esteja visualizando a tela do Log do Sistema, a ferramenta permite fazer uma buscas por Id do Patrimonio ou pelo Nome ou Id do Usuário.
 
 [![Inf Log](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(23)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(23).jpg?raw=true "Informação de Log")
 

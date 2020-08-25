@@ -53,11 +53,11 @@ Os registros de Log apresentam o CRUD para quaisquer entidades do sistema.
 [![Logs do Sistema](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(21)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen%20(21).JPG?raw=true "Logs do Sistema")
 [![Inf Log](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(22)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen%20(22).JPG?raw=true "Informação de Log")
 
-### Ferramenta de Busca Coringa
+### Ferramenta de Busca "Coringa"
 
-Dependendo do contexto a ferramenta de busca permite fazer uma busca por diversos termos. Por padrão sempre é possível fazer buscas por Id e Nome em quaisquer umas das entidades.
+Dependendo do contexto a ferramenta de busca permite fazer uma busca por diversos termos. Por padrão sempre é possível fazer buscas por ID e Nome em quaisquer umas das entidades.
 
-Por exemplo: Se o usuário estiver vendo a tela de Patrimonios essa ferramenta possibilita fazer buscas por nome, identificadores de Patrimonio ou detentor (Usuário). Agora caso o usuário esteja visualizando a tela do Log do Sistema, a ferramenta permite fazer uma buscas por Id do Patrimonio ou pelo Nome ou Id do Usuário.
+Por exemplo: Se o usuário estiver vendo a tela de Patrimonios essa ferramenta possibilita fazer buscas por nome, identificadores de Patrimonio ou detentor (Usuário). Agora caso o usuário esteja visualizando a tela do Log do Sistema, a ferramenta permite fazer uma buscas por ID do Patrimonio ou pelo Nome ou ID do Usuário.
 
 [![Inf Log](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(23)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen%20(23).JPG?raw=true "Informação de Log")
 

@@ -8,4 +8,4 @@ Screenshots
 
 Clique para ver.
 
-[![Tela de Login](https://github.com/diogoroman/birthright/blob/master/webroot/img/action-add.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(1).jpeg?raw=true "Tela de Login")
+[![Tela de Login](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(1)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(1).jpeg?raw=true "Tela de Login")

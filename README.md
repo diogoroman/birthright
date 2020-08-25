@@ -8,4 +8,4 @@ Screenshots
 
 Clique para ver.
 
-[![Teste de Windows Scree](https://github.com/diogoroman/birthright/blob/master/webroot/img/action-add.png?raw=true "Teste")]
+[![Tela de Login](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(1).jpeg?raw=true "Tela de Login")]

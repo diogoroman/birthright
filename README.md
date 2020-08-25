@@ -1,5 +1,5 @@
-### Controle de Material Carga
-O Sistema patrimonial para controle dos material carga da Assessoria de Tecnologia da Informação (ATI) do GAP-SJ.
+### O Sistema patrimonial para controle dos material carga da Assessoria de Tecnologia da Informação (ATI) do GAP-SJ.
+
 Este foi um projeto que nasceu para solucionar o problema de controle dos ativos computacionais do GAP-SJ. Com cerca de um mil usuários conectados na rede, o GAP-SJ é uma Unidade Militar grande cujo gerenciamento patrimonial antes era uma tarefa árdua e repetitiva. A principal dificuldade é que todos os Computadores, Impressoras, pendrivers e etc da unidade estão na carga do Chefe da ATI. Alem disso, esta unidade possui vários prédios dentro de um campus muito grande, o Campus CTA. Antes do sistema o controle era feito através de fichas de papel e um arquivo físico e isso gerava inúmeros problemas.
 Portanto, o principal serviço desse sistema é gerar um inventário atualizado e confiável de maneira rápida para as autoridades interessadas.
 Com a implantação desse sistema foi possível economizar varias horas de trabalho dos servidores da ATI, que agora podem focar suas energias em tarefas mais importantes para o setor.

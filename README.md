@@ -59,7 +59,7 @@ Por exemplo: Se o usuário estiver vendo a tela de Patrimonios essa ferramenta p
 
 ### Exemplo de Relatórios gerados em PDF
 
-Os relatórios gerados objetivam facilitar o trabalho das equipes de conferencia de material carga bem como prestar contas à Acessoria de Controle interno. É possível gerar relatórios por Detentor, Conta e Estado.
+Os relatórios gerados objetivam facilitar o trabalho das equipes de conferencia de material carga bem como prestar contas à Assessoria de Controle interno. É possível gerar relatórios por Detentor, Conta e Estado do Material.
 
 [![Relatório por Seção](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(19)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(19).jpeg?raw=true "Relatório por Seção")
 [![Relatório por Situação](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(20)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(20).jpeg?raw=true "Relatório por Situação")

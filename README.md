@@ -1,11 +1,11 @@
 ### O Sistema patrimonial para controle dos material carga da Assessoria de Tecnologia da Informação (ATI) do GAP-SJ.
 
-Este foi um projeto que nasceu para solucionar o problema de controle patrimonial do GAP-SJ. Além de todos os materias carga de seu setor, isto é, mesas, cadeiras, grampeadores e etc. O chefe da ATI do GAP-SJ deve se responsabilizar por todos os Computadores, Impressoras, pendrivers e alguns outros recursos de TI da unidade inteira, estamos falando em cerca de trezentos usuários. O GAP-SJ é uma Unidade Militar grande e espalhada cujo gerenciamento patrimonial antes era uma tarefa árdua e repetitiva. Antes desse sistema o controle era feito através de fichas de papel e um arquivo físico e isso gerava inúmeros problemas.
+Este foi um projeto que nasceu para solucionar o problema de controle patrimonial do GAP-SJ. Além de todos os materiais carga de seu setor, isto é, mesas, cadeiras, grampeadores e etc. O chefe da ATI do GAP-SJ deve se responsabilizar por todos os Computadores, Impressoras, pendrivers e alguns outros recursos de TI da unidade inteira, estamos falando em cerca de trezentos usuários. O GAP-SJ é uma Unidade Militar grande e espalhada cujo gerenciamento patrimonial antes era uma tarefa árdua e repetitiva. Antes desse sistema o controle era feito através de fichas de papel e um arquivo físico e isso gerava inúmeros problemas.
 
 Portanto, o principal serviço desse sistema é gerar um inventário atualizado, confiável e de maneira rápida para as autoridades interessadas. 
 Com a implantação desse sistema foi possível economizar varias horas de trabalho dos servidores da ATI, que agora podem focar suas energias em tarefas mais importantes para o setor.
 
-O sistema foi descontinuado, pois o desenvolvimeto foi realizado pelo então chefe da ATI, o Primeiro Tenente Roman. Contudo este sistema vem se provando no tempo com mais de 9 anos de uso rodando de maneira estável.
+O sistema foi descontinuado, pois o desenvolvimento foi realizado pelo então chefe da ATI, o Primeiro Tenente Roman. Contudo, esta versão vem se provando no tempo, com mais de 9 anos de uso nunca foi noticiado algum bug que levasse o sistema a parar.
 
 Screenshots
 -----------
@@ -56,13 +56,14 @@ Os registros de Log apresentam o CRUD para quaisquer entidades do sistema.
 ### Ferramenta de Busca Coringa
 
 Dependendo do contexto a ferramenta de busca permite fazer uma busca por diversos termos. Por padrão sempre é possível fazer buscas por Id e Nome em quaisquer umas das entidades.
-Por exemplo: Se o usuário estiver vendo a tela de Patrimonios essa ferramenta possibilita fazer buscas por nome, identificadores de patrimonio ou detentor. Agora caso o usuário esteja visualizando a tela do Log do Sistema, a ferramenta permite fazer uma buscas por Id do Patrimonio ou pelo Nome ou Id do Usuário.
+
+Por exemplo: Se o usuário estiver vendo a tela de Patrimonios essa ferramenta possibilita fazer buscas por nome, identificadores de Patrimonio ou detentor (Usuário). Agora caso o usuário esteja visualizando a tela do Log do Sistema, a ferramenta permite fazer uma buscas por Id do Patrimonio ou pelo Nome ou Id do Usuário.
 
 [![Inf Log](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(23)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen%20(23).JPG?raw=true "Informação de Log")
 
 ### Exemplo de Relatórios gerados em PDF
 
-Os relatórios gerados objetivam facilitar o trabalho das equipes de conferencia de material carga bem como prestar contas à Assessoria de Controle interno. É possível gerar relatórios por Detentor, Conta e Estado do Material.
+Os relatórios gerados objetivam facilitar o trabalho das equipes de conferencia de material carga bem como prestar contas à Assessoria de Controle interno. É possível gerar relatórios por Detentor(Usuário), Conta e Estado do Material.
 
 [![Relatório por Seção](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(19)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(19).jpeg?raw=true "Relatório por Seção")
 [![Relatório por Situação](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(20)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(20).jpeg?raw=true "Relatório por Situação")

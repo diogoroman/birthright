@@ -42,10 +42,25 @@ Clique para ver.
 ### Tela de Configuração de Valores Padrões
 [![Default](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(16)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(16).jpeg?raw=true "Default")
 
-### Mensagem de Logout
-[![Logout](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(18)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(18).jpeg?raw=true "Logout")
+### Tela de Logs do Sistema
+
+O sistema registra os logs e os apresenta como uma tela do sistema, isso facilita caso seja necessário proceder algum tipo de auditoria.
+Os registros de Log apresentam o CRUD para quaisquer entidades do sistema.
+
+[![Logs do Sistema](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(21)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(21).jpg?raw=true "Logs do Sistema")
+[![Inf Log](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(22)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(22).jpg?raw=true "Informação de Log")
+
+### Ferramenta de Busca Coringa
+
+Dependendo do contexto a ferramenta de busca permite fazer uma busca por diversos termos.
+Por exemplo: Se o usuário estiver vendo a tela de Patrimonios essa ferramento possibilita fazer busca por nome, identificadores de patrimonio e tentor. Agora caso o usuário esteja visualizando a tela do Log do sistema, a ferramente permite fazer uma busca por Id do patrimonio ou pelo nome ou id do usuário.
+
+[![Inf Log](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(23)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(23).jpg?raw=true "Informação de Log")
 
 ### Exemplo de Relatórios gerados em PDF
 [![Relatório por Seção](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(19)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(19).jpeg?raw=true "Relatório por Seção")
 [![Relatório por Situação](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(20)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(20).jpeg?raw=true "Relatório por Situação")
+
+### Mensagem de Logout
+[![Logout](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(18)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(18).jpeg?raw=true "Logout")
 

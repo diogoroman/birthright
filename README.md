@@ -44,7 +44,7 @@ Clique para ver.
 
 ### Tela de Logs do Sistema
 
-O sistema registra os logs e os apresenta como uma funcionalidade do sistema, isso facilita caso seja necessário proceder algum tipo de auditoria.
+O sistema registra os logs e os apresenta como uma funcionalidade do sistema, isso facilita caso seja necessário realizar alguma auditoria.
 Os registros de Log apresentam o CRUD para quaisquer entidades do sistema.
 
 [![Logs do Sistema](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(21)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(21).jpg?raw=true "Logs do Sistema")
@@ -53,7 +53,7 @@ Os registros de Log apresentam o CRUD para quaisquer entidades do sistema.
 ### Ferramenta de Busca Coringa
 
 Dependendo do contexto a ferramenta de busca permite fazer uma busca por diversos termos.
-Por exemplo: Se o usuário estiver vendo a tela de Patrimonios essa ferramento possibilita fazer busca por nome, identificadores de patrimonio e tentor. Agora caso o usuário esteja visualizando a tela do Log do sistema, a ferramente permite fazer uma busca por Id do patrimonio ou pelo nome ou id do usuário.
+Por exemplo: Se o usuário estiver vendo a tela de Patrimonios essa ferramenta possibilita fazer buscas por nome, identificadores de patrimonio e detentor. Agora caso o usuário esteja visualizando a tela do Log do Sistema, a ferramente permite fazer uma buscas por Id do Patrimonio ou pelo Nome ou Id do Usuário.
 
 [![Inf Log](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(23)-sm.png)](https://github.com/diogoroman/birthright/blob/master/webroot/files/printscreen(23).jpg?raw=true "Informação de Log")
 
